@@ -1,0 +1,25 @@
+<%= form_for(@availability) do |f| %>
+  <% if @availability.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@availability.errors.count, "error") %> prohibited this availability from being saved:</h2>
+
+      <ul>
+      <% @availability.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :per_week %><br>
+    <%= f.text_field :per_week %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_month %><br>
+    <%= f.text_field :number_of_month %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

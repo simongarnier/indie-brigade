@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Per week:</strong>
+  <%= @availability.per_week %>
+</p>
+
+<p>
+  <strong>Number of month:</strong>
+  <%= @availability.number_of_month %>
+</p>
+
+<%= link_to 'Edit', edit_availability_path(@availability) %> |
+<%= link_to 'Back', availabilities_path %>
