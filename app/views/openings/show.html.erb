@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @opening.name %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @opening.role %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @opening.availability %>
+</p>
+
+<%= link_to 'Edit', edit_opening_path(@opening) %> |
+<%= link_to 'Back', openings_path %>

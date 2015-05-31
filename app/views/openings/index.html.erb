@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Openings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Availability</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @openings.each do |opening| %>
+      <tr>
+        <td><%= opening.name %></td>
+        <td><%= opening.role %></td>
+        <td><%= opening.availability %></td>
+        <td><%= link_to 'Show', opening %></td>
+        <td><%= link_to 'Edit', edit_opening_path(opening) %></td>
+        <td><%= link_to 'Destroy', opening, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Opening', new_opening_path %>

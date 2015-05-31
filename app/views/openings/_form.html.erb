@@ -1,0 +1,29 @@
+<%= form_for(@opening) do |f| %>
+  <% if @opening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opening.errors.count, "error") %> prohibited this opening from being saved:</h2>
+
+      <ul>
+      <% @opening.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </div>
+  <div class="field">
+    <%= f.label :role_id %><br>
+    <%= f.text_field :role_id %>
+  </div>
+  <div class="field">
+    <%= f.label :availability_id %><br>
+    <%= f.text_field :availability_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
