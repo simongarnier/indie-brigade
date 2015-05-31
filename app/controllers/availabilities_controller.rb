@@ -69,6 +69,6 @@ class AvailabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:per_week, :number_of_month)
+      params.require(:availability).permit(:availability_per_week_id, :availability_duration_id)
     end
 end

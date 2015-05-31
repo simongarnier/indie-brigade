@@ -11,16 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531032921) do
+ActiveRecord::Schema.define(version: 20150531055924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "availabilities", force: :cascade do |t|
-    t.integer  "per_week"
-    t.integer  "number_of_month"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "availability_per_week_id", null: false
+    t.integer  "availability_duration_id", null: false
+  end
+
+  add_index "availabilities", ["availability_duration_id"], name: "index_availabilities_on_availability_duration_id", using: :btree
+  add_index "availabilities", ["availability_per_week_id"], name: "index_availabilities_on_availability_per_week_id", using: :btree
+
+  create_table "availability_durations", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "availability_per_weeks", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -39,15 +54,25 @@ ActiveRecord::Schema.define(version: 20150531032921) do
   add_index "dev_conditions", ["condition_id"], name: "index_dev_conditions_on_condition_id", using: :btree
   add_index "dev_conditions", ["dev_id"], name: "index_dev_conditions_on_dev_id", using: :btree
 
-  create_table "dev_skills", force: :cascade do |t|
+  create_table "dev_major_skills", force: :cascade do |t|
     t.integer  "dev_id"
     t.integer  "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "dev_skills", ["dev_id"], name: "index_dev_skills_on_dev_id", using: :btree
-  add_index "dev_skills", ["skill_id"], name: "index_dev_skills_on_skill_id", using: :btree
+  add_index "dev_major_skills", ["dev_id"], name: "index_dev_major_skills_on_dev_id", using: :btree
+  add_index "dev_major_skills", ["skill_id"], name: "index_dev_major_skills_on_skill_id", using: :btree
+
+  create_table "dev_minor_skills", force: :cascade do |t|
+    t.integer  "dev_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dev_minor_skills", ["dev_id"], name: "index_dev_minor_skills_on_dev_id", using: :btree
+  add_index "dev_minor_skills", ["skill_id"], name: "index_dev_minor_skills_on_skill_id", using: :btree
 
   create_table "dev_softwares", force: :cascade do |t|
     t.integer  "dev_id"
@@ -126,10 +151,14 @@ ActiveRecord::Schema.define(version: 20150531032921) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "availabilities", "availability_durations"
+  add_foreign_key "availabilities", "availability_per_weeks"
   add_foreign_key "dev_conditions", "conditions"
   add_foreign_key "dev_conditions", "devs"
-  add_foreign_key "dev_skills", "devs"
-  add_foreign_key "dev_skills", "skills"
+  add_foreign_key "dev_major_skills", "devs"
+  add_foreign_key "dev_major_skills", "skills"
+  add_foreign_key "dev_minor_skills", "devs"
+  add_foreign_key "dev_minor_skills", "skills"
   add_foreign_key "dev_softwares", "devs"
   add_foreign_key "dev_softwares", "softwares"
   add_foreign_key "devs", "availabilities"

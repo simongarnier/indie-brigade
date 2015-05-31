@@ -1,0 +1,2 @@
+module AvailabilityDurationsHelper
+end

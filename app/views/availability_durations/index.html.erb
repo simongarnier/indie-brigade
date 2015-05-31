@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Availability Durations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @availability_durations.each do |availability_duration| %>
+      <tr>
+        <td><%= availability_duration.name %></td>
+        <td><%= link_to 'Show', availability_duration %></td>
+        <td><%= link_to 'Edit', edit_availability_duration_path(availability_duration) %></td>
+        <td><%= link_to 'Destroy', availability_duration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Availability duration', new_availability_duration_path %>
