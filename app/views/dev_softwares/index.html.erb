@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dev Softwares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dev</th>
+      <th>Software</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dev_softwares.each do |dev_software| %>
+      <tr>
+        <td><%= dev_software.dev %></td>
+        <td><%= dev_software.software %></td>
+        <td><%= link_to 'Show', dev_software %></td>
+        <td><%= link_to 'Edit', edit_dev_software_path(dev_software) %></td>
+        <td><%= link_to 'Destroy', dev_software, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dev software', new_dev_software_path %>

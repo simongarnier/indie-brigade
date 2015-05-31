@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dev:</strong>
+  <%= @dev_condition.dev %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @dev_condition.condition %>
+</p>
+
+<%= link_to 'Edit', edit_dev_condition_path(@dev_condition) %> |
+<%= link_to 'Back', dev_conditions_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@dev_condition) do |f| %>
+  <% if @dev_condition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dev_condition.errors.count, "error") %> prohibited this dev_condition from being saved:</h2>
+
+      <ul>
+      <% @dev_condition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dev_id %><br>
+    <%= f.text_field :dev_id %>
+  </div>
+  <div class="field">
+    <%= f.label :condition_id %><br>
+    <%= f.text_field :condition_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

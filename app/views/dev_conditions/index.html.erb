@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dev Conditions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dev</th>
+      <th>Condition</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dev_conditions.each do |dev_condition| %>
+      <tr>
+        <td><%= dev_condition.dev %></td>
+        <td><%= dev_condition.condition %></td>
+        <td><%= link_to 'Show', dev_condition %></td>
+        <td><%= link_to 'Edit', edit_dev_condition_path(dev_condition) %></td>
+        <td><%= link_to 'Destroy', dev_condition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dev condition', new_dev_condition_path %>

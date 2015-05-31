@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dev:</strong>
+  <%= @dev_software.dev %>
+</p>
+
+<p>
+  <strong>Software:</strong>
+  <%= @dev_software.software %>
+</p>
+
+<%= link_to 'Edit', edit_dev_software_path(@dev_software) %> |
+<%= link_to 'Back', dev_softwares_path %>

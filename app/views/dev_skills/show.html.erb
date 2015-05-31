@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dev:</strong>
+  <%= @dev_skill.dev %>
+</p>
+
+<p>
+  <strong>Skill:</strong>
+  <%= @dev_skill.skill %>
+</p>
+
+<%= link_to 'Edit', edit_dev_skill_path(@dev_skill) %> |
+<%= link_to 'Back', dev_skills_path %>

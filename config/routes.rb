@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :dev_conditions
+  resources :dev_softwares
+  resources :dev_skills
+  resources :devs
   resources :conditions
   resources :opening_softwares
   resources :opening_skills
