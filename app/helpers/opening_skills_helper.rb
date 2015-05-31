@@ -1,0 +1,2 @@
+module OpeningSkillsHelper
+end

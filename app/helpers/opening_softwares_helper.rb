@@ -1,0 +1,2 @@
+module OpeningSoftwaresHelper
+end

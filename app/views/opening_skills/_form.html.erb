@@ -1,0 +1,25 @@
+<%= form_for(@opening_skill) do |f| %>
+  <% if @opening_skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opening_skill.errors.count, "error") %> prohibited this opening_skill from being saved:</h2>
+
+      <ul>
+      <% @opening_skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :opening_id %><br>
+    <%= f.text_field :opening_id %>
+  </div>
+  <div class="field">
+    <%= f.label :skill_id %><br>
+    <%= f.text_field :skill_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

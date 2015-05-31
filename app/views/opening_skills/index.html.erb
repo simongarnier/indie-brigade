@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Opening Skills</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Opening</th>
+      <th>Skill</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @opening_skills.each do |opening_skill| %>
+      <tr>
+        <td><%= opening_skill.opening %></td>
+        <td><%= opening_skill.skill %></td>
+        <td><%= link_to 'Show', opening_skill %></td>
+        <td><%= link_to 'Edit', edit_opening_skill_path(opening_skill) %></td>
+        <td><%= link_to 'Destroy', opening_skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Opening skill', new_opening_skill_path %>

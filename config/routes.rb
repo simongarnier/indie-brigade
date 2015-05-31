@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :opening_softwares
+  resources :opening_skills
   resources :openings
   resources :softwares
   resources :skills

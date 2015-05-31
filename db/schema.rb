@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531024905) do
+ActiveRecord::Schema.define(version: 20150531025443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,26 @@ ActiveRecord::Schema.define(version: 20150531024905) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "opening_skills", force: :cascade do |t|
+    t.integer  "opening_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "opening_skills", ["opening_id"], name: "index_opening_skills_on_opening_id", using: :btree
+  add_index "opening_skills", ["skill_id"], name: "index_opening_skills_on_skill_id", using: :btree
+
+  create_table "opening_softwares", force: :cascade do |t|
+    t.integer  "opening_id"
+    t.integer  "software_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "opening_softwares", ["opening_id"], name: "index_opening_softwares_on_opening_id", using: :btree
+  add_index "opening_softwares", ["software_id"], name: "index_opening_softwares_on_software_id", using: :btree
 
   create_table "openings", force: :cascade do |t|
     t.text     "name"
@@ -56,6 +76,10 @@ ActiveRecord::Schema.define(version: 20150531024905) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "opening_skills", "openings"
+  add_foreign_key "opening_skills", "skills"
+  add_foreign_key "opening_softwares", "openings"
+  add_foreign_key "opening_softwares", "softwares"
   add_foreign_key "openings", "availabilities"
   add_foreign_key "openings", "roles"
   add_foreign_key "skills", "roles"
