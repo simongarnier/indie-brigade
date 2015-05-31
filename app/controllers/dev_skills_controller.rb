@@ -1,4 +1,4 @@
-class DevSkillsController < ApplicationController
+class DevMajorSkillsController < ApplicationController
   before_action :set_dev_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /dev_skills

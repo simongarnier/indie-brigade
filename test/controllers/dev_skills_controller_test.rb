@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DevSkillsControllerTest < ActionController::TestCase
+class DevMajorSkillsControllerTest < ActionController::TestCase
   setup do
     @dev_skill = dev_skills(:one)
   end
