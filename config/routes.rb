@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   resources :availability_durations
   resources :availability_per_weeks
   resources :dev_conditions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531055924) do
+ActiveRecord::Schema.define(version: 20150620001544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,11 +123,20 @@ ActiveRecord::Schema.define(version: 20150531055924) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "dev_id"
+    t.integer  "project_id"
   end
 
   add_index "openings", ["availability_id"], name: "index_openings_on_availability_id", using: :btree
   add_index "openings", ["dev_id"], name: "index_openings_on_dev_id", using: :btree
+  add_index "openings", ["project_id"], name: "index_openings_on_project_id", using: :btree
   add_index "openings", ["role_id"], name: "index_openings_on_role_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.text     "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.text     "code"
@@ -169,6 +178,7 @@ ActiveRecord::Schema.define(version: 20150531055924) do
   add_foreign_key "opening_softwares", "softwares"
   add_foreign_key "openings", "availabilities"
   add_foreign_key "openings", "devs"
+  add_foreign_key "openings", "projects"
   add_foreign_key "openings", "roles"
   add_foreign_key "skills", "roles"
 end
