@@ -1,5 +1,6 @@
 class AvailabilityDurationsController < ApplicationController
   before_action :set_availability_duration, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_user_is_admin
 
   # GET /availability_durations
   # GET /availability_durations.json

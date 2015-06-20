@@ -1,5 +1,6 @@
 class SoftwaresController < ApplicationController
   before_action :set_software, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_user_is_admin, except: [:index, :show]
 
   # GET /softwares
   # GET /softwares.json

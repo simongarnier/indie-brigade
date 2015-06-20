@@ -1,5 +1,6 @@
 class AvailabilityPerWeeksController < ApplicationController
   before_action :set_availability_per_week, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_user_is_admin
 
   # GET /availability_per_weeks
   # GET /availability_per_weeks.json

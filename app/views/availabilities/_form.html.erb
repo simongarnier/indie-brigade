@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :availability_per_week_id %><br>
-    <%= f.text_field :availability_per_week_id %>
+    <%= f.label :availability_per_week %><br>
+    <%= select("availability", "availability_per_week_id", AvailabilityPerWeek.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="field">
-    <%= f.label :availability_duration_id %><br>
-    <%= f.text_field :availability_duration_id %>
+    <%= f.label :availability_duration %><br>
+    <%= select("availability", "availability_duration_id", AvailabilityDuration.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="actions">
     <%= f.submit %>

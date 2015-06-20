@@ -16,8 +16,8 @@
     <%= f.text_field :dev_id %>
   </div>
   <div class="field">
-    <%= f.label :condition_id %><br>
-    <%= f.text_field :condition_id %>
+    <%= f.label :condition %><br>
+    <%= select("dev", "condition_id", Condition.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="actions">
     <%= f.submit %>

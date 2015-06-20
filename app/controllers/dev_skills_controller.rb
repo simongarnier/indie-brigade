@@ -4,7 +4,8 @@ class DevMajorSkillsController < ApplicationController
   # GET /dev_skills
   # GET /dev_skills.json
   def index
-    @dev_skills = DevSkill.all
+    @dev_major_skills = DevMajorSkill.all
+    @dev_minor_skills = DevMinorSkill.all
   end
 
   # GET /dev_skills/1
@@ -14,7 +15,7 @@ class DevMajorSkillsController < ApplicationController
 
   # GET /dev_skills/new
   def new
-    @dev_skill = DevSkill.new
+    @dev_skill = DevMajorSkill.new
   end
 
   # GET /dev_skills/1/edit
@@ -24,7 +25,7 @@ class DevMajorSkillsController < ApplicationController
   # POST /dev_skills
   # POST /dev_skills.json
   def create
-    @dev_skill = DevSkill.new(dev_skill_params)
+    @dev_skill = DevMajorSkill.new(dev_skill_params)
 
     respond_to do |format|
       if @dev_skill.save
@@ -64,7 +65,7 @@ class DevMajorSkillsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dev_skill
-      @dev_skill = DevSkill.find(params[:id])
+      @dev_skill = DevMajorSkill.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

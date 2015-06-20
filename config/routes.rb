@@ -1,23 +1,27 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  resources :devs do
+    resources :skills, :availabilities, :softwares
+  end
+
+
   resources :projects
   resources :availability_durations
   resources :availability_per_weeks
   resources :dev_conditions
   resources :dev_softwares
   resources :dev_skills
-  resources :devs
   resources :conditions
   resources :opening_softwares
   resources :opening_skills
   resources :openings
   resources :softwares
-  resources :skills
   resources :roles
+  resources :availabilities
   get 'welcome/index'
 
-  resources :availabilities do
 
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

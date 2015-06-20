@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>availability_duration_id :</strong>
-  <%= @availability.availability_duration_id %>
+  <%= @availability.availability_duration.name %>
 </p>
 
 <p>
   <strong>availability_per_week_id :</strong>
-  <%= @availability.availability_per_week_id %>
+  <%= @availability.availability_per_week.name %>
 </p>
 
 <%= link_to 'Edit', edit_availability_path(@availability) %> |

@@ -1,3 +1,30 @@
 // Place all the styles related to the skills controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row-no-gutter{
+  margin-right: 0;
+  margin-left: 0;
+
+  [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.ib-skills-chooser {
+  text-align: center;
+
+  .ib-skills-header {
+    background-color: $gray-light;
+    width: 100%;
+  }
+
+  .ib-skills-good {
+  }
+
+  .ib-skills-great {
+  }
+
+  .ib-skills-free {
+  }
+}

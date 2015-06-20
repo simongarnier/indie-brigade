@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620001544) do
+ActiveRecord::Schema.define(version: 20150620204725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "availabilities", force: :cascade do |t|
     t.datetime "created_at",               null: false
@@ -91,10 +106,12 @@ ActiveRecord::Schema.define(version: 20150620001544) do
     t.integer  "availability_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
 
   add_index "devs", ["availability_id"], name: "index_devs_on_availability_id", using: :btree
   add_index "devs", ["role_id"], name: "index_devs_on_role_id", using: :btree
+  add_index "devs", ["user_id"], name: "index_devs_on_user_id", using: :btree
 
   create_table "opening_skills", force: :cascade do |t|
     t.integer  "opening_id"
@@ -160,6 +177,27 @@ ActiveRecord::Schema.define(version: 20150620001544) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_projects", force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "project_id", null: false
+  end
+
+  add_index "user_projects", ["project_id"], name: "index_user_projects_on_project_id", using: :btree
+  add_index "user_projects", ["user_id"], name: "index_user_projects_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "email",                                          null: false
+    t.string   "encrypted_password", limit: 128,                 null: false
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128,                 null: false
+    t.boolean  "is_admin",                       default: false, null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
   add_foreign_key "availabilities", "availability_durations"
   add_foreign_key "availabilities", "availability_per_weeks"
   add_foreign_key "dev_conditions", "conditions"
@@ -172,6 +210,7 @@ ActiveRecord::Schema.define(version: 20150620001544) do
   add_foreign_key "dev_softwares", "softwares"
   add_foreign_key "devs", "availabilities"
   add_foreign_key "devs", "roles"
+  add_foreign_key "devs", "users"
   add_foreign_key "opening_skills", "openings"
   add_foreign_key "opening_skills", "skills"
   add_foreign_key "opening_softwares", "openings"
@@ -181,4 +220,6 @@ ActiveRecord::Schema.define(version: 20150620001544) do
   add_foreign_key "openings", "projects"
   add_foreign_key "openings", "roles"
   add_foreign_key "skills", "roles"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
 end

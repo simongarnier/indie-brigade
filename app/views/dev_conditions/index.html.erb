@@ -14,7 +14,7 @@
   <tbody>
     <% @dev_conditions.each do |dev_condition| %>
       <tr>
-        <td><%= dev_condition.dev %></td>
+        <td><%= dev_condition.dev.name %></td>
         <td><%= dev_condition.condition %></td>
         <td><%= link_to 'Show', dev_condition %></td>
         <td><%= link_to 'Edit', edit_dev_condition_path(dev_condition) %></td>
