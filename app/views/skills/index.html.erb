@@ -5,14 +5,24 @@
   <% @skills_by_role.each do |role, skills| %>
     <div class="col-xs-12">
       <h3><%=role.code%></h3>
-
-        <% skills.each do |skill| %>
-          <div class="row">
-            <div class="col-xs-4">
-              <%=skill.long_name%>
-            </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Free</h3>
+        </div>
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Good</h3>
+        </div>
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Great</h3>
+        </div>
+      </div>
+      <% skills.each do |skill| %>
+        <div class="row">
+          <div class="col-xs-4">
+            <%=skill.long_name%>
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
     </div>
   <% end %>
