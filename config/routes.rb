@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :devs do
-    resources :skills, :availabilities, :softwares
+    resources :skills, :availabilities, :softwares, :dev_skills
   end
 
 
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :availability_per_weeks
   resources :dev_conditions
   resources :dev_softwares
-  resources :dev_skills
   resources :conditions
   resources :opening_softwares
   resources :opening_skills

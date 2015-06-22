@@ -1,41 +1,55 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Skills</h1>
-<div class="row ib-skills-chooser">
-  <% @skills_by_role.each do |role, skills| %>
-    <div class="col-xs-12">
-      <h3><%=role.code%></h3>
-      <div class="row">
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Free</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Good</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Great</h3>
-        </div>
-      </div>
-      <% skills.each do |skill| %>
-        <div class="row ib-clickable-skill">
-          <% if @major_skills.map(&:id).include? skill.id %>
-            <div class="col-xs-4 ib-skills-offset"></div>
-            <div class="col-xs-4 ib-skills-offset"></div>
-          <% elsif @minor_skills.map(&:id).include? skill.id %>
-            <div class="col-xs-4 ib-skills-offset"></div>
-            <div class="col-xs-0 ib-skills-offset"></div>
-          <% else %>
-            <div class="col-xs-0 ib-skills-offset"></div>
-            <div class="col-xs-0 ib-skills-offset"></div>
-          <% end %>
-          <div class="col-xs-4 ib-skill">
-            <%=skill.long_name%>
+
+<%= form_tag(dev_dev_skills_path) do %>
+
+  <div class="row ib-skills-chooser">
+
+    <% @skills_by_role.each do |role, skills| %>
+
+      <div class="col-xs-12">
+        <h3><%=role.code%></h3>
+        <div class="row">
+          <div class="col-xs-4">
+            <h3 class="ib-skills-header">Free</h3>
+          </div>
+          <div class="col-xs-4">
+            <h3 class="ib-skills-header">Good</h3>
+          </div>
+          <div class="col-xs-4">
+            <h3 class="ib-skills-header">Great</h3>
           </div>
         </div>
-      <% end %>
 
-    </div>
-  <% end %>
-</div>
+        <% skills.each do |skill| %>
+
+          <div class="row ib-clickable-skill">
+            <% if @major_skills.map(&:id).include? skill.id %>
+              <div class="col-xs-4 ib-skills-offset"></div>
+              <div class="col-xs-4 ib-skills-offset"></div>
+            <% elsif @minor_skills.map(&:id).include? skill.id %>
+              <div class="col-xs-4 ib-skills-offset"></div>
+              <div class="col-xs-0 ib-skills-offset"></div>
+            <% else %>
+              <div class="col-xs-0 ib-skills-offset"></div>
+              <div class="col-xs-0 ib-skills-offset"></div>
+            <% end %>
+            <div class="col-xs-4 ib-skill">
+              <%=skill.long_name%>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <%= submit_tag("Save") %>
+
+<% end %>
 
 <br>

@@ -1,4 +1,4 @@
-class DevMajorSkillsController < ApplicationController
+class DevSkillsController < ApplicationController
   before_action :set_dev_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /dev_skills
@@ -25,31 +25,13 @@ class DevMajorSkillsController < ApplicationController
   # POST /dev_skills
   # POST /dev_skills.json
   def create
-    @dev_skill = DevMajorSkill.new(dev_skill_params)
-
-    respond_to do |format|
-      if @dev_skill.save
-        format.html { redirect_to @dev_skill, notice: 'Dev skill was successfully created.' }
-        format.json { render :show, status: :created, location: @dev_skill }
-      else
-        format.html { render :new }
-        format.json { render json: @dev_skill.errors, status: :unprocessable_entity }
-      end
-    end
+    p params
   end
 
   # PATCH/PUT /dev_skills/1
   # PATCH/PUT /dev_skills/1.json
   def update
-    respond_to do |format|
-      if @dev_skill.update(dev_skill_params)
-        format.html { redirect_to @dev_skill, notice: 'Dev skill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dev_skill }
-      else
-        format.html { render :edit }
-        format.json { render json: @dev_skill.errors, status: :unprocessable_entity }
-      end
-    end
+    p params
   end
 
   # DELETE /dev_skills/1
@@ -70,6 +52,6 @@ class DevMajorSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dev_skill_params
-      params.require(:dev_skill).permit(:dev_id, :skill_id)
+      params.require(:dev_skill).permit(:dev_id, :major_skill_ids, :minor_skill_ids)
     end
 end
