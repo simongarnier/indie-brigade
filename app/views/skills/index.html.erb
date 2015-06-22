@@ -18,8 +18,16 @@
       </div>
       <% skills.each do |skill| %>
         <div class="row ib-clickable-skill">
-          <div class="col-xs-0 ib-skills-offset"></div>
-          <div class="col-xs-0 ib-skills-offset"></div>
+          <% if @major_skills.map(&:id).include? skill.id %>
+            <div class="col-xs-4 ib-skills-offset"></div>
+            <div class="col-xs-4 ib-skills-offset"></div>
+          <% elsif @minor_skills.map(&:id).include? skill.id %>
+            <div class="col-xs-4 ib-skills-offset"></div>
+            <div class="col-xs-0 ib-skills-offset"></div>
+          <% else %>
+            <div class="col-xs-0 ib-skills-offset"></div>
+            <div class="col-xs-0 ib-skills-offset"></div>
+          <% end %>
           <div class="col-xs-4 ib-skill">
             <%=skill.long_name%>
           </div>

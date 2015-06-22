@@ -4,9 +4,10 @@ class SkillsController < ApplicationController
   # GET /skills
   # GET /skills.json
   def index
-    @skills = Skill.all
-    p Skill.all.group_by(&:role)
+    dev = Dev.find(params[:dev_id])
     @skills_by_role = Skill.all.group_by(&:role)
+    @minor_skills = dev.minor_skills
+    @major_skills = dev.major_skills
   end
 
   # GET /skills/1
