@@ -1,26 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Skills</h1>
+<div class="row ib-skills-chooser">
+  <% @skills_by_role.each do |role, skills| %>
+    <div class="col-xs-12">
+      <h3><%=role.code%></h3>
 
-<div class="row-no-gutter ib-skills-chooser">
-  <div class="col-xs-4 ib-skills-col ib-skills-free">
-    <h2 class="ib-skills-header">free</h2>
-    <% @skills.each do |skill| %>
-      <div class="ib-skills-el"><%= skill.short_name %></div>
-    <% end %>
-  </div>
-  <div class="col-xs-4 ib-skills-col ib-skills-good">
-    <h2 class="ib-skills-header">good</h2>
-    <% @skills.each do |skill| %>
-      <div class="ib-skills-el"><%= skill.short_name %></div>
-    <% end %>
-  </div>
-  <div class="col-xs-4 ib-skills-col ib-skills-great">
-    <h2 class="ib-skills-header">great</h2>
-    <% @skills.each do |skill| %>
-      <div class="ib-skills-el"><%= skill.short_name %></div>
-    <% end %>
-  </div>
+        <% skills.each do |skill| %>
+          <div class="row">
+            <div class="col-xs-4">
+              <%=skill.long_name%>
+            </div>
+          </div>
+        <% end %>
+
+    </div>
+  <% end %>
 </div>
 
 <br>

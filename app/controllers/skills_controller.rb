@@ -5,6 +5,8 @@ class SkillsController < ApplicationController
   # GET /skills.json
   def index
     @skills = Skill.all
+    p Skill.all.group_by(&:role)
+    @skills_by_role = Skill.all.group_by(&:role)
   end
 
   # GET /skills/1
