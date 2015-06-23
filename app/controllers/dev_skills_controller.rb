@@ -25,13 +25,42 @@ class DevSkillsController < ApplicationController
   # POST /dev_skills
   # POST /dev_skills.json
   def create
-    p params
+    @dev = Dev.find(params[:dev_id])
+    posted_skills = params[:skills]
+
+    posted_skills.each do |skill_id, level|
+      skill_id = skill_id.to_i
+      case level
+      when "free"
+        DevMinorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
+        DevMajorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
+      when "minor"
+        DevMajorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
+        DevMinorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
+      when "major"
+        DevMinorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
+        DevMajorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @dev, notice: 'Skills where saved sucessfully' }
+      format.json { render :show, status: :created, location: @dev }
+    end
   end
 
   # PATCH/PUT /dev_skills/1
   # PATCH/PUT /dev_skills/1.json
   def update
-    p params
+    respond_to do |format|
+      if @dev_skill.update(dev_skill_params)
+        format.html { redirect_to @dev_skill, notice: 'Dev skill was successfully updated.' }
+        format.json { render :show, status: :ok, location: @dev_skill }
+      else
+        format.html { render :edit }
+        format.json { render json: @dev_skill.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /dev_skills/1
@@ -52,6 +81,6 @@ class DevSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dev_skill_params
-      params.require(:dev_skill).permit(:dev_id, :major_skill_ids, :minor_skill_ids)
+      params.require(:dev_id)
     end
 end

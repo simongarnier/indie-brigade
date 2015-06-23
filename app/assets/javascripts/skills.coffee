@@ -5,15 +5,19 @@ $ ->
   $('div.ib-clickable-skill').click (event) ->
     x = event.pageX - $(this).offset().left;
     offsets = $(this).children(".ib-skills-offset")
+    input = $(this).children("input")
 
-    if x < $(this).width()/3          #free
+    if x < $(this).width()/3          # free
+      input.val("free")
       offsets.removeClass("col-xs-4")
       offsets.addClass("col-xs-0")
-    else if x < ($(this).width()/3)*2 # good
+    else if x < ($(this).width()/3)*2 # minor
+      input.val("minor")
       offsets.first().removeClass("col-xs-0")
       offsets.first().addClass("col-xs-4")
       offsets.last().removeClass("col-xs-4")
       offsets.last().addClass("col-xs-0")
-    else                              # great
+    else                              # major
+      input.val("major")
       offsets.removeClass("col-xs-0")
       offsets.addClass("col-xs-4")
