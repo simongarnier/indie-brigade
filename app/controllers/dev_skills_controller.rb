@@ -28,17 +28,15 @@ class DevSkillsController < ApplicationController
     @dev = Dev.find(params[:dev_id])
     posted_skills = params[:skills]
 
+    DevMinorSkill.where(dev_id: @dev.id).destroy_all
+    DevMajorSkill.where(dev_id: @dev.id).destroy_all
+
     posted_skills.each do |skill_id, level|
       skill_id = skill_id.to_i
       case level
-      when "free"
-        DevMinorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
-        DevMajorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
       when "minor"
-        DevMajorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
         DevMinorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
       when "major"
-        DevMinorSkill.destroy_all(dev_id: @dev.id, skill_id: skill_id)
         DevMajorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
       end
     end
