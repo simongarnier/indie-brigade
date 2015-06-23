@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
-  before_action  :require_login, only: [:create, :new, :edit, :update, :destroy]
+  #before_action  :require_login, only: [:create, :new, :edit, :update, :destroy]
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

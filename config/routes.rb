@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :devs do
-    resources :skills, :availabilities, :softwares, :dev_skills
+    resources :skills, only: [:index]
+    resources :dev_skills, only: [:create]
+    resources :availabilities, :softwares
   end
 
 
