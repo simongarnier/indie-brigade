@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('div.ib-clickable-skill').click (event) ->
+  $('form div.ib-clickable-skill').click (event) ->
     x = event.pageX - $(this).offset().left;
     offsets = $(this).children(".ib-skills-offset")
     input = $(this).children("input")

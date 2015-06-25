@@ -2,57 +2,50 @@
 
 <h1>Listing Skills</h1>
 
-<%= form_tag(dev_dev_skills_path) do %>
+<div class="container-fluid ib-skills-chooser">
 
-  <div class="container-fluid ib-skills-chooser">
+  <% @skills_by_role.each do |role, skills| %>
 
-    <% @skills_by_role.each do |role, skills| %>
+    <div class="col-xs-12">
+      <h3><%=role.code%></h3>
+      <div class="row">
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Free</h3>
+        </div>
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Good</h3>
+        </div>
+        <div class="col-xs-4">
+          <h3 class="ib-skills-header">Great</h3>
+        </div>
+      </div>
 
-      <div class="col-xs-12">
-        <h3><%=role.code%></h3>
-        <div class="row">
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Free</h3>
-          </div>
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Good</h3>
-          </div>
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Great</h3>
+      <% skills.each do |skill| %>
+
+        <div class="row ib-clickable-skill">
+          <% if @major_skills.map(&:id).include? skill.id %>
+            <div class="col-xs-4 ib-skills-offset"></div>
+            <div class="col-xs-4 ib-skills-offset"></div>
+          <% elsif @minor_skills.map(&:id).include? skill.id %>
+            <div class="col-xs-4 ib-skills-offset"></div>
+            <div class="col-xs-0 ib-skills-offset"></div>
+          <% else %>
+            <div class="col-xs-0 ib-skills-offset"></div>
+            <div class="col-xs-0 ib-skills-offset"></div>
+            <%= hidden_field_tag "skills[#{skill.id}]", "free" %>
+          <% end %>
+          <div class="col-xs-4 ib-skill">
+            <%=skill.long_name%>
           </div>
         </div>
 
-        <% skills.each do |skill| %>
+      <% end %>
 
-          <div class="row ib-clickable-skill">
-            <% if @major_skills.map(&:id).include? skill.id %>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "major" %>
-            <% elsif @minor_skills.map(&:id).include? skill.id %>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "minor" %>
-            <% else %>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "free" %>
-            <% end %>
-            <div class="col-xs-4 ib-skill">
-              <%=skill.long_name%>
-            </div>
-          </div>
+    </div>
 
-        <% end %>
+  <% end %>
 
-      </div>
+</div>
 
-    <% end %>
-
-  </div>
-
-  <%= submit_tag("Save", id: "submit-skills-form") %>
-
-<% end %>
 
 <br>

@@ -5,13 +5,13 @@ class SkillsController < ApplicationController
   # GET /skills.json
   def index
     dev = Dev.find(params[:dev_id])
-    
-    if dev.user_id == current_user.id then
-      @skills_by_role = Skill.all.group_by(&:role)
-      @minor_skills = dev.minor_skills
-      @major_skills = dev.major_skills
+    @skills_by_role = Skill.all.group_by(&:role)
+    @minor_skills = dev.minor_skills
+    @major_skills = dev.major_skills
+    if dev.user_id == current_user.try(:id) then
+      render "index_edit"
     else
-      redirect_to sign_in_path
+      render "index"
     end
   end
 
