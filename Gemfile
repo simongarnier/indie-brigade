@@ -36,6 +36,13 @@ gem 'activeadmin', '~> 1.0.0.pre1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-secrets-yml'
+
 
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
