@@ -1,7 +1,7 @@
 ActiveAdmin.register Skill do
   controller do
     def scoped_collection
-      super.includes :role # prevents N+1 queries to your database
+      super.includes :role
     end
   end
 
@@ -19,7 +19,7 @@ ActiveAdmin.register Skill do
     f.inputs 'skill' do
       f.input :short_name, as: :string
       f.input :long_name, as: :string
-      f.input :role, as: :select, collection: Role.all.collect {|role| [role.code, role.id] }
+      f.input :role, as: :select, collection: Role.all.collect {|role| [role.code, role.id] }, include_blank: false
     end
     f.actions
   end
