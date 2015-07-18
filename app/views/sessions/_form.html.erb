@@ -1,0 +1,22 @@
+<%= form_for :session, url: session_path do |form| %>
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= form.text_field :email, type: 'email', class: "mdl-textfield__input"%>
+    <%= form.label :email, class: "mdl-textfield__label"%>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= form.password_field :password, class: "mdl-textfield__input"%>
+    <%= form.label :password, class: "mdl-textfield__label" %>
+  </div>
+
+  <div class="submit-field">
+    <%= form.submit %>
+  </div>
+
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end %>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+<% end %>

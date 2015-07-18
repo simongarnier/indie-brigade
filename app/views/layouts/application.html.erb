@@ -3,27 +3,44 @@
 <head>
     <title>Indiebrigade</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag     '//fonts.googleapis.com/icon?family=Material+Icons' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-  <% if signed_in? %>
-    Signed in as: <%= current_user.email %>
-    <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <%= button_to 'Admin', admin_dashboard_url %>
-  <% else %>
-    <%= link_to 'Sign in', sign_in_path %>
-  <% end %>
-
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Indie Brigade</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <% if signed_in? %>
+            Signed in as: <%= current_user.email %>
+            <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
+            <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
+          <% else %>
+            <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <%= yield %>
+    </main>
   </div>
-</header>
 
-<%= yield %>
 
 </body>
 </html>
