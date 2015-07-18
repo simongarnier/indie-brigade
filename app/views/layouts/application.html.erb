@@ -9,33 +9,66 @@
 </head>
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
+    <div class="mdl-layout__header">
+      <!-- Top row, always visible -->
       <div class="mdl-layout__header-row">
         <!-- Title -->
         <span class="mdl-layout-title">Indie Brigade</span>
-        <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" />
+          </div>
+        </div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <% if signed_in? %>
-            Signed in as: <%= current_user.email %>
+          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
+        </nav>
+      </div>
+
+      <!-- Bottom row, not visible on scroll -->
+      <div class="mdl-layout__header-row  mdl-layout--small-screen-only">
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
+        </nav>
+      </div>
+    </div>
+
+
+    <% if signed_in? then%>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Dev profile</span>
+        <nav class="mdl-navigation">
+          <%= link_to "Skills", [current_user_dev, :skills], class: 'mdl-navigation__link' %>
+          <%= link_to "Softwares", [current_user_dev, :softwares], class: 'mdl-navigation__link' %>
+          <%= link_to "Availabilities", [current_user_dev, :availabilities], class: 'mdl-navigation__link' %>
+        </nav>
+        <span class="mdl-layout-title">Account</span>
+        <nav class="mdl-navigation">
+          <% if signed_in? then%>
+            <% if current_user.is_admin? then%>
+              <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
+            <% end %>
             <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
-            <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
           <% else %>
             <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
           <% end %>
         </nav>
       </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div>
+    <% end %>
     <main class="mdl-layout__content">
         <%= yield %>
     </main>

@@ -2,50 +2,29 @@
 
 <h1>Listing Skills</h1>
 
-<div class="container-fluid ib-skills-chooser">
 
-  <% @skills_by_role.each do |role, skills| %>
 
-    <div class="col-xs-12">
-      <h3><%=role.code%></h3>
-      <div class="row">
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Free</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Good</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3 class="ib-skills-header">Great</h3>
-        </div>
-      </div>
+<% @skills_by_role.each do |role, skills| %>
 
-      <% skills.each do |skill| %>
-
-        <div class="row ib-clickable-skill">
-          <% if @major_skills.map(&:id).include? skill.id %>
-            <div class="col-xs-4 ib-skills-offset"></div>
-            <div class="col-xs-4 ib-skills-offset"></div>
-          <% elsif @minor_skills.map(&:id).include? skill.id %>
-            <div class="col-xs-4 ib-skills-offset"></div>
-            <div class="col-xs-0 ib-skills-offset"></div>
-          <% else %>
-            <div class="col-xs-0 ib-skills-offset"></div>
-            <div class="col-xs-0 ib-skills-offset"></div>
-            <%= hidden_field_tag "skills[#{skill.id}]", "free" %>
-          <% end %>
-          <div class="col-xs-4 ib-skill">
-            <%=skill.long_name%>
-          </div>
-        </div>
-
-      <% end %>
-
-    </div>
-
-  <% end %>
-
+<div class="mdl-card mdl-shadow--2dp demo-card-wide">
+<div class="mdl-card__title">
+  <h2 class="mdl-card__title-text"><%= role.code%></h2>
 </div>
+<div class="mdl-card__supporting-text">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Mauris sagittis pellentesque lacus eleifend lacinia...
+</div>
+<div class="mdl-card__actions mdl-card--border">
+  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+    Get Started
+  </a>
+</div>
+</div>
+
+
+<% end %>
+
+
 
 
 <br>
