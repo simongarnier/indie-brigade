@@ -39,7 +39,7 @@
       <% if signed_in? then%>
         <span class="mdl-layout-title">Dev profile</span>
         <nav class="mdl-navigation">
-          <%= link_to "Skills", [current_user_dev, :skills], class: 'mdl-navigation__link' %>
+          
           <%= link_to "Softwares", [current_user_dev, :softwares], class: 'mdl-navigation__link' %>
           <%= link_to "Availabilities", [current_user_dev, :availabilities], class: 'mdl-navigation__link' %>
         </nav>
