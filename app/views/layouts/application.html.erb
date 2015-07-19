@@ -14,7 +14,7 @@
       <!-- Top row, always visible -->
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Indie Brigade</span>
+        <span class="mdl-layout-title ib-logo-background"></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation ib-nav-will-get-hidden">
           <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
@@ -24,7 +24,7 @@
           <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
           <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
         </nav>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-left">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
             <i class="material-icons">search</i>
           </label>
@@ -32,35 +32,31 @@
             <input class="mdl-textfield__input ib-search" type="text" name="sample" id="waterfall-exp" />
           </div>
         </div>
-
-
       </div>
-
-
     </div>
 
-
-    <% if signed_in? then%>
-      <div class="mdl-layout__drawer">
+    <div class="mdl-layout__drawer">
+      <% if signed_in? then%>
         <span class="mdl-layout-title">Dev profile</span>
         <nav class="mdl-navigation">
           <%= link_to "Skills", [current_user_dev, :skills], class: 'mdl-navigation__link' %>
           <%= link_to "Softwares", [current_user_dev, :softwares], class: 'mdl-navigation__link' %>
           <%= link_to "Availabilities", [current_user_dev, :availabilities], class: 'mdl-navigation__link' %>
         </nav>
-        <span class="mdl-layout-title">Account</span>
-        <nav class="mdl-navigation">
-          <% if signed_in? then%>
-            <% if current_user.is_admin? then%>
-              <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
-            <% end %>
-            <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
-          <% else %>
-            <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
+      <% end %>
+      <span class="mdl-layout-title">Account</span>
+      <nav class="mdl-navigation">
+        <% if signed_in? then%>
+          <% if current_user.is_admin? then%>
+            <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
           <% end %>
-        </nav>
-      </div>
-    <% end %>
+          <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
+        <% else %>
+          <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
+        <% end %>
+      </nav>
+    </div>
+
     <main class="mdl-layout__content">
         <%= yield %>
     </main>
