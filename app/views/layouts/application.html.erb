@@ -6,6 +6,7 @@
     <%= stylesheet_link_tag     '//fonts.googleapis.com/icon?family=Material+Icons' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -15,36 +16,27 @@
         <!-- Title -->
         <span class="mdl-layout-title">Indie Brigade</span>
         <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation ib-nav-will-get-hidden">
+          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
+        </nav>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" />
+            <input class="mdl-textfield__input ib-search" type="text" name="sample" id="waterfall-exp" />
           </div>
         </div>
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
-        </nav>
+
+
       </div>
 
-      <!-- Bottom row, not visible on scroll -->
-      <div class="mdl-layout__header-row  mdl-layout--small-screen-only">
-        <!-- Navigation -->
-        <nav class="mdl-navigation">
-          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
-        </nav>
-      </div>
+
     </div>
 
 
