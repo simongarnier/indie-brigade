@@ -39,6 +39,7 @@ gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-secrets-yml'
+gem 'capistrano-maintenance', '~> 1.0'
 
 
 group :development, :test do

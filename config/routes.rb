@@ -6,21 +6,7 @@ Rails.application.routes.draw do
     resources :dev_skills, :dev_conditions, :dev_availabilities, only: [:create]
   end
 
-
-  resources :projects
-  resources :availability_durations
-  resources :availability_per_weeks
-  resources :dev_conditions
-  resources :dev_softwares
-  resources :conditions
-  resources :opening_softwares
-  resources :opening_skills
-  resources :openings
-  resources :softwares
-  resources :roles
-  resources :availabilities
-  get 'welcome/index'
-
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

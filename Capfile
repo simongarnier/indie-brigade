@@ -9,6 +9,7 @@ require 'capistrano/rails'
 require 'capistrano/rbenv'
 require 'capistrano/passenger'
 require 'capistrano/secrets_yml'
+require 'capistrano/maintenance'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.2.2'
