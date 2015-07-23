@@ -1,58 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Skills</h1>
-
-<%= form_tag(dev_dev_skills_path) do %>
-
-  <div class="container-fluid ib-skills-chooser">
-
-    <% @skills_by_role.each do |role, skills| %>
-
-      <div class="col-xs-12">
-        <h3><%=role.code%></h3>
-        <div class="row">
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Free</h3>
-          </div>
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Good</h3>
-          </div>
-          <div class="col-xs-4">
-            <h3 class="ib-skills-header">Great</h3>
-          </div>
-        </div>
-
-        <% skills.each do |skill| %>
-
-          <div class="row ib-clickable-skill">
-            <% if @major_skills.map(&:id).include? skill.id %>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "major" %>
-            <% elsif @minor_skills.map(&:id).include? skill.id %>
-              <div class="col-xs-4 ib-skills-offset"></div>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "minor" %>
-            <% else %>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <div class="col-xs-0 ib-skills-offset"></div>
-              <%= hidden_field_tag "skills[#{skill.id}]", "free" %>
-            <% end %>
-            <div class="col-xs-4 ib-skill">
-              <%=skill.long_name%>
-            </div>
-          </div>
-
-        <% end %>
-
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col mdl-color--grey ">
+    <div class="mdl-card mdl-shadow--2dp ib-skill-card">
+      <div class="mdl-card__title mdl-card--expand">
+        <h4>
+          Main Skill
+        </h4>
       </div>
-
-    <% end %>
-
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Add to Calendar
+        </a>
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">event</i>
+      </div>
+    </div>
   </div>
-
-  <%= submit_tag("Save", id: "submit-skills-form") %>
-
-<% end %>
-
-<br>
+</div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col mdl-color--grey ">Great</div>
+  <div class="mdl-cell mdl-cell--6-col mdl-color--grey ">Good</div>
+</div>
