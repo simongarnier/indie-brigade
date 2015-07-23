@@ -1,5 +1,5 @@
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--12-col mdl-color--grey ">
+  <div class="mdl-cell mdl-cell--12-col">
     <div class="mdl-card mdl-shadow--2dp ib-skill-card">
       <div class="mdl-card__title mdl-card--expand">
         <h4>
@@ -11,12 +11,71 @@
           Add to Calendar
         </a>
         <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">event</i>
+        <!-- Icon button -->
+        <button class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">mood</i>
+        </button>
       </div>
     </div>
   </div>
 </div>
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--6-col mdl-color--grey ">Great</div>
-  <div class="mdl-cell mdl-cell--6-col mdl-color--grey ">Good</div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <% @major_skills.each do |major|%>
+      <div class="mdl-card mdl-shadow--2dp ib-skill-card">
+        <div class="mdl-card__title mdl-card--expand">
+          <h4>
+            <%= major.long_name %>
+          </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Add to Calendar
+          </a>
+          <div class="mdl-layout-spacer"></div>
+          <!-- Icon button -->
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">close</i>
+          </button>
+
+        </div>
+      </div>
+    <% end %>
+    <div class="ib-skill-add-center">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+
+  </div>
+  <div class="ib-skill-cell mdl-cell mdl-cell--6-col">
+
+    <% @minor_skills.each do |minor|%>
+      <div class="mdl-card mdl-shadow--2dp ib-skill-card">
+        <div class="mdl-card__title mdl-card--expand">
+          <h4>
+            <%= minor.long_name %>
+          </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Add to Calendar
+          </a>
+          <div class="mdl-layout-spacer"></div>
+          <!-- Icon button -->
+          <button class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">close</i>
+          </button></i>
+        </div>
+      </div>
+    <% end %>
+    <div class="ib-skill-add-center">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+
+  </div>
 </div>
