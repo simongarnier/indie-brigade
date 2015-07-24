@@ -5,6 +5,7 @@ class SkillsController < ApplicationController
   # GET /skills.json
   def index
     dev = Dev.find(params[:dev_id])
+    @skills_by_role = Skill.all.group_by(&:role)
     @minor_skills = dev.minor_skills
     @major_skills = dev.major_skills
     if dev.user_id == current_user.try(:id) then

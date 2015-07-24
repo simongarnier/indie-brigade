@@ -1,29 +1,54 @@
+<h1>skills</h1>
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--12-col">
-    <div class="mdl-card mdl-shadow--2dp ib-skill-card">
-      <div class="mdl-card__title mdl-card--expand">
-        <h4>
-          Main Skill
-        </h4>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Add to Calendar
-        </a>
-        <div class="mdl-layout-spacer"></div>
-        <!-- Icon button -->
-        <button class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">mood</i>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="ib-skill-adder mdl-card mdl-shadow--2dp ib-skill-card">
+      <div class="ib-skill-adder__add mdl-card__supporting-text mdl-card--expand">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+          <i class="material-icons">add</i>
         </button>
       </div>
+
+      <div class="ib-skill-adder__role_select mdl-card__supporting-text mdl-card--expand" style="display:none">
+        <% @skills_by_role.keys.each do |role|%>
+          <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= role.id %>">
+            <%= role.code %>?
+          </button>
+        <% end %>
+      </div>
+
+      <% @skills_by_role.each do |role, skills|%>
+        <div class="ib-skill-adder__skill_select role_<%= role.id%> mdl-card__supporting-text mdl-card--expand" style="display:none">
+          <% skills.each do |skill|%>
+            <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>">
+              <%= skill.short_name %>?
+            </button>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="ib-skill-adder__type_select mdl-card__supporting-text mdl-card--expand" style="display:none">
+        <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="minor">
+          Good?
+        </button>
+        <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="major">
+          Great?
+        </button>
+      </div>
+
+      <div class="ib-skill-adder__cancel mdl-card__actions mdl-card--border" style="display:none">
+        <div class="mdl-layout-spacer"></div>
+        <!-- Icon button -->
+        <button class="ib-button mdl-button mdl-js-button mdl-button--icon" >
+          <i class="material-icons">undo</i>
+        </button>
+      </div>
+
+
+
     </div>
   </div>
-</div>
-<div class="mdl-grid">
-
-  <div class="mdl-cell mdl-cell--6-col">
-
-    <% @major_skills.each do |major|%>
+  <% @major_skills.each do |major|%>
+    <div class="mdl-cell mdl-cell--6-col">
       <div class="mdl-card mdl-shadow--2dp ib-skill-card">
         <div class="mdl-card__title mdl-card--expand">
           <h4>
@@ -31,9 +56,11 @@
           </h4>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Add to Calendar
-          </a>
+
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="is-main-<%=major.id%>">
+            <input type="radio" id="is-main-<%=major.id%>" class="mdl-radio__button" name="main" value="<%=major.id%>" checked />
+            <span class="mdl-radio__label">Your main skill?</span>
+          </label>
           <div class="mdl-layout-spacer"></div>
           <!-- Icon button -->
           <button class="mdl-button mdl-js-button mdl-button--icon">
@@ -42,17 +69,10 @@
 
         </div>
       </div>
-    <% end %>
-    <div class="ib-skill-add-center">
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-      </button>
     </div>
-
-  </div>
-  <div class="ib-skill-cell mdl-cell mdl-cell--6-col">
-
-    <% @minor_skills.each do |minor|%>
+  <% end %>
+  <%@major_skills.each do |minor|%>
+    <div class="mdl-cell mdl-cell--3-col">
       <div class="mdl-card mdl-shadow--2dp ib-skill-card">
         <div class="mdl-card__title mdl-card--expand">
           <h4>
@@ -60,22 +80,16 @@
           </h4>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Add to Calendar
-          </a>
+
           <div class="mdl-layout-spacer"></div>
-          <!-- Icon button -->
+        <!-- Icon button -->
           <button class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">close</i>
-          </button></i>
+          </button>
+
         </div>
       </div>
-    <% end %>
-    <div class="ib-skill-add-center">
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-      </button>
     </div>
+  <% end %>
 
-  </div>
 </div>
