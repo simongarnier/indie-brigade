@@ -42,54 +42,13 @@
           <i class="material-icons">undo</i>
         </button>
       </div>
-
-
-
     </div>
   </div>
   <% @major_skills.each do |major|%>
-    <div class="mdl-cell mdl-cell--6-col">
-      <div class="mdl-card mdl-shadow--2dp ib-skill-card">
-        <div class="mdl-card__title mdl-card--expand">
-          <h4>
-            <%= major.long_name %>
-          </h4>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-
-          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="is-main-<%=major.id%>">
-            <input type="radio" id="is-main-<%=major.id%>" class="mdl-radio__button" name="main" value="<%=major.id%>" checked />
-            <span class="mdl-radio__label">Your main skill?</span>
-          </label>
-          <div class="mdl-layout-spacer"></div>
-          <!-- Icon button -->
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">close</i>
-          </button>
-
-        </div>
-      </div>
-    </div>
+    <%= render 'major', dev: @dev, skill: major %>
   <% end %>
-  <%@major_skills.each do |minor|%>
-    <div class="mdl-cell mdl-cell--3-col">
-      <div class="mdl-card mdl-shadow--2dp ib-skill-card">
-        <div class="mdl-card__title mdl-card--expand">
-          <h4>
-            <%= minor.long_name %>
-          </h4>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-
-          <div class="mdl-layout-spacer"></div>
-        <!-- Icon button -->
-          <button class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">close</i>
-          </button>
-
-        </div>
-      </div>
-    </div>
+  <% @minor_skills.each do |minor|%>
+    <%= render 'minor', dev: @dev, skill: minor %>
   <% end %>
 
 </div>

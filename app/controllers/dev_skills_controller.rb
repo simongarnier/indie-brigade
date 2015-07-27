@@ -1,32 +1,36 @@
+include ApplicationHelper
+
 class DevSkillsController < ApplicationController
+  before_action :ensure_current_user_dev
+  respond_to :js
 
-  # POST /dev_skills
-  # POST /dev_skills.json
   def create
-    @dev = Dev.find(params[:dev_id])
-    posted_skills = params[:skills]
+    @dev = current_user_dev
+    partial = ""
 
-    DevMinorSkill.where(dev_id: @dev.id).destroy_all
-    DevMajorSkill.where(dev_id: @dev.id).destroy_all
-
-    posted_skills.each do |skill_id, level|
-      skill_id = skill_id.to_i
-      case level
-      when "minor"
-        DevMinorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
-      when "major"
-        DevMajorSkill.new(dev_id: @dev.id, skill_id: skill_id).save!
-      end
+    if  params[:type] == "major" then
+      @dev_skill = DevMajorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      partial = '/skills/major'
+    elsif  params[:type] == "minor" then
+      @dev_skill = DevMinorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      partial = '/skills/minor'
     end
 
     respond_to do |format|
-      format.html { redirect_to @dev, notice: 'Skills where saved sucessfully' }
-      format.json { render :show, status: :created, location: @dev }
+      if @dev_skill.save
+        format.json{ render json: { :partial => render_to_string(partial, :layout => false, :locals =>  {skill: @dev_skill}) }}
+      else
+        format.json { render status: :error}
+      end
     end
   end
 
   private
-    def dev_skill_params
-      params.require(:dev_id)
+    def ensure_current_user_dev
+      if current_user_dev.nil? then
+        respond_to do |format|
+          format.json { render status: :error}
+        end
+      end
     end
 end

@@ -1,0 +1,18 @@
+<div class="ib-removable-cell mdl-cell mdl-cell--3-col">
+  <div class="mdl-card mdl-shadow--2dp ib-skill-card">
+    <div class="mdl-card__title mdl-card--expand">
+      <h4>
+        <%= skill.long_name %>
+      </h4>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+
+      <div class="mdl-layout-spacer"></div>
+    <!-- Icon button -->
+      <%= link_to dev_skill_path(dev.id, skill.id), method: :delete, remote: true, class: "ib-skill-remove mdl-button mdl-js-button mdl-button--icon" do%>
+        <i class="material-icons">close</i>
+      <%end%>
+
+    </div>
+  </div>
+</div>

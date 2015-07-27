@@ -1,80 +1,56 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
-  # GET /skills
-  # GET /skills.json
   def index
-    dev = Dev.find(params[:dev_id])
+    @dev = Dev.find(params[:dev_id])
     @skills_by_role = Skill.all.group_by(&:role)
-    @minor_skills = dev.minor_skills
-    @major_skills = dev.major_skills
-    if dev.user_id == current_user.try(:id) then
+    @minor_skills = @dev.minor_skills
+    @major_skills = @dev.major_skills
+    if @dev.user_id == current_user.try(:id) then
       render "index_edit"
     else
       render "index"
     end
   end
 
-  # GET /skills/1
-  # GET /skills/1.json
-  def show
-  end
-
-  # GET /skills/new
-  def new
-    @skill = Skill.new
-  end
-
-  # GET /skills/1/edit
-  def edit
-  end
-
-  # POST /skills
-  # POST /skills.json
-  def create
-    @skill = Skill.new(skill_params)
-
-    respond_to do |format|
-      if @skill.save
-        format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
-        format.json { render :show, status: :created, location: @skill }
-      else
-        format.html { render :new }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /skills/1
-  # PATCH/PUT /skills/1.json
-  def update
-    respond_to do |format|
-      if @skill.update(skill_params)
-        format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @skill }
-      else
-        format.html { render :edit }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /skills/1
-  # DELETE /skills/1.json
   def destroy
-    @skill.destroy
+    @dev = Dev.find(params[:dev_id])
+    @skill = Skill.find(params[:id])
+    @dev_major_skill = DevMajorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
+    @dev_minor_skill = DevMinorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
+
     respond_to do |format|
-      format.html { redirect_to skills_url, notice: 'Skill was successfully destroyed.' }
-      format.json { head :no_content }
+      if @dev_major_skill.try(:destroy) || @dev_minor_skill.try(:destroy) then
+        format.json { render json: {message: "Success"} }
+
+      else
+        format.json { render json: {eror: "nothing to delete"} }
+      end
     end
   end
+
+  def create
+    @dev = Dev.find(params[:dev_id])
+    partial = ""
+
+    if  params[:type] == "major" then
+      @dev_skill = DevMajorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      partial = '_major.html.erb'
+    elsif  params[:type] == "minor" then
+      @dev_skill = DevMinorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      partial = '_minor.html.erb'
+    end
+
+    respond_to do |format|
+      if @dev_skill.save
+        format.json{ render json: { partial: render_to_string(partial, layout: false, locals: {skill: @dev_skill.skill, dev: @dev}) }}
+      else
+        format.json { render status: :error}
+      end
+    end
+  end
+
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_skill
-      @skill = Skill.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
       params.require(:skill).permit(:short_name, :long_name, :role_id)

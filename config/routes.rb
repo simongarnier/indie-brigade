@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   if !Rails.env.production?
     resources :devs do
-      resources :skills, :availabilities, :softwares, only: [:index]
-      resources :dev_skills, :dev_conditions, :dev_availabilities, only: [:create]
+      resources :skills, :softwares, :availabilities, only: [:index, :destroy, :create]
+
+      #resources :dev_skills, :dev_conditions, :dev_availabilities, only: [:create]
     end
   end
 
