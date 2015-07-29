@@ -1,4 +1,7 @@
+include ApplicationHelper
+
 class SkillsController < ApplicationController
+  before_action :ensure_dev_owned_by_current_user, only: [:destroy, :create]
 
   def index
     @dev = Dev.find(params[:dev_id])
@@ -33,10 +36,10 @@ class SkillsController < ApplicationController
     partial = ""
 
     if  params[:type] == "major" then
-      @dev_skill = DevMajorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      @dev_skill = DevMajorSkill.new(dev_id: @dev.id, skill_id: params[:skill_id])
       partial = '_major.html.erb'
     elsif  params[:type] == "minor" then
-      @dev_skill = DevMinorSkill.find_or_initialize_by(dev_id: @dev.id, skill_id: params[:skill_id])
+      @dev_skill = DevMinorSkill.new(dev_id: @dev.id, skill_id: params[:skill_id])
       partial = '_minor.html.erb'
     end
 
@@ -51,8 +54,9 @@ class SkillsController < ApplicationController
 
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def skill_params
-      params.require(:skill).permit(:short_name, :long_name, :role_id)
+    def ensure_dev_owned_by_current_user
+      if params[:dev_id].to_s != current_user_dev.id.to_s
+        redirect_to sign_in_path
+      end
     end
 end
