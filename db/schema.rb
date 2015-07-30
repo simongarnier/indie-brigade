@@ -72,9 +72,8 @@ ActiveRecord::Schema.define(version: 20150728040434) do
   create_table "dev_major_skills", force: :cascade do |t|
     t.integer  "dev_id"
     t.integer  "skill_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "is_main",    default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "dev_major_skills", ["dev_id"], name: "index_dev_major_skills_on_dev_id", using: :btree
@@ -108,9 +107,11 @@ ActiveRecord::Schema.define(version: 20150728040434) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "user_id"
+    t.integer  "main_skill_id"
   end
 
   add_index "devs", ["availability_id"], name: "index_devs_on_availability_id", using: :btree
+  add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree
   add_index "devs", ["role_id"], name: "index_devs_on_role_id", using: :btree
   add_index "devs", ["user_id"], name: "index_devs_on_user_id", using: :btree
 
@@ -211,6 +212,7 @@ ActiveRecord::Schema.define(version: 20150728040434) do
   add_foreign_key "dev_softwares", "softwares"
   add_foreign_key "devs", "availabilities"
   add_foreign_key "devs", "roles"
+  add_foreign_key "devs", "skills", column: "main_skill_id"
   add_foreign_key "devs", "users"
   add_foreign_key "opening_skills", "openings"
   add_foreign_key "opening_skills", "skills"

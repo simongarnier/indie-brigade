@@ -12,6 +12,9 @@ class Dev < ActiveRecord::Base
   has_many :dev_minor_skills
   has_many :minor_skills, :through => :dev_minor_skills, :source => :skill
 
+  belongs_to :main_skill, class_name: 'Skill', foreign_key: 'main_skill_id'
+
+
   attr_reader :skills
 
   def skills

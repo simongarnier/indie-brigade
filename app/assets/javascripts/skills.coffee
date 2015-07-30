@@ -50,15 +50,15 @@ $ ->
     hideUIExceptChildren $(adder), $(type_select), $(cancel)
 
   $(type_select).children('.ib-button').click (event) ->
-    data = {
-      skill_id: selected_skill
-      type: selected_type
-    }
     selected_type = $(this).attr "value"
     $.ajax
       url: window.location.pathname
       type: "POST"
-      data: data
+      data: {
+        skill_id: selected_skill
+        type: selected_type
+      }
+
       success: (data)->
         $(adder).parent().after(data['partial'])
         subscribeToAjaxEvents()
