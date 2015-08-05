@@ -24,10 +24,16 @@ $ ->
 
   selected_role = null
   selected_skill = null
+  selected_type = null
+
+  selected_role_target = null
+  selected_skill_target = null
+  selected_type_target = null
 
   subscribeToAjaxEvents = () ->
     $(remove).on 'ajax:success', (event, data, status) ->
       $(this).parents('.ib-removable-cell').remove()
+      $(".ib-button.skill_" + $(this).attr("value")).prop('disabled', false)
 
     $(remove).on 'ajax:error', (event, data, status) ->
       console.log("error")
@@ -36,21 +42,24 @@ $ ->
 
   #adding a skill
   $(add).click (event) ->
-    ui_stack.push $(this).target
+    ui_stack.push $(this)
     hideUIExceptChildren $(adder), $(role_select), $(cancel)
 
   $(role_select).children(button).click (event) ->
     selected_role = $(this).attr "value"
+    selected_role_target = $(this)
     ui_stack.push $(role_select)
     hideUIExceptChildren $(adder), $(adder).children('.ib-skill-adder__skill_select.role_' + selected_role), $(cancel)
 
   $(skill_select).children('.ib-button').click (event) ->
     selected_skill = $(this).attr "value"
+    selected_skill_target = $(this)
     ui_stack.push $(this).parent()
     hideUIExceptChildren $(adder), $(type_select), $(cancel)
 
   $(type_select).children('.ib-button').click (event) ->
     selected_type = $(this).attr "value"
+    selected_type_target = $(this)
     $.ajax
       url: window.location.pathname
       type: "POST"
@@ -61,6 +70,9 @@ $ ->
 
       success: (data)->
         $(adder).parent().after(data['partial'])
+        if selected_type == "main"
+          selected_type_target.prop('disabled', true);
+        selected_skill_target.prop('disabled', true);
         subscribeToAjaxEvents()
         componentHandler.upgradeAllRegistered()
       error: ->

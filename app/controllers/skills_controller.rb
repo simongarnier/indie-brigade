@@ -8,6 +8,7 @@ class SkillsController < ApplicationController
     @skills_by_role = Skill.all.group_by(&:role)
     @minor_skills = @dev.minor_skills
     @major_skills = @dev.major_skills
+    @main_skill = @dev.main_skill
     if @dev.user_id == current_user.try(:id) then
       render "index_edit"
     else
@@ -20,11 +21,14 @@ class SkillsController < ApplicationController
     @skill = Skill.find(params[:id])
     @dev_major_skill = DevMajorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
     @dev_minor_skill = DevMinorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
+    @dev = if @dev.main_skill == @skill
+      @dev.main_skill = nil
+    end
+
 
     respond_to do |format|
-      if @dev_major_skill.try(:destroy) || @dev_minor_skill.try(:destroy) then
+      if @dev_major_skill.try(:destroy) || @dev_minor_skill.try(:destroy) || @dev.try(:save) then
         format.json { render json: {message: "Success"} }
-
       else
         format.json { render json: {eror: "nothing to delete"} }
       end
@@ -34,18 +38,28 @@ class SkillsController < ApplicationController
   def create
     @dev = Dev.find(params[:dev_id])
     partial = ""
+    success = false
 
     if  params[:type] == "major" then
       @dev_skill = DevMajorSkill.new(dev_id: @dev.id, skill_id: params[:skill_id])
+      success = @dev_skill.save
+      skill = @dev_skill.skill
       partial = '_major.html.erb'
     elsif  params[:type] == "minor" then
       @dev_skill = DevMinorSkill.new(dev_id: @dev.id, skill_id: params[:skill_id])
+      success = @dev_skill.save
+      skill = @dev_skill.skill
       partial = '_minor.html.erb'
+    elsif params[:type] == "main" then
+      @dev.main_skill_id = params[:skill_id]
+      success = @dev.save
+      skill = @dev.main_skill
+      partial = '_main.html.erb'
     end
 
     respond_to do |format|
-      if @dev_skill.save
-        format.json{ render json: { partial: render_to_string(partial, layout: false, locals: {skill: @dev_skill.skill, dev: @dev}) }}
+      if success
+        format.json{ render json: { partial: render_to_string(partial, layout: false, locals: {skill: skill, dev: @dev}) }}
       else
         format.json { render status: :error}
       end

@@ -9,7 +9,7 @@
 
       <div class="mdl-layout-spacer"></div>
     <!-- Icon button -->
-      <%= link_to dev_skill_path(dev.id, skill.id), method: :delete, remote: true, class: "ib-skill-remove mdl-button mdl-js-button mdl-button--icon" do%>
+      <%= link_to dev_skill_path(dev.id, skill.id), value: skill.id, method: :delete, remote: true, class: "ib-skill-remove mdl-button mdl-js-button mdl-button--icon" do%>
         <i class="material-icons">close</i>
       <%end%>
 

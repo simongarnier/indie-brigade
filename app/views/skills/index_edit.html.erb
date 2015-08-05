@@ -19,7 +19,11 @@
       <% @skills_by_role.each do |role, skills|%>
         <div class="ib-skill-adder__skill_select role_<%= role.id%> mdl-card__supporting-text mdl-card--expand" style="display:none">
           <% skills.each do |skill|%>
-            <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>">
+            <% if (@major_skills.map(&:id) + @minor_skills.map(&:id) + [@main_skill.id]).include? skill.id then%>
+              <button class="ib-button skill_<%= skill.id%> mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>" disabled>
+            <% else %>
+              <button class="ib-button skill_<%= skill.id%> mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>">
+            <% end %>
               <%= skill.short_name %>?
             </button>
           <% end %>
@@ -33,6 +37,13 @@
         <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="major">
           Great?
         </button>
+        <% if @main_skill then%>
+          <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="main" disabled>
+        <% else %>
+          <button class="ib-button mdl-button mdl-js-button mdl-js-ripple-effect" value="main">
+        <% end %>
+          Your main skill?
+        </button>
       </div>
 
       <div class="ib-skill-adder__cancel mdl-card__actions mdl-card--border" style="display:none">
@@ -44,6 +55,7 @@
       </div>
     </div>
   </div>
+  <%= render 'main', dev: @dev, skill: @main_skill if @main_skill%>
   <% @major_skills.each do |major|%>
     <%= render 'major', dev: @dev, skill: major %>
   <% end %>
