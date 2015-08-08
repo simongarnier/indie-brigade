@@ -19,15 +19,17 @@ class SkillsController < ApplicationController
   def destroy
     @dev = Dev.find(params[:dev_id])
     @skill = Skill.find(params[:id])
+    success = false
     @dev_major_skill = DevMajorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
+    success = @dev_major_skill.try(:save) || success
     @dev_minor_skill = DevMinorSkill.find_by(dev_id: @dev.id, skill_id: @skill.id)
-    @dev = if @dev.main_skill == @skill
-      @dev.main_skill = nil
-    end
+    success = @dev_minor_skill.try(:save) || success
+    @dev.main_skill = nil
+    success = @dev.save || success
 
 
     respond_to do |format|
-      if @dev_major_skill.try(:destroy) || @dev_minor_skill.try(:destroy) || @dev.try(:save) then
+      if success then
         format.json { render json: {message: "Success"} }
       else
         format.json { render json: {eror: "nothing to delete"} }

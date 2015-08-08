@@ -19,7 +19,7 @@
       <% @skills_by_role.each do |role, skills|%>
         <div class="ib-skill-adder__skill_select role_<%= role.id%> mdl-card__supporting-text mdl-card--expand" style="display:none">
           <% skills.each do |skill|%>
-            <% if (@major_skills.map(&:id) + @minor_skills.map(&:id) + [@main_skill.id]).include? skill.id then%>
+            <% if (@major_skills.map(&:id) + @minor_skills.map(&:id) + [@main_skill.try(:id)]).include? skill.id then%>
               <button class="ib-button skill_<%= skill.id%> mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>" disabled>
             <% else %>
               <button class="ib-button skill_<%= skill.id%> mdl-button mdl-js-button mdl-js-ripple-effect" value="<%= skill.id %>">
