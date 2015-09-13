@@ -1,0 +1,23 @@
+/* line 5, /home/simon/indie-brigade/app/assets/stylesheets/skills.scss */
+.ib-skill-card.mdl-card,
+.ib-button-add-skill.mdl-button {
+  width: 100%;
+}
+
+/* line 10, /home/simon/indie-brigade/app/assets/stylesheets/skills.scss */
+.ib-skill-card > .mdl-card__title {
+  align-items: flex-start;
+}
+
+/* line 14, /home/simon/indie-brigade/app/assets/stylesheets/skills.scss */
+.ib-skill-card > .mdl-card__actions {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+/* line 20, /home/simon/indie-brigade/app/assets/stylesheets/skills.scss */
+.ib-skill-adder > .ib-skill-adder__select {
+  display: flex;
+  flex-direction: column;
+}
