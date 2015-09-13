@@ -1,4 +1,4 @@
-ActiveAdmin.register Opening do
+ActiveAdmin.register Opening, namespace: :super_admin do
 
 
   # See permitted parameters documentation:

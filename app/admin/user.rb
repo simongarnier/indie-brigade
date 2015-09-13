@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, namespace: :super_admin do
 
 
   # See permitted parameters documentation:

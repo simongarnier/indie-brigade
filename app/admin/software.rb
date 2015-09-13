@@ -1,4 +1,4 @@
-ActiveAdmin.register Software do
+ActiveAdmin.register Software, namespace: :super_admin do
 
   form do |f|
     f.inputs 'software' do
@@ -14,5 +14,5 @@ ActiveAdmin.register Software do
   end
 
   permit_params :name
-  
+
 end

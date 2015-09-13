@@ -1,4 +1,4 @@
-ActiveAdmin.register Skill do
+ActiveAdmin.register Skill, namespace: :super_admin do
   controller do
     def scoped_collection
       super.includes :role
@@ -29,7 +29,7 @@ ActiveAdmin.register Skill do
     column :short_name
     column :long_name
     column :role, sortable: 'roles.code' do |skill|
-      link_to skill.role.code, admin_role_path(skill.role)
+      link_to skill.role.code, super_admin_role_path(skill.role)
     end
     actions
   end

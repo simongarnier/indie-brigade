@@ -1,4 +1,4 @@
-ActiveAdmin.register Project do
+ActiveAdmin.register Project, namespace: :admin do
 
 
   # See permitted parameters documentation:

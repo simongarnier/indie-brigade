@@ -1,4 +1,4 @@
-ActiveAdmin.register Condition do
+ActiveAdmin.register Condition, namespace: :super_admin do
 
 
   # See permitted parameters documentation:

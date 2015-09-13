@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def ensure_user_is_admin
     redirect_to sign_in_path unless current_user.try(:is_admin?)
   end
+
+  def ensure_user_is_super_admin
+    redirect_to sign_in_path unless current_user.try(:is_admin?) && current_user.try(:is_super_admin?) 
+  end
 end
