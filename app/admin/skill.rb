@@ -7,6 +7,7 @@ ActiveAdmin.register Skill, namespace: :super_admin do
 
   show do
     attributes_table do
+      row :id
       row :short_name
       row :long_name
       row :role do |skill|
@@ -26,6 +27,7 @@ ActiveAdmin.register Skill, namespace: :super_admin do
 
   index do
     selectable_column
+    column :id
     column :short_name
     column :long_name
     column :role, sortable: 'roles.code' do |skill|

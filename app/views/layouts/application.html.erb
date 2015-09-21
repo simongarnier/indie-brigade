@@ -50,7 +50,10 @@
       <nav class="mdl-navigation">
         <% if signed_in? then%>
           <% if current_user.is_admin? then%>
-            <%= link_to 'Admin', admin_dashboard_url, class: 'mdl-navigation__link'%>
+            <%= link_to 'Admin', admin_root_url, class: 'mdl-navigation__link'%>
+            <% if current_user.is_super_admin? then%>
+              <%= link_to 'Super Admin', super_admin_root_url, class: 'mdl-navigation__link'%>
+            <% end %>
           <% end %>
           <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
         <% else %>
