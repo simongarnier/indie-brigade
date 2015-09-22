@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
-  if !Rails.env.production?
-    resources :devs do
-      resources :skills, :softwares, :availabilities, only: [:index, :destroy, :create]
+  get '/welcome', to: 'welcome#show', as: 'welcome'
+  get '/welcome/edit', to: 'welcome#edit', as: 'welcome_edit'
+  post '/welcome', to: "welcome#update", :as => 'welcome_update'
 
-      #resources :dev_skills, :dev_conditions, :dev_availabilities, only: [:create]
-    end
-  end
-
-  root 'welcome#index'
+  root 'welcome#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

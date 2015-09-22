@@ -22,11 +22,6 @@
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation ib-nav-will-get-hidden">
           <%= link_to 'Home', root_path, class: 'mdl-navigation__link'%>
-          <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'R&D', '#', class: 'mdl-navigation__link'%>
-          <%= link_to 'School', '#', class: 'mdl-navigation__link'%>
         </nav>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-left">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
@@ -40,17 +35,10 @@
     </div>
 
     <div class="mdl-layout__drawer">
-      <% if signed_in? then%>
-        <span class="mdl-layout-title">Dev profile</span>
-        <nav class="mdl-navigation">
-          <%= link_to "Skills", [current_user_dev, :skills], class: 'mdl-navigation__link' %>
-          <%= link_to "Softwares", [current_user_dev, :softwares], class: 'mdl-navigation__link' %>
-          <%= link_to "Availabilities", [current_user_dev, :availabilities], class: 'mdl-navigation__link' %>
-        </nav>
-      <% end %>
       <span class="mdl-layout-title">Account</span>
       <nav class="mdl-navigation">
         <% if signed_in? then%>
+            <%= link_to 'Set your role', welcome_edit_path, class: 'mdl-navigation__link'%>
           <% if current_user.is_admin? then%>
             <%= link_to 'Admin', admin_root_url, class: 'mdl-navigation__link'%>
             <% if current_user.is_super_admin? then%>
@@ -60,6 +48,7 @@
           <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
         <% else %>
           <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
+          <%= link_to 'Sign up', sign_up_path, class: 'mdl-navigation__link'%>
         <% end %>
       </nav>
     </div>

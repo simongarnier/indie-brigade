@@ -68,11 +68,4 @@ class SkillsController < ApplicationController
     end
   end
 
-
-  private
-    def ensure_dev_owned_by_current_user
-      if params[:dev_id].to_s != current_user_dev.id.to_s
-        redirect_to sign_in_path
-      end
-    end
 end
