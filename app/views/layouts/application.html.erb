@@ -16,10 +16,12 @@
       <!-- Top row, always visible -->
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title ib-logo-background"></span>
+        <%= link_to root_path do %>
+          <span class="mdl-layout-title ib-logo-background"></span>
+        <% end %>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation ib-nav-will-get-hidden">
-          <%= link_to 'Home', '#', class: 'mdl-navigation__link'%>
+          <%= link_to 'Home', root_path, class: 'mdl-navigation__link'%>
           <%= link_to 'Calendar', '#', class: 'mdl-navigation__link'%>
           <%= link_to 'Devs', '#', class: 'mdl-navigation__link'%>
           <%= link_to 'Projects', '#', class: 'mdl-navigation__link'%>
