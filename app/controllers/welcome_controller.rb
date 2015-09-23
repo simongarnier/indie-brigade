@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def show
     redirect_to welcome_edit_path if current_user && !current_user.dev.try(:role)
+    render 'thanks' if current_user.dev.try(:role)
   end
 
   def edit
@@ -20,16 +21,14 @@ class WelcomeController < ApplicationController
   end
 
   def update
-
     dev = current_user.dev
     role = Role.find(params[:role_id])
 
     if role && dev
       dev.role = role
       if dev.save
-        redirect_to welcome_edit_path
+        redirect_to welcome_path
       end
     end
-
   end
 end

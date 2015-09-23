@@ -1,8 +1,4 @@
-<% if @user.dev.role %>
-  <h1>Thank you!</h1>
-<% else %>
-  <h1>Welcome! Can you define yourself?</h1>
-<% end %>
+<h1>Welcome! Can you define yourself?</h1>
 <% @roles.each do |role| %>
   <%= link_to welcome_update_path(role_id: role.id), method: :post do%>
     <button class="mdl-button mdl-js-button mdl-js-ripple-effect <%= 'mdl-button--accent' if @user.dev.role_id == role.id%>">
