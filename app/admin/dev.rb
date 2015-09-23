@@ -1,7 +1,7 @@
 ActiveAdmin.register Dev, namespace: :super_admin do
-  permit_params do
-    permitted = [:name, :description, :role_id, :availability_id, :main_skill_id]
-  end
+  menu parent: "Users"
+
+  permit_params :name, :description, :role_id, :availability_id, :main_skill_id
 
   controller do
     def scoped_collection
