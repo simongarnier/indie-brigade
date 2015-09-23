@@ -4,8 +4,6 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Indiebrigade"
-  config.authentication_method = :ensure_user_is_admin
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -43,12 +41,14 @@ ActiveAdmin.setup do |config|
     admin.authentication_method = :ensure_user_is_admin
     admin.root_to = 'admin_dashboard#index'
     admin.site_title = "Admin"
+    admin.comments = false
   end
 
   config.namespace :super_admin do |super_admin|
     super_admin.authentication_method = :ensure_user_is_super_admin
-    super_admin.root_to = 'super_admin_dashboard#index'
+    super_admin.root_to = 'entities#index'
     super_admin.site_title = "Super Admin"
+    super_admin.comments = false
   end
 
   config.default_namespace = :admin

@@ -1,8 +1,23 @@
 ActiveAdmin.register Skill, namespace: :super_admin do
+  menu parent: "Entities"
+
+  permit_params :short_name, :long_name, :role_id
+
   controller do
     def scoped_collection
       super.includes :role
     end
+  end
+
+  index do
+    selectable_column
+    column :id
+    column :short_name
+    column :long_name
+    column :role, sortable: 'roles.code' do |skill|
+      link_to skill.role.code, super_admin_role_path(skill.role)
+    end
+    actions
   end
 
   show do
@@ -25,16 +40,4 @@ ActiveAdmin.register Skill, namespace: :super_admin do
     f.actions
   end
 
-  index do
-    selectable_column
-    column :id
-    column :short_name
-    column :long_name
-    column :role, sortable: 'roles.code' do |skill|
-      link_to skill.role.code, super_admin_role_path(skill.role)
-    end
-    actions
-  end
-
-  permit_params :short_name, :long_name, :role_id
 end

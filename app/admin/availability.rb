@@ -1,4 +1,7 @@
 ActiveAdmin.register Availability, namespace: :super_admin do
+  menu parent: "Entities"
+  permit_params :availability_per_week_id, :availability_duration_id
+
   index do
     selectable_column
     column :id
@@ -7,5 +10,4 @@ ActiveAdmin.register Availability, namespace: :super_admin do
     end
     actions
   end
-  permit_params :availability_per_week_id, :availability_duration_id
 end

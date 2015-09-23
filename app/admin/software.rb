@@ -1,4 +1,5 @@
 ActiveAdmin.register Software, namespace: :super_admin do
+  menu parent: "Entities"
 
   form do |f|
     f.inputs 'software' do
