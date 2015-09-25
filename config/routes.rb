@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/welcome', to: 'welcome#show', as: 'welcome'
   get '/welcome/edit', to: 'welcome#edit', as: 'welcome_edit'
-  post '/welcome', to: "welcome#update", :as => 'welcome_update'
+  put '/welcome', to: "welcome#update", :as => 'welcome_update'
 
   root 'welcome#show'
 
