@@ -25,6 +25,11 @@ gem 'clearance', '~> 1.10.1'
 
 gem 'activeadmin', '~> 1.0.0.pre1'
 
+gem 'identity_cache'
+gem 'cityhash'
+gem 'memcached'
+gem 'dalli'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

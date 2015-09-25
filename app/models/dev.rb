@@ -1,4 +1,6 @@
 class Dev < ActiveRecord::Base
+  include IdentityCache
+
   belongs_to :role
   belongs_to :availability
   belongs_to :user
@@ -12,7 +14,6 @@ class Dev < ActiveRecord::Base
 
   has_many :dev_minor_skills, dependent: :delete_all
   has_many :minor_skills, through: :dev_minor_skills, source: :skill
-
   attr_reader :skills
 
   def skills
