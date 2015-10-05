@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
 
   def update
     dev = current_user.dev
-    role = Role.find(params[:role_id])
+    role = Role.fetch(params[:role_id])
 
     if role && dev
       dev.role = role
