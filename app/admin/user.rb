@@ -1,4 +1,6 @@
 ActiveAdmin.register User, namespace: :super_admin do
+  permit_params :email, :encrypted_password, :is_admin, :is_super_admin
+
   menu priority: 2
 
   index do
@@ -8,6 +10,16 @@ ActiveAdmin.register User, namespace: :super_admin do
     column :is_admin
     column :is_super_admin
     actions
+  end
+
+  form do |f|
+    f.inputs 'user' do
+      f.input :email, as: :string
+      f.input :encrypted_password, as: :string
+      f.input :is_admin, as: :boolean
+      f.input :is_super_admin, as: :boolean
+    end
+    f.actions
   end
 
   # See permitted parameters documentation:

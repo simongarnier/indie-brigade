@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
   has_many :projects, through: :user_projects
   has_many :organizations
 
-  has_one :dev
+  has_one :dev, dependent: :delete
 end
