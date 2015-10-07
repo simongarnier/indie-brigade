@@ -1,56 +1,37 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# rails
 gem 'rails', '4.2.1'
-# Use postgresql as the database for Active Record
-gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
+# db
+gem 'pg'
+
+# css
+gem 'sass-rails', '~> 5.0'
+
+# js
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'underscore-rails'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'multi-select-rails'
 
+# user auth
 gem 'clearance', '~> 1.10.1'
 
+# admin
 gem 'activeadmin', '~> 1.0.0.pre1'
 
+# caching
 gem 'identity_cache'
 gem 'cityhash'
 gem 'memcached'
 gem 'dalli'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# deployment
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-secrets-yml'
-
-
-group :development, :test do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-end
