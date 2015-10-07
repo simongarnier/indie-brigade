@@ -7,7 +7,11 @@ gem 'rails', '4.2.1'
 gem 'pg'
 
 # css
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'susy'
+gem "breakpoint", "~>2.4.0"
+gem 'compass-normalize'
 
 # js
 gem 'uglifier', '>= 1.3.0'
