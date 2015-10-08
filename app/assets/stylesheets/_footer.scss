@@ -1,0 +1,74 @@
+footer{
+  @include container(12 center);
+  // @include card(1);
+  @include pad(1 of 12);
+  height: $footer-height;
+  position: relative;
+  color:$gray;
+  background-color: $footer-gray;
+  clear: both;
+  @include rob(0.85em, 100);
+  list-style:none;
+  ul{margin:0; padding: 0;}
+  nav{
+    @include span(6 wide first);
+    @include pal(1.1em, 700);
+    height: 80px;
+    ul{
+      @include vertical-align;
+      li{
+        display:inline-block;
+        padding:0 0.5em;
+        a{
+          text-decoration:none;
+          color:$footer-gray-light;
+        }
+      }
+    }
+  }
+  
+  .social{
+    @include span(12 last);
+    // background-color:$two;
+    padding-top:1em;
+    height:53px;
+    text-align: right;
+    a{
+      color:$footer-gray-light;@include vertical-align;
+      li {
+        border-radius: 50%;
+        border: 2px solid $footer-gray-light;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        text-align: center;
+        i{
+          @include vertical-align;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  .legal{
+    @include span(full);
+    text-align:right;
+    padding:0.8em 0;
+    border-top:1px solid $footer-gray-dark;
+    li{
+      display:inline-block; list-style:none;
+      color:$footer-gray-dark;
+      border-right:1px solid $footer-gray-dark;
+      padding:0 0.5em;
+      &:last-child {
+        border-right:none; padding-right:0;}
+      a{
+        color:$footer-gray-dark;
+        text-decoration:none;
+        &:hover {
+          color:lighten($footer-gray, 25%);
+        }
+      }
+    }
+  }
+}

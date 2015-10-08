@@ -3,7 +3,6 @@ class WelcomeController < ApplicationController
 
   def show
     redirect_to welcome_edit_path if current_user && !current_user.dev.try(:role)
-    render 'thanks' if current_user.dev.try(:role)
   end
 
   def edit

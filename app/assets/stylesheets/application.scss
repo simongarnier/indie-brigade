@@ -1,17 +1,71 @@
-/*material color scheme*/
-$primary-color: rgb(96, 125, 139);
-$secondary-color: rgb(255, 64, 129);
+@import url(https://fonts.googleapis.com/css?family=Palanquin:400,500,600,700|Roboto:400,400italic,500,500italic,700,700italic&subset=latin,latin-ext);
+@import "lib/lib";
+@import "lib/mixins";
+@import "multi-select";
 
-@import "material";
+// Configuring Susy Defaults
+$susy: (
+  columns:12,
+  global-box-sizing: border-box,
+  gutter-position: split
+  );
 
-.ib-logo-background{
-  background-image: image-url("logo_signature_horizontal_light.png");
-  width:148px;
-  height:50px;
-}
 
-.ib-max-width{
-  max-width: 960px;
-  margin: 0 auto;
-  float: none;
-}
+// Variables
+// Colors/
+
+// Test Color
+$one: #fbeecb;
+$two: #71dad2;
+$three: #265432;
+$nav: #f7fdfe;
+
+// Gray
+$gray :#D6DDE3;
+$footer-gray:#45494d;
+$footer-gray-light:#d7dee4;
+$footer-gray-dark:#73767a;
+
+
+// Indie logo Colors
+$ind-red:   #BC4444;
+$ind-blue:  #466EAF;
+$ind-green: #237C23;
+$yellow:    #f7c600;
+
+
+// Materialize Color
+$primary-color: $ind-red;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: #26a69a;
+$success-color: #4CAF50;
+$error-color: #F44336;
+$link-color: #039be5;
+
+$button-bg-color-disabled: #DFDFDF !default;
+$button-color: $secondary-color !default;
+$button-color-disabled: #9F9F9F !default;
+$button-color-flat: #343434 !default;
+$button-color-raised: #fff !default;
+
+// size
+$lg:  1200px;
+$med:  952px;
+$sm:   750px;
+$footer-height: 120px;
+$big-logo-width: 569px;
+$big-logo-height: 191px;
+$logo-width: 175px;
+$logo-height: 58px;
+
+@import "base";
+@import "top";
+@import "component";
+@import "input";
+@import "profile";
+@import "button";
+@import "welcome";
+@import "footer";
+@import "sign";

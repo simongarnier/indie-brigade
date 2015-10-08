@@ -1,0 +1,153 @@
+// Layout Helpers
+
+h2 {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: normal;
+	padding-top: 1.8rem;
+	padding-bottom: 1.8rem;
+}
+
+.container,{background-color:#fbeecb;}
+.staffpick, .header, .search-results-card{background-color:#71dad2;}
+.events, .profile-infos, .search-box{background-color:#ee9e9c;}
+.banner, .profile-overview{background-color:#f6d784;}
+
+
+// Header
+
+.header{
+	height:75px;
+	.header-container{
+		max-width:100%;
+		width:100%;
+		margin:auto;
+		.logo{
+			float:left;
+			width:150px;
+			height:75px;
+		}
+		.menu{
+			float:right;
+			ul{
+				li{
+					display:inline;
+				}
+			}
+		}
+	}
+}
+
+
+// Banner
+
+.banner {
+	position: relative;
+	overflow: auto;
+	ul{
+		margin:0;
+		padding:0;
+		li{
+			list-style: none;
+			float: left;
+			background-image:url("http://placehold.it/300x750");
+			background-position:center center;
+			background-repeat:no-repeat;
+			background-size:cover;
+			h2{
+				line-height:300px !important;
+			}
+		}
+	}
+}
+
+.cover{
+	width:100%;
+	text-align:center;
+	.skill-color{
+		background-color:#e2a345;
+		height:10px;
+		width:100%;
+	}
+	.cover-picture{
+		width:100%;
+		height:300px;
+		img{
+			margin:auto;
+			width:100%;
+			height:100%;
+		}
+	}
+}
+
+
+// Container
+
+.container{
+	@include container();
+}
+
+// -Index
+
+.staffpick{
+	@include span(8 of 12);
+}
+
+.events{
+	@include span(4 at 10 of 12 last);
+}
+
+// -Profile
+
+.profile-infos{
+	@include span(3 of 12);
+}
+
+.profile-overview{
+	@include span(9 at 9 of 12 last);
+}
+
+// -Search
+.search-box{
+	margin-top:25px;
+	width:100%;
+	.search-inputs{
+		height:40px;
+		width:100%;
+		div{
+			margin:0;
+			padding:0;
+			width:50%;
+			float:left;
+		}
+	}
+	.search-terms{
+		height:200px;
+		width:100%;
+	}
+}
+
+.search-results{
+	margin-top:25px;
+	width:100%;
+	.search-results-card{
+		margin-bottom:15px;
+		height:75px;
+		width:100%;
+		div{
+			float:left;
+		}
+		.search-results-color{
+			width:20px;
+			height:100%;
+			background-color:#00ff00;
+		}
+		.search-results-picture{
+			width:75px;
+			height:100%;
+		}
+		.search-results-infos{
+			height:100%;
+		}
+	}
+}

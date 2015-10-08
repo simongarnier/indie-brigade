@@ -1,6 +1,9 @@
-<div id="clearance" class="sign-in">
-  <h2><%= t(".title") %></h2>
-
-  <%= render partial: '/sessions/form' %>
-
-</div>
+<%= render 'partials/logo_heading' %>
+<section id="sign">
+  <%= form_for :session, url: session_path do |form| %>
+    <%= render partial: '/sessions/form', object: form %>
+    <button class="signup" type="submit" >Sign In</button>
+    <div class="other"><%= link_to 'Sign up', sign_up_path %></div>
+    <div class="other"><%= link_to 'Reset password', new_password_path %></div>
+  <% end %>
+</section>

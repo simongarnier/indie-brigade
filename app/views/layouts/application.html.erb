@@ -2,61 +2,18 @@
 <html>
 <head>
     <title>Indiebrigade</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag     '//fonts.googleapis.com/icon?family=Material+Icons' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag params[:controller] %>
-    <%= stylesheet_link_tag params[:controller] %>
+    <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'%>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <div class="mdl-layout__header">
-      <!-- Top row, always visible -->
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <%= link_to root_path do %>
-          <span class="mdl-layout-title ib-logo-background"></span>
-        <% end %>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation ib-nav-will-get-hidden">
-          <%= link_to 'Home', root_path, class: 'mdl-navigation__link'%>
-        </nav>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-left">
-          <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
-            <i class="material-icons">search</i>
-          </label>
-          <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input ib-search" type="text" name="sample" id="waterfall-exp" />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Account</span>
-      <nav class="mdl-navigation">
-        <% if signed_in? then%>
-            <%= link_to 'Set your role', welcome_edit_path, class: 'mdl-navigation__link'%>
-          <% if current_user.is_admin? then%>
-            <%= link_to 'Admin', admin_root_url, class: 'mdl-navigation__link'%>
-            <% if current_user.is_super_admin? then%>
-              <%= link_to 'Super Admin', super_admin_root_url, class: 'mdl-navigation__link'%>
-            <% end %>
-          <% end %>
-          <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'mdl-navigation__link'%>
-        <% else %>
-          <%= link_to 'Sign in', sign_in_path, class: 'mdl-navigation__link'%>
-        <% end %>
-      </nav>
-    </div>
-
-    <main class="mdl-layout__content">
-        <%= yield %>
-    </main>
-  </div>
-
-
+  <section class="container">
+    <%= yield %>
+    <div class="container-footer"></div>
+  </section>
+  <%= render 'partials/footer' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js' %>
 </body>
 </html>

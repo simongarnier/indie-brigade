@@ -1,0 +1,63 @@
+// 40px x 40px  pour les icones ronds
+// Mettre gris neutre pour base de bouton.
+
+$fontSize: 1em;
+$height: 2em;
+
+.button{
+	background-color: #777;
+	border-width: 0;
+	border-collapse: collapse;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px;
+	box-sizing: border-box;
+	color: #ffffff;
+	display: inline-block;
+	@include rob ($fontSize, 500);
+	height: $height;
+	line-height: $height;
+	margin:0;
+	min-width: 64px;
+	padding:0 8px 0 8px;
+	position: relative;
+	text-align: center;
+	transition-delay: 0s, 0s, 0s;
+	transition-duration: 0.2s, 0.2s, 0.2s;
+	transition-property: box-shadow, background-color, color;
+	transition-timing-function: cubic-bezier(0.4, 0, 1, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+	vertical-align: middle;
+	will-change: box-shadow, transform;
+}
+
+$roundButtonSize:40px;
+
+.roundButton{
+	background-color: #777;
+	border-width: 0;
+	border-collapse: collapse;
+	-webkit-border-radius: $roundButtonSize;
+	-moz-border-radius: $roundButtonSize;
+	border-radius: $roundButtonSize;
+	box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px;
+	box-sizing: border-box;
+	color: #ffffff;
+	display: inline-block;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	font-size: $fontSize;
+	height: $roundButtonSize;
+	line-height: $roundButtonSize;
+	margin:0;
+	min-width: $roundButtonSize;
+	width:$roundButtonSize;
+	padding:0;
+	position: relative;
+	text-align: center;
+	transition-delay: 0s, 0s, 0s;
+	transition-duration: 0.2s, 0.2s, 0.2s;
+	transition-property: box-shadow, background-color, color;
+	transition-timing-function: cubic-bezier(0.4, 0, 1, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+	vertical-align: middle;
+	will-change: box-shadow, transform;
+}

@@ -1,0 +1,34 @@
+.tagline {
+  @include span(full);
+  @include rob(1.3em, 400);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align:center;
+  strong {font-weight:700;}
+  @include breakpoint(max-width ($sm - 1)){ @include span(96%);}
+}
+
+.land {
+  @include span(4 of 12 split);
+  text-align:center;
+  margin-top:40px;
+  margin-bottom:40px;
+  @include breakpoint(max-width ($sm - 1)){ @include span(96%);
+       height:140px; margin:(gutter() / 2) 0;
+        @include card(1);}
+  .icon{ width:150px; margin:0 auto;
+    @include breakpoint(max-width ($sm - 1)){ @include span(3 of 12 );
+      padding:1.2em 0; height:97px;
+      img{width:60%;}
+      }
+  }
+  article {@include rob(1em/1.1em, 400);
+    h1 {@include pal(1.5em, 700);}
+      strong {font-weight:700;}
+      @include breakpoint(max-width ($sm - 1)){
+       @include span(9 of 12 last); text-align:left;
+       h1{margin:0;}
+      }
+  }
+
+}

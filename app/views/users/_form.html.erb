@@ -1,9 +1,12 @@
-<div class="mdl-textfield mdl-js-textfield">
-  <%= form.text_field :email, type: 'email', class: "mdl-textfield__input"%>
-  <%= form.label :email, class: "mdl-textfield__label"%>
+<div class="input-field">
+  <%= form.text_field :email, type: 'email', class: "validate"%>
+  <%= form.label :email %>
 </div>
-
-<div class="mdl-textfield mdl-js-textfield">
-  <%= form.password_field :password, class: "mdl-textfield__input"%>
-  <%= form.label :password, class: "mdl-textfield__label" %>
+<div class="input-field">
+  <%= form.password_field :password, class: "validate"%>
+  <%= form.label :password %>
+</div>
+<div class="input-field">
+  <%= form.password_field :cpassword, class: "validate"%>
+  <%= form.label :cpassword do %>Confirm password<%end%>
 </div>

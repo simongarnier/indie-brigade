@@ -1,0 +1,18 @@
+<footer>
+  <aside class="social">
+    <ul>
+      <a href="#"><li><i class="fa fa-envelope"></i></li></a>
+      <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+      <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+    </ul>
+  </aside>
+  <aside class="legal">
+    <ul>
+      <li><%= link_to 'Sign out', sign_out_path, method: :delete if current_user%></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms and Conditions</a></li>
+      <% year = Date.current.year %>
+      <li>&copy; Indie Brigade <%= if year == 2015 then "2015" else "2015-#{year}" end %></li>
+    </ul>
+  </aside>
+</footer>

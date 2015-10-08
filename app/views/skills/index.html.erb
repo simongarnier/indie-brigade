@@ -1,30 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1>Editing Skill</h1>
 
-<h1>Listing Skills</h1>
+<select id='optgroup' multiple='multiple'>
 
-
-
-<% @skills_by_role.each do |role, skills| %>
-
-<div class="mdl-card mdl-shadow--2dp demo-card-wide">
-<div class="mdl-card__title">
-  <h2 class="mdl-card__title-text"><%= role.code%></h2>
-</div>
-<div class="mdl-card__supporting-text">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Mauris sagittis pellentesque lacus eleifend lacinia...
-</div>
-<div class="mdl-card__actions mdl-card--border">
-  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-    Get Started
-  </a>
-</div>
-</div>
-
-
-<% end %>
-
-
-
-
-<br>
+  <optgroup label='Friends'>
+    <option value='1'>Yoda</option>
+    <option value='2' selected>Obiwan</option>
+  </optgroup>
+  <optgroup label='Enemies'>
+    <option value='3'>Palpatine</option>
+    <option value='4' disabled>Darth Vader</option>
+  </optgroup>
+</select>

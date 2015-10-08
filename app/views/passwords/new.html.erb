@@ -1,16 +1,12 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
-
-  <p><%= t(".description") %></p>
-
+<%= render 'partials/logo_heading' %>
+<section id="sign">
+  <h2>Reset your password</h2>
+  <p>To be emailed a link to reset your password, please enter your email address.</p>
   <%= form_for :password, url: passwords_path do |form| %>
-    <div class="text-field">
+    <div class="input-field">
+      <%= form.text_field :email, type: 'email', class: "validate"%>
       <%= form.label :email %>
-      <%= form.text_field :email, type: 'email' %>
     </div>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+    <button class="signup" type="submit" >Reset password</button>
   <% end %>
-</div>
+</section>
