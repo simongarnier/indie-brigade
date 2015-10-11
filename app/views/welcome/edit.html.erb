@@ -1,8 +1,13 @@
-<h1>Welcome! Can you define yourself?</h1>
+<%= render 'partials/logo_heading' %>
+<div class="poll-container">
+<h3>Define yourself for our poll :</h3>
 <% @roles.each do |role| %>
-  <%= link_to welcome_update_path(role_id: role.id), method: :put do%>
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect <%= 'mdl-button--accent' if @user.dev.role_id == role.id%>">
-      <%=  role.actor_form %>
-    </button>
-  <%end%>
+  <div class="poll">
+    <%= link_to welcome_update_path(role_id: role.id), method: :put do%>
+      <aside class="icon">
+        <%= image_tag("/images/poll/#{role.code.downcase}.png", alt: role.code)%>
+      </aside>
+    <%end%>
+  </div>
 <% end %>
+</div>

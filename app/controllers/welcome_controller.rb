@@ -26,8 +26,12 @@ class WelcomeController < ApplicationController
     if role && dev
       dev.role = role
       if dev.save
-        redirect_to welcome_path
+        redirect_to welcome_thank_path
       end
     end
+  end
+
+  def thank
+    render 'thanks'
   end
 end

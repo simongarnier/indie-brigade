@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/welcome', to: 'welcome#show', as: 'welcome'
   get '/welcome/edit', to: 'welcome#edit', as: 'welcome_edit'
+  get '/thank', to: 'welcome#thank', as: 'welcome_thank'
   put '/welcome', to: "welcome#update", as: 'welcome_update'
 
   root 'welcome#show'
