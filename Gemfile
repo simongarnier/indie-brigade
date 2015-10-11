@@ -10,8 +10,9 @@ gem 'pg'
 gem 'sass-rails'
 gem 'compass-rails'
 gem 'susy'
-gem "breakpoint", "~>2.4.0"
+gem 'breakpoint', '~>2.5'
 gem 'compass-normalize'
+gem 'bourbon', '~>4.2'
 
 # js
 gem 'uglifier', '>= 1.3.0'
@@ -37,5 +38,5 @@ gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rbenv', github: 'capistrano/rbenv'
 gem 'capistrano-secrets-yml'
