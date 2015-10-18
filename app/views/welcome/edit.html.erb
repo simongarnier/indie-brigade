@@ -1,13 +1,9 @@
-<%= render 'partials/logo_heading' %>
-<div class="poll-container">
-<h3>Define yourself for our poll :</h3>
-<% @roles.each do |role| %>
-  <div class="poll">
-    <%= link_to welcome_update_path(role_id: role.id), method: :put do%>
-      <aside class="icon">
-        <%= image_tag("/images/poll/#{role.code.downcase}.png", alt: role.code)%>
-      </aside>
-    <%end%>
-  </div>
-<% end %>
+<section id="sign">
+<div class="formdone">
+  <h3>Thank you!<br />
+  Tell us what's your speciality for our poll</h3>
+  <% @roles.each do |role| %>
+    <%= link_to image_tag("/images/ind_sign_#{role.code.downcase}.png", alt: role.code), welcome_path(role_id: role.id)%>
+  <% end %>
 </div>
+</section>

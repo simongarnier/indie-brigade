@@ -3,3 +3,5 @@ Clearance.configure do |config|
   config.allow_sign_up = true
   config.routes = false;
 end
+
+Clearance::UsersController.layout 'with_landing'

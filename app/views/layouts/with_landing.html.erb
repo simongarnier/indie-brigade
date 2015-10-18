@@ -9,13 +9,14 @@
 </head>
 <body>
   <section class="container">
+    <%= render 'partials/logo_heading' %>
+    <%= render 'partials/welcome' %>
     <%= yield %>
   </section>
   <%= render 'partials/footer' %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/js/unslider.min.js"></script>
   <script src="/js/init.js"></script>
-  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js' %>
 </body>
 </html>

@@ -9,15 +9,13 @@ Rails.application.routes.draw do
   end
 
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
-  delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
+  get '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up' => 'clearance/users#new', as: 'sign_up'
 
   ActiveAdmin.routes(self)
 
   get '/welcome', to: 'welcome#show', as: 'welcome'
   get '/welcome/edit', to: 'welcome#edit', as: 'welcome_edit'
-  get '/thank', to: 'welcome#thank', as: 'welcome_thank'
-  put '/welcome', to: "welcome#update", as: 'welcome_update'
 
   root 'welcome#show'
 

@@ -9,7 +9,7 @@
   <aside class="legal">
     <ul>
       <li><%= link_to 'Edit role', welcome_edit_path if current_user && current_user.try(:dev).try(:role) %></li>
-      <li><%= link_to 'Sign out', sign_out_path, method: :delete if current_user%></li>
+      <li><%= link_to 'Sign out', sign_out_path if current_user %></li>
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms and Conditions</a></li>
       <% year = Date.current.year %>
