@@ -31,6 +31,5 @@ class WelcomeController < ApplicationController
     end
 
     @role = @user.dev.role
-    render(:layout => "layouts/with_landing")
   end
 end
