@@ -1,10 +1,25 @@
 <%= render 'partials/logo_heading' %>
 <section id="sign">
 <div class="formdone">
-  <h3>Thank you!<br />
-  Tell us what's your speciality for our poll</h3>
+  <%if !@role%>
+    <h3>Thank you!<br />
+    Tell us what's your speciality for our poll</h3>
+  <%else%>
+    <h3>Answer saved!<br />
+    See you on lauch day
+    </h3>
+  <%end%>
   <% @roles.each do |role| %>
-    <%= link_to image_tag("/images/ind_sign_#{role.code.downcase}.png", alt: role.code), welcome_path(role_id: role.id)%>
+    <%
+      html_options = if @role && @role.id != role.id then
+        {class:"faded"}
+      else
+        {}
+      end
+    %>
+    <%=
+      link_to(image_tag("/images/ind_sign_#{role.code.downcase}.png", alt: role.code), welcome_path(role_id: role.id), html_options)
+    %>
   <% end %>
 </div>
 </section>

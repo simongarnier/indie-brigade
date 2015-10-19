@@ -7,16 +7,13 @@ class WelcomeController < ApplicationController
       if role && current_user.dev then
         current_user.dev.role = role
         if current_user.dev.save
-          redirect_to welcome_path
+          redirect_to welcome_edit_path
         end
       end
     end
 
-
     redirect_to sign_up_path if !current_user
     redirect_to welcome_edit_path if current_user && !current_user.dev.try(:role)
-
-
   end
 
   def edit

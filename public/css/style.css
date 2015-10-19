@@ -1456,10 +1456,12 @@ select {
     height: 45px; } }
 #sign .formdone {
   text-align: center;
-  margin-bottom: 100px; }
+  margin-bottom: 300px; }
 #sign .formdone h3 {
   font: 1.4em "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400; }
+#sign .formdone a.faded {
+  opacity: 0.4; }
 #sign .formdone section a {
   width: 20%;
   float: left;
