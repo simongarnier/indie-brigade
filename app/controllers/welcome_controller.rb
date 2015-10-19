@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_action :ensure_user_is_logged_in, only: [:edit, :update]
+  before_action :require_login, only: [:edit]
 
   def show
     if params[:role_id] && current_user then
@@ -12,7 +12,6 @@ class WelcomeController < ApplicationController
       end
     end
 
-    redirect_to sign_up_path if !current_user
     redirect_to welcome_edit_path if current_user && !current_user.dev.try(:role)
   end
 
