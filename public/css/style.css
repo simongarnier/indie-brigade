@@ -386,6 +386,8 @@ textarea {
   padding-left: 8.47458%;
   padding-right: 8.47458%;
   background-color: #f7fdfe;
+  position: relative;
+  z-index: 150;
   height: 80px; }
 #top:after {
   content: " ";
@@ -450,8 +452,34 @@ textarea {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
-#top .profile:hover {
-  background-color: #D6DDE3; }
+#top .profile:hover, #top .profile:focus {
+  background-color: rgba(0, 0, 0, 0.6); }
+#top .profile:hover div, #top .profile:focus div {
+  display: block; }
+#top .profile div {
+  display: none;
+  overflow: hidden;
+  background-color: #45494d;
+  text-align: right;
+  border-radius: 2px;
+  min-width: 400%;
+  position: absolute;
+  top: 136%;
+  right: -50%;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
+#top .profile div a {
+  display: block;
+  padding: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  font: 0.8em "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+#top .profile div a:last-child {
+  border-bottom: none; }
+#top .profile div a:hover {
+  background-color: rgba(0, 0, 0, 0.4); }
 
 .slider {
   width: 100%;
@@ -460,6 +488,7 @@ textarea {
   margin-right: 0;
   background-color: teal;
   position: relative;
+  z-index: 2;
   overflow: auto;
   text-align: center;
   margin-bottom: 0.5em; }
