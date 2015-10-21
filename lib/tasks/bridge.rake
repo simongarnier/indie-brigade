@@ -1,5 +1,11 @@
 desc "compile frontend js/sass and then copy those file in the app's public folder"
 namespace :bridge do
+  task :all do
+    Rake::Task['bridge:css'].invoke
+    Rake::Task['bridge:js'].invoke
+    Rake::Task['bridge:images'].invoke
+  end
+
   task :css do
     puts `cd indie-frontend && gulp sass`
     `rm public/css/*`
