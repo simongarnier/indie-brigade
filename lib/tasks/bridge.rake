@@ -13,7 +13,6 @@ namespace :bridge do
   end
 
   task :images do
-    `rm -r public/images/*`
     puts `cp -vr indie-frontend/images/* public/images`
   end
 end
