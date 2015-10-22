@@ -79,4 +79,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.identity_cache_store = :mem_cache_store, Dalli::Client.new('localhost:11211')
+
+  config.default_url_options[:host] = 'indiebrigade.com'
 end
