@@ -43,3 +43,4 @@ gem 'capistrano-secrets-yml'
 
 # jobs
 gem 'delayed_job_active_record'
+gem 'daemons'

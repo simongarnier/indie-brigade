@@ -117,6 +117,7 @@ GEM
       compass (~> 1.0.0)
       sass-rails (< 5.1)
       sprockets (< 2.13)
+    daemons (1.2.3)
     dalli (2.7.4)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
@@ -266,6 +267,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   compass-normalize
   compass-rails
+  daemons
   dalli
   delayed_job_active_record
   identity_cache
