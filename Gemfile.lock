@@ -118,6 +118,11 @@ GEM
       sass-rails (< 5.1)
       sprockets (< 2.13)
     dalli (2.7.4)
+    delayed_job (4.1.1)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.1.0)
+      activerecord (>= 3.0, < 5)
+      delayed_job (>= 3.0, < 5)
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
@@ -262,6 +267,7 @@ DEPENDENCIES
   compass-normalize
   compass-rails
   dalli
+  delayed_job_active_record
   identity_cache
   jquery-rails
   memcached
