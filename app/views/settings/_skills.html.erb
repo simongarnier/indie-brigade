@@ -2,7 +2,7 @@
 <div class="roles">
 	<ul>
 	<% skills.keys.each do |role|%>
-		<li data-action="tabSlide" data-section-id="skillset-<%= role.id%>">
+		<li data-action="tabSlide" data-section-id="skillset-<%=prefix%>-<%=role.id%>">
 			<%= role.code %>
 		</li>
     <% end %>
@@ -11,8 +11,8 @@
 
 <div class="skillsets">
 <% skills.each do |role,skills|%>
-	<div class="skillset content-tab" id="skillset-<%= role.id%>">
-		<div class="skill">	
+	<div class="skillset content-tab" id="skillset-<%=prefix%>-<%=role.id%>">
+		<div class="skill">
 			<ul>
 			<% skills.each do |skill|%>
 				<li>
@@ -21,7 +21,7 @@
 						<input type="checkbox" <%= "checked" if checked %> name="<%= prefix%>[]" value="<%= skill.id%>">
 						<%= skill.short_name%>
 					</label>
-				
+
 				</li>
 	        <% end %>
 	        </ul>
