@@ -10,6 +10,6 @@ class SettingsController < ApplicationController
   end
 
   def update_skills
-
+    redirect_to setting_edit_skills_path
   end
 end
