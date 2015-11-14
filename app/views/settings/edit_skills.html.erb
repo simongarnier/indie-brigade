@@ -25,7 +25,7 @@
 					<li>
 						<% checked = @major_skills.map(&:id).include? skill.id%>
 						<label>
-							<input type="checkbox" <%= "checked" if checked %> name="chk-<%= skill.id%>">
+							<input type="checkbox" <%= "checked" if checked %> name="chk[major][]">
 							<%= skill.short_name%>
 						</label>
 					
