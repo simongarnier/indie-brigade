@@ -6,13 +6,12 @@
 </div>
 
 <div>
-	
 	<%= render partial: "settings/skills" , locals: {prefix: "major", skillset:@major_skills, skills: @skills} %>
 	<%= render partial: "settings/skills" , locals: {prefix: "minor", skillset:@minor_skills, skills: @skills} %>
 	<button type="submit">Rabzor</button>
 </div>
 
-  
+
 <% end %>
 <%= debug(@skills) %>
 <%= debug(@major_skills) %>
