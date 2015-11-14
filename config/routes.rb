@@ -19,14 +19,11 @@ Rails.application.routes.draw do
 
   root 'welcome#show'
 
+  get '/devs/:id/skills', to: 'settings#edit_skills'
+  put '/devs/:id/skills', to: 'settings#update_skills'
+
   # root 'welcome#show'
-  # resources :devs do
-  #   resources :skills do
-  #     collection do
-  #       get 'manage'
-  #     end
-  #   end
-  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

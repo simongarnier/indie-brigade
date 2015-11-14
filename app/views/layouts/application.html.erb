@@ -3,7 +3,6 @@
 <head>
     <title>Indie Brigade</title>
     <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'%>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,9 +13,6 @@
     <%= yield %>
   </section>
   <%= render 'partials/footer' %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="/js/unslider.min.js"></script>
-  <script src="/js/init.js"></script>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js' %>
 </body>
