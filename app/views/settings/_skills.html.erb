@@ -1,0 +1,31 @@
+<h1><%= prefix%></h1>
+<div class="roles">
+	<ul>
+	<% skills.keys.each do |role|%>
+		<li data-action="tabSlide" data-section-id="skillset-<%= role.id%>">
+			<%= role.code %>
+		</li>
+    <% end %>
+    </ul>
+</div>
+
+<div class="skillsets">
+<% skills.each do |role,skills|%>
+	<div class="skillset content-tab" id="skillset-<%= role.id%>">
+		<div class="skill">	
+			<ul>
+			<% skills.each do |skill|%>
+				<li>
+					<% checked = skillset.map(&:id).include? skill.id%>
+					<label>
+						<input type="checkbox" <%= "checked" if checked %> name="<%= prefix%>[]" value="<%= skill.id%>">
+						<%= skill.short_name%>
+					</label>
+				
+				</li>
+	        <% end %>
+	        </ul>
+		</div>
+	</div>
+<% end %>
+</div>

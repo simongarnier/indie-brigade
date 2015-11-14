@@ -6,36 +6,8 @@
 </div>
 
 <div>
-	<div class="roles">
-		<ul>
-		<% @skills.keys.each do |role|%>
-			<li data-action="tabSlide" data-section-id="skillset-<%= role.id%>">
-				<%= role.code %>
-			</li>
-        <% end %>
-        </ul>
-	</div>
-
-	<div class="skillsets">
-	<% @skills.each do |role,skills|%>
-		<div class="skillset content-tab" id="skillset-<%= role.id%>">
-			<div class="skill">
-				<ul>
-				<% skills.each do |skill|%>
-					<li>
-						<% checked = @major_skills.map(&:id).include? skill.id%>
-						<label>
-							<input type="checkbox" <%= "checked" if checked %> name="major[]" value="<%=skill.id%>">
-							<%= skill.short_name%>
-						</label>
-
-					</li>
-		        <% end %>
-		        </ul>
-			</div>
-		</div>
-	<% end %>
-	</div>
+	<%= render partial: "settings/skills" , locals: {prefix: "major", skillset:@major_skills, skills: @skills} %>
+	<%= render partial: "settings/skills" , locals: {prefix: "minor", skillset:@minor_skills, skills: @skills} %>
 	<button type="submit">Rabzor</button>
 </div>
 
