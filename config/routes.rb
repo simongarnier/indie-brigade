@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
   root 'welcome#show'
 
-  get '/devs/:id/skills', to: 'settings#edit_skills'
-  put '/devs/:id/skills', to: 'settings#update_skills'
+  get '/devs/:id/skills', to: 'settings#edit_skills', as: 'setting_edit_skills'
+  put '/devs/:id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
   # root 'welcome#show'
 
