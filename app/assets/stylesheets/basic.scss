@@ -1,0 +1,35 @@
+// Variables /////////////////////////
+
+// Colors
+$theme_red : #d00000;
+$theme_blue : #0055e0;
+$theme_green : #00c500;
+$theme_grey2 : #7b7b7b;
+$theme_yellow : #ffcc00;
+$theme_grey : #82868f;
+$theme_light : #f7fdfe;
+
+// Resolutions
+
+$mobile-screen: 766px;
+$tablet-screen: 992px;
+$desktop-screen: 1200px;
+
+// Mixins ////////////////////////////
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Classes ///////////////////////////
+
+
+h1{
+	color: green;
+	@media (max-width: $tablet-screen){
+		color: pink;
+	}
+}

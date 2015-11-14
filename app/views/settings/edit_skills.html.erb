@@ -1,0 +1,45 @@
+<%= render 'partials/logo_heading' %>
+<%= form_tag setting_update_skills_path, method: :put do %>
+<h1 data-action="tabSlide" data-section-id="test" >test</h1>
+<div class="content-tab" id="test">
+	<p>Simon garnier fait partie du ISIS</p>
+</div>
+
+<div>
+	<div class="roles">
+		<ul>
+		<% @skills.keys.each do |role|%>
+			<li data-action="tabSlide" data-section-id="skillset-<%= role.id%>">
+				<%= role.code %>
+			</li>
+        <% end %>
+        </ul>
+	</div>
+
+	<div class="skillsets">
+	<% @skills.each do |role,skills|%>
+		<div class="skillset content-tab" id="skillset-<%= role.id%>">
+			<div class="skill">	
+				<ul>
+				<% skills.each do |skill|%>
+					<li>
+						<% checked = @major_skills.map(&:id).include? skill.id%>
+						<label>
+							<input type="checkbox" <%= "checked" if checked %> name="chk-<%= skill.id%>">
+							<%= skill.short_name%>
+						</label>
+					
+					</li>
+		        <% end %>
+		        </ul>
+			</div>
+		</div>
+	<% end %>
+	</div>
+	<button type="submit">Rabzor</button>
+</div>
+
+  
+<% end %>
+<%= debug(@skills) %>
+<%= debug(@major_skills) %>

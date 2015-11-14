@@ -28,4 +28,8 @@ class WelcomeController < ApplicationController
 
     @role = @user.dev.role
   end
+
+  def form
+    
+  end
 end

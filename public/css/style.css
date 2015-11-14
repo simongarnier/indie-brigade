@@ -733,10 +733,12 @@ textarea.materialize-textarea {
   Radio Buttons
 ***************/
 /* Remove default Radio Buttons */
+/*
 [type="radio"]:not(:checked), [type="radio"]:checked {
   position: absolute;
   left: -9999px;
   visibility: hidden; }
+  */
 
 [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
   position: relative;
@@ -845,11 +847,12 @@ form p:last-child {
   margin-bottom: 0; }
 
 /* Remove default checkbox */
+/*
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
   visibility: hidden; }
-
+*/
 [type="checkbox"] {
   /* checkbox aspect */ }
 [type="checkbox"] + label {
