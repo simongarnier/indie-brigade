@@ -7,6 +7,7 @@ gem 'rails', '4.2.1'
 gem 'pg'
 
 # css
+gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'compass-rails'
 gem 'susy'
