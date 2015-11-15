@@ -2,7 +2,6 @@
 //LISTENER
 $("body")
 	.on("click","[data-action='tabSlide']", function(event){ tabSlide($(this)); })
-	.on("click","h1", function(event){console.log(1)})
 
 
 function tabSlide(obj){

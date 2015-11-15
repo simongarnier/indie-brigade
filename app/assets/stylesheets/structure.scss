@@ -1,0 +1,69 @@
+body{
+	background: $theme_background;
+}
+
+
+div.logo-heading{
+	margin: 30px auto;
+	width:75%;
+
+	@media (max-width: $tablet-screen){
+		width: 95%;
+	}
+	img{
+		width: 100%;
+	}
+}
+
+footer{
+	background: #45484D;
+
+	.container{
+		.social{
+			border-bottom: 1px solid #fff;
+			text-align: right;
+			padding: 20px 0px;
+
+			a{
+				text-decoration: none;
+				color: #fff;
+				display: inline-block;
+				margin-left: 5px;
+				width: 35px;
+				height: 35px;
+				text-align: center;
+				line-height: 35px;
+				border: 1px solid #fff;
+				font-size: 16px;
+				@include border-radius(50%);
+
+			}
+		}
+
+		.legal{
+			text-align: right;
+			padding: 10px 0px;
+
+			ul{
+				display: inline-block;
+				list-style-type: none;
+				li{
+					display: inline-block;
+					color: #72757A;
+					padding: 0px 15px;
+					border-right: 1px solid #72757A;
+					line-height: 15px;
+					font-size: 12px;
+					font-weight: 500;
+					&:last-child{
+						padding-right: 0px;
+						border-right: none;
+					}
+					a{
+						color: #72757A;
+					}
+				}
+			}
+		}
+	}
+}
