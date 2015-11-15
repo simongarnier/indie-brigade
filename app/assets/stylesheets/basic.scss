@@ -32,3 +32,10 @@ $desktop-screen: 1200px;
 	font-family: Roboto;
 }
 
+.content-tab{
+	display: none;
+
+	&.active{
+		display: block;
+	}
+}
