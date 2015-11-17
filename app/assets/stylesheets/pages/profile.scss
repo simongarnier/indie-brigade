@@ -1,0 +1,75 @@
+.group-color {
+    height: 20px;
+    width: 100%;
+    background-color: $theme_blue;
+}
+
+.profile-header {
+    height: 240px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url('https://scontent-sea1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/12246978_10156274992620088_1469570196368840823_n.jpg?oh=b9a5705fcc8bd9929f1df07cd3f98417&oe=56E9CFDD');
+}
+
+.profile-content {
+    color: #7b7b7b;
+    h4 {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+    p {
+        font-size: 0.75rem;
+    }
+}
+
+.about {
+    margin-top: 100px;
+    .message-btn {
+        margin-bottom: 25px;
+        a {
+            display: inline-block;
+            background-color: $theme_yellow;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 12px 10px;
+            @include border-radius(5px);
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    .profile-picture {
+        position: absolute;
+        width: 100%;
+        top: -210px;
+        img {
+            width: calc(100% - 20px);
+            max-width: 200px;
+            border: 10px solid #f7fdfe;
+            display: inline-block;
+        }
+    }
+}
+
+.profile-skills {
+    h2 {
+        display: inline-block;
+        color: #fff;
+        margin-top: 0;
+        position: absolute;
+        top: -45px;
+        text-shadow: 0 0 15px black;
+    }
+    .main-skill {
+        color: #fff;
+        display: inline-block;
+        background-color: $theme_blue;
+        padding: 0 5px;
+        margin-top:20px;
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+    }
+}
