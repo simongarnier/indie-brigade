@@ -31,6 +31,13 @@ body {
     font-size: 16px;
 }
 
+.content-tab{
+	display: none;
+
+	&.active{
+		display: block;
+	}
+}
 a {
     text-decoration: none;
 }
