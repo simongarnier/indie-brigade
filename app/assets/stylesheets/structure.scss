@@ -2,6 +2,16 @@ body{
 	background: $theme_background;
 }
 
+div.main-nav{
+	height: 80px;
+	background : #theme_blue;
+	div.container{
+		height: 100%;
+		img{
+			height: 100%;
+		}
+	}
+}
 
 div.logo-heading{
 	margin: 30px auto;
