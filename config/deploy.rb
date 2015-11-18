@@ -3,9 +3,9 @@ lock '3.4.0'
 
 set :application, 'indiebrigade'
 set :repo_url, 'git@github.com:simongarnier/indie-brigade.git'
+set :branch, 'deploy'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/indie-brigade'
