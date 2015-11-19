@@ -4,11 +4,92 @@ body{
 
 div.main-nav{
 	height: 80px;
+	padding: 10px;
 	background : #theme_blue;
+
 	div.container{
 		height: 100%;
-		img{
-			height: 100%;
+		div.nav-logo{
+			width: 20%;
+			display: inline-block;
+			vertical-align: middle;
+			img{
+				width: 100%;
+			}
+		}
+		div.nav-menu{
+			width: 79.5%;
+			text-align: right;
+			display: inline-block;
+			vertical-align: middle;
+			>*{
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			ul{
+				list-style-type: none;
+				margin: 0px;
+				li{
+					display: inline-block;
+					margin: 0px 25px 0px 0px;
+					vertical-align: middle;
+					a{
+						color: #868686;
+						text-transform: uppercase;
+						font-weight: 400;
+						font-size: 1.2rem;
+					}
+				}
+			}
+			>a{
+				margin-right: 10px;
+				position: relative;
+				i{
+					font-size: 20px;
+					color: #868686;
+				}
+
+				&.nav-mail{
+					span{
+						display: block;
+						background: red;
+						padding: 2px;
+						position: absolute;
+						top: -5px;
+						right: -5px;
+						color: #fff;
+						font-size: 10px;
+						min-width: 15px;
+						height: 15px;
+						text-align: center;
+						line-height: 13px;
+
+						@include border-radius(50%);
+					}				
+				}
+			}
+			div.nav-profile{
+				width: 30px;
+				margin-right: 20px;
+				position: relative;
+				img{
+					height: 30px;
+					@include border-radius(50%);
+				}
+
+				&:before{
+					position: absolute;
+					right: -15px;
+					top: 8px;
+					content: "\f107";
+				    display: inline-block;
+				    font: normal normal normal 14px/1 FontAwesome;
+				    text-rendering: auto;
+				    font-size: 12px;
+				    -webkit-font-smoothing: antialiased;
+				}
+			}
 		}
 	}
 }
