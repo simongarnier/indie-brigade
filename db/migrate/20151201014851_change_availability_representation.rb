@@ -4,8 +4,8 @@ class ChangeAvailabilityRepresentation < ActiveRecord::Migration
     add_column :availabilities, :duration, :string, null:true
 
     Availability.all.each do |availability|
-      availability.duration = availability.availability_duration.name
-      availability.per_week = availability.availability_per_week.name
+      availability.duration = AvailabilityDuration.find(availability.availability_duration_id).name
+      availability.per_week = AvailabilityPerWeek.find(availability.availability_per_week_id).name
       availability.save
     end
 
