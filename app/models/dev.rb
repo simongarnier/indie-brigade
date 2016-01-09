@@ -2,7 +2,7 @@ class Dev < ActiveRecord::Base
   include IdentityCache
 
   belongs_to :role
-  belongs_to :availability
+  has_and_belongs_to_many :availabilities
   belongs_to :user
   belongs_to :main_skill, class_name: 'Skill', foreign_key: 'main_skill_id'
 
