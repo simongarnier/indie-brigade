@@ -11,6 +11,40 @@
     background-repeat: no-repeat;
     background-image: url('https://scontent-sea1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/12246978_10156274992620088_1469570196368840823_n.jpg?oh=b9a5705fcc8bd9929f1df07cd3f98417&oe=56E9CFDD');
 }
+.profile-header-info {
+  height: 100%;
+  position: relative;
+  h2 {
+      display: inline-block;
+      color: #fff;
+      margin-top: 0;
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+      text-shadow: 0 0 15px black;
+    }
+  .social {
+    background-color: $theme_background;
+    border-radius: 3px 3px 0 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    ul {
+      list-style-type: none;
+      margin-bottom: 0;
+      li {
+        display: inline-block;
+        i {
+          color: $theme_grey_content;
+          &:hover {
+            color: #4b4b4b;
+          }
+        }
+      }
+    }
+  }
+}
 
 .profile-content {
     color: #7b7b7b;
@@ -24,43 +58,53 @@
 }
 
 .about {
-    margin-top: 100px;
-    .message-btn {
-        margin-bottom: 25px;
-        a {
-            display: inline-block;
-            background-color: $theme_yellow;
-            text-transform: uppercase;
-            color: #fff;
-            padding: 12px 10px;
-            @include border-radius(5px);
-            i {
-                margin-right: 5px;
-            }
+  margin-top: 130px;
+  .message-btn {
+    margin-bottom: 25px;
+    a {
+      display: table-cell;
+      vertical-align: middle;
+      &.message-link {
+        i {
+          margin-right: 5px;
         }
-    }
-    .profile-picture {
-        position: absolute;
-        width: 100%;
-        top: -210px;
-        img {
-            width: calc(100% - 20px);
-            max-width: 200px;
-            border: 10px solid #f7fdfe;
-            display: inline-block;
+      }
+      &.favorite-link {
+        width: 50px;
+        text-align: center;
+        i {
+          font-size: 2rem;
+          color: $theme_grey_content;
+          transition: color 0.2s ease;
         }
+        &:hover {
+          i {
+            color: $theme_yellow;
+          }
+        }
+      }
     }
+  }
+  .profile-picture {
+    position: absolute;
+    width: 100%;
+    top: -240px;
+    img {
+        width: calc(100% - 20px);
+        max-width: 200px;
+        border: 10px solid #f7fdfe;
+        display: inline-block;
+    }
+  }
+  ul {
+    margin-left: 20px;
+    li {
+      font-size: 0.75rem;
+    }
+  }
 }
 
 .profile-skills {
-    h2 {
-        display: inline-block;
-        color: #fff;
-        margin-top: 0;
-        position: absolute;
-        top: -45px;
-        text-shadow: 0 0 15px black;
-    }
     .main-skill {
         color: #fff;
         display: inline-block;
@@ -72,4 +116,117 @@
             margin-bottom: 0;
         }
     }
+    .skill-table {
+      width: 100%;
+      &.skill-table-tertiary {
+        tr:last-child{
+          border-bottom:0;
+        }
+      }
+      tr {
+        border-bottom: 1px solid #e3e3e3;
+        &:first-child {
+          border-bottom: 0;
+        }
+        &:last-child {
+          border-bottom: 1px solid #b9b9b9;
+        }
+        td {
+          padding: 3px 0;
+          &:first-child {
+            width: 75%;
+          }
+        }
+        h3, .skill-table-role {
+          font-family: Palanquin;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+        }
+        h3 {
+          font-weight: normal;
+        }
+        .skill-table-name {
+            font-family: Roboto;
+            line-height: 1.125rem;
+          i {
+            font-size: 0.5rem;
+            vertical-align: top;
+            line-height: 1rem;
+            margin-right: 10px;
+          }
+        }
+        .skill-table-role {
+            font-weight: bold;
+        }
+      }
+
+    }
+    .skill-table-legend {
+      text-align: right;
+      font-family: Roboto;
+      i {
+        font-size: 0.5rem;
+        vertical-align: top;
+        line-height: 1rem;
+      }
+      p {
+        display: inline-block;
+        text-transform: uppercase;
+        &:first-child {
+          margin-right:10px;
+        }
+      }
+    }
+}
+.portfolio {
+  margin-top: 20px;
+  h3 {
+    font-family: Palanquin;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  ul {
+    list-style-type: none;
+    li {
+
+    }
+  }
+}
+
+@media screen and (max-width:$tablet-screen) and (min-width:$mobile-screen){
+  .about {
+    margin-top: 100px;
+    .profile-picture {
+      top: -200px;
+    }
+  }
+}
+
+@media screen and (max-width:$mobile-screen) {
+  .about {
+    margin-top: 60px;
+    .profile-picture {
+      text-align: center;
+      top: -150px;
+      left: 0;
+      right: 0;
+      img {
+        max-width: 160px;
+      }
+    }
+  }
+  .profile-header-info {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: inherit;
+    .social {
+      font-size: 1.5rem;
+      position: relative;
+    }
+  }
 }
