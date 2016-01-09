@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   root 'welcome#show'
 
   get '/devs/:dev_id/skills', to: 'settings#edit_skills', as: 'setting_edit_skills'
+  get '/search', to: 'settings#search', as: 'search'
   put '/devs/:dev_id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
   resources :devs, only: [:index, :show]  

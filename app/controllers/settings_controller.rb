@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 class SettingsController < ApplicationController
-  before_action :ensure_dev_owned_by_current_user
+  before_action :ensure_dev_owned_by_current_user, only: [:edit_skills, :update_skills]
 
   def edit_skills
     @skills = Skill.all.group_by(&:role)
@@ -19,5 +19,8 @@ class SettingsController < ApplicationController
     major_skills.each{ |major| DevMajorSkill.new(dev: dev, skill_id:major).save }
     minor_skills.each{ |minor| DevMinorSkill.new(dev: dev, skill_id:minor).save }
     redirect_to setting_edit_skills_path
+  end
+
+  def search
   end
 end

@@ -19,12 +19,6 @@ $desktop-screen: 1200px;
     border-radius: $radius;
 }
 
-@mixin clearfix() {
-	&:after{
-	  	clear: both;
-	}
-}
-
 
 // Classes ///////////////////////////
 * {
@@ -92,4 +86,30 @@ a {
   .desktop {
     display: none;
   }
+}
+
+.input-label{
+	position:relative;
+	&:before{
+		content: "";
+		display: block;
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: green;
+
+	}
+	input{
+		outline: none;
+		border: none;
+		border-bottom: 3px solid #eee;
+		background: #fff;
+		padding: 5px;
+		font-size: 12px;
+
+		&:focus{
+			border-bottom: 3px solid #eee;
+		}
+
+	}
 }
