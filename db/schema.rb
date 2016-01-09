@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022235815) do
+ActiveRecord::Schema.define(version: 20151201014851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,25 +32,10 @@ ActiveRecord::Schema.define(version: 20151022235815) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "availability_per_week_id", null: false
-    t.integer  "availability_duration_id", null: false
-  end
-
-  add_index "availabilities", ["availability_duration_id"], name: "index_availabilities_on_availability_duration_id", using: :btree
-  add_index "availabilities", ["availability_per_week_id"], name: "index_availabilities_on_availability_per_week_id", using: :btree
-
-  create_table "availability_durations", force: :cascade do |t|
-    t.text     "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "availability_per_weeks", force: :cascade do |t|
-    t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "per_week",   null: false
+    t.string   "duration",   null: false
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -230,8 +215,6 @@ ActiveRecord::Schema.define(version: 20151022235815) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
-  add_foreign_key "availabilities", "availability_durations"
-  add_foreign_key "availabilities", "availability_per_weeks"
   add_foreign_key "dev_conditions", "conditions"
   add_foreign_key "dev_conditions", "devs"
   add_foreign_key "dev_major_skills", "devs"

@@ -39,7 +39,7 @@ gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
-gem 'capistrano-rbenv', github: 'capistrano/rbenv'
+gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-secrets-yml'
 
 # jobs
