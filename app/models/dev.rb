@@ -19,4 +19,12 @@ class Dev < ActiveRecord::Base
   def skills
     minor_skills + major_skills
   end
+
+  def major_skills_by_role
+    major_skills.sort_by{|skill| skill.role.code}
+  end
+
+  def minor_skills_by_role
+    minor_skills.sort_by{|skill| skill.role.code}
+  end
 end
