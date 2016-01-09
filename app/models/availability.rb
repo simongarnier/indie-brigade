@@ -1,5 +1,5 @@
 class Availability < ActiveRecord::Base
-  def name sep = '::'
-    self.per_week + sep + self.duration
+  def name
+    "#{self.per_week} :: #{self.duration}"
   end
 end
