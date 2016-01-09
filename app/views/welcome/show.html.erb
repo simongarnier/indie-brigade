@@ -29,4 +29,5 @@
 </div>
 <% if !current_user && Clearance.configuration.allow_sign_up? then %>
   <h3 class="tagline"><%= link_to 'Sign up', sign_up_path %> to reserve your account today!</h3>
+	<%= render partial: 'users/new' , locals: {user: User.new} %>
 <% end %>

@@ -1,0 +1,10 @@
+<%= render 'partials/logo_heading' %>
+<h2 class="tagline"><strong>Find</strong> devs. <strong>Connect</strong> to them. <strong>Create</strong> games.</h2>
+<section id="sign">
+  <%= form_for :session, url: session_path do |form| %>
+    <%= render partial: '/sessions/form', object: form %>
+    <button class="signup" type="submit" >Sign In</button>
+    <div class="other"><%= link_to 'Sign up', sign_up_path %></div>
+    <div class="other"><%= link_to 'Reset password', new_password_path %></div>
+  <% end %>
+</section>
