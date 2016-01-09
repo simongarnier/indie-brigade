@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  get '/home', to: 'home#show', as: 'home'
+
   get '/welcome', to: 'welcome#show', as: 'welcome'
   get '/welcome/edit', to: 'welcome#edit', as: 'welcome_edit'
 
