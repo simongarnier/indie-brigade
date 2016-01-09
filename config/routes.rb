@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/devs/:dev_id/skills', to: 'settings#edit_skills', as: 'setting_edit_skills'
   put '/devs/:dev_id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
+  resources :devs, only: [:index, :show]  
+
   # root 'welcome#show'
 
   # The priority is based upon order of creation: first created -> highest priority.

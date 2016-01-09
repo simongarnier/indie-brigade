@@ -1,24 +1,101 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @dev.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @dev.description %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @dev.role %>
-</p>
-
-<p>
-  <strong>Availability:</strong>
-  <%= @dev.availability %>
-</p>
-
-<%= link_to 'Edit', edit_dev_path(@dev) %> |
-<%= link_to 'Back', devs_path %>
+<div class="profile">
+<div class="group-color"></div>
+  <div class="profile-header">
+  </div>
+  <div class="container profile-header-info">
+    <div class="col col-sm-3 desktop"></div>
+    <div class="col col-sm-6 desktop">
+      <h2>Cedric Day-Myer</h2>
+    </div>
+    <div class="col col-sm-3 desktop"></div>
+    <div class="social desktop">
+    <ul>
+      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+      <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+      <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+      <li><a href="#"><i class="fa fa-behance"></i></a></li>
+      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa fa-deviantart"></i></a></li>
+      <li><a href="#"><i class="fa fa-skype"></i></a></li>
+      <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+      <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+    </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="profile-content row">
+      <div class="col col-sm-3 about">
+        <div class="profile-picture">
+          <img class="img-circle" src="https://scontent-sea1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/12003866_10154327949712501_8412384210960395353_n.jpg?oh=9f6a9cbc048873231e341613ee2765eb&oe=56BF93BC">
+        </div>
+        <div class="mobile">
+          <h2>Cedric Day-Myer</h2>
+          <div class="social"></div>
+        </div>
+        <div class="message-btn">
+          <a href="#" class="btn-cta message-link"><i class="fa fa-envelope"></i>Message</a>
+          <a href="#" class="favorite-link"><i class="fa fa-star-o"></i></a>
+        </div>
+        <h4>About</h4>
+        <p>
+          <%= @dev.description %>
+        </p>
+        <h4>Conditions</h4>
+        <ul>
+          <% @dev.conditions.each do |condition| %>
+            <li><%= condition.name %></li>
+          <% end %>
+        </ul>
+        <h4>Availabilities</h4>
+        <p>
+          <%= @dev.availability.name %>
+        </p>
+      </div>
+      <div class="col col-sm-6 profile-skills">
+        <div class="main-skill"><p>2D artist</p></div>
+        <table class="skill-table">
+          <tr>
+            <td>
+              <h3>Skills</h3>
+            </td>
+            <td>
+              <h3>Role</h3>
+            </td>
+          </tr>
+          <tr>
+            <%@dev.major_skills_by_role.each do |skill|%>
+              <td class="skill-table-name"><i class="fa fa-circle"></i><%= skill.long_name %></td>
+              <td class="skill-table-role role-<%= skill.role.code %>"><%= skill.role.code %></td>
+          </tr>
+          <%end%>
+        </table>
+        <table class="skill-table skill-table-tertiary">
+          <tr>
+            <%@dev.minor_skills_by_role.each do |skill|%>
+              <td class="skill-table-name"><i class="fa fa-circle-o"></i><%= skill.long_name %></td>
+              <td class="skill-table-role role-<%= skill.role.code %>"><%= skill.role.code %></td>
+          </tr>
+          <%end%>
+        </table>
+        <div class="skill-table-legend">
+          <p><i class="fa fa-circle"></i> Secondary Skills</p>
+          <p><i class="fa fa-circle-o"></i> Tertiary Skills</p>
+        </div>
+      </div>
+      <div class="col col-sm-3 portfolio">
+        <a class="btn-cta" href="#"><i class="fa fa-link"></i> Portfolio</a>
+        <div class="profile-softwares">
+          <h3>Softwares</h3>
+          <ul>
+            <%@dev.minor_skills_by_role.each do |software|%>
+            <li><%= software.long_name %></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
