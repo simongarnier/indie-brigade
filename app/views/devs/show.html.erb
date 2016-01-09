@@ -13,7 +13,20 @@
           <a href="#"><i class="fa fa-envelope"></i>Message</a>
         </div>
         <h4>About</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum ante a velit molestie egestas. Cras nibh dui, pharetra eget commodo a, ullamcorper nec leo. Duis nec tortor laoreet, rutrum odio non, aliquet justo.</p></div>
+        <p>
+          <%= @dev.description %>
+        </p>
+        <h4>Conditions</h4>
+        <ul>
+          <% @dev.conditions.each do |condition| %>
+            <li><%= condition.name %></li>
+          <% end %>
+        </ul>
+        <h4>Availabilities</h4>
+        <p>
+          <%= @dev.availability.name(", ") %>
+        </p>
+      </div>
       <div class="col col-sm-6 profile-skills">
       <h2>Cedric Day-Myer</h2>
         <div class="main-skill"><p>2D artist</p></div>
