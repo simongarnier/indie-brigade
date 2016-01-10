@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Availability, '.compatible_availability' do
+RSpec.describe Availability do
   before(:all) do
     @jam = ProjectSize.create!(text: "jam", need_involvement: false)
     @three_month = ProjectSize.create!(text: "3 month", need_involvement: true)
@@ -28,5 +28,15 @@ RSpec.describe Availability, '.compatible_availability' do
     Availability.create!(project_size: @three_month, per_week: 8..9)
 
     expect(Availability.compatible_availability(input)).to match_array(results)
+  end
+
+  it 'should select only for the given type' do
+    dev = Dev.create!(name: "Simon")
+    opening = Opening.create!(name: "dev")
+    dev.availabilities << Availability.create!(project_size: @three_month)
+    dev.availabilities << Availability.create!(project_size: @three_month)
+    opening.availabilities << Availability.create!(project_size: @three_month)
+    opening.availabilities << Availability.create!(project_size: @three_month)
+    expect(Availability.for_available_type("Dev")).to match_array(dev.availabilities)
   end
 end
