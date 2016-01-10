@@ -18,12 +18,14 @@ class ChangeAvailabilityRepresentationAgain < ActiveRecord::Migration
     Opening.destroy_all
     Availability.destroy_all
 
-    add_column :availabilities, :hour_lower, :integer, null: true
-    add_column :availabilities, :hour_upper, :integer, null: true
     remove_column :availabilities, :per_week
     remove_column :availabilities, :duration
+    add_column :availabilities, :per_week, "int4range", null: true
     add_reference :availabilities, :project_size, index: true, null: false
     add_foreign_key :availabilities, :project_sizes
+    add_reference :availabilities, :available, polymorphic: true, index: true
+
+    execute "CREATE INDEX availabilities_gist_data ON availabilities USING gist(per_week);"
 
     add_column :devs, :unavailable, :boolean, null: false, default: false
 
@@ -36,12 +38,13 @@ class ChangeAvailabilityRepresentationAgain < ActiveRecord::Migration
     add_reference :openings, :availability, index: true, null: true
     add_foreign_key :openings, :availabilities
 
-    remove_column :availabilities, :hour_lower
-    remove_column :availabilities, :hour_upper
+    execute "DROP INDEX availabilities_gist_data;"
+    remove_column :availabilities, :per_week
     add_column :availabilities, :per_week, :string
     add_column :availabilities, :duration, :string
     remove_foreign_key :availabilities, :project_sizes
     remove_column :availabilities, :project_size_id
+    remove_reference :availabilities, :available, polymorphic: true
 
     remove_column :devs, :unavailable
 

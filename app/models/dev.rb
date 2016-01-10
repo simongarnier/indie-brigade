@@ -2,7 +2,6 @@ class Dev < ActiveRecord::Base
   include IdentityCache
 
   belongs_to :role
-  has_and_belongs_to_many :availabilities
   belongs_to :user
   belongs_to :main_skill, class_name: 'Skill', foreign_key: 'main_skill_id'
 
@@ -14,9 +13,16 @@ class Dev < ActiveRecord::Base
 
   has_many :dev_minor_skills, dependent: :delete_all
   has_many :minor_skills, through: :dev_minor_skills, source: :skill
+
+  has_many :availabilities, as: :available
+
   attr_reader :skills
 
   def skills
     minor_skills + major_skills
+  end
+
+  def compatible_devs
+    Availability.for_available_type("Opening").compatible_availability(self).available
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109215812) do
+ActiveRecord::Schema.define(version: 20160110033544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,30 +32,17 @@ ActiveRecord::Schema.define(version: 20160109215812) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "hour_lower"
-    t.integer  "hour_upper"
-    t.integer  "project_size_id", null: false
+    t.datetime  "created_at",      null: false
+    t.datetime  "updated_at",      null: false
+    t.int4range "per_week"
+    t.integer   "project_size_id", null: false
+    t.integer   "available_id"
+    t.string    "available_type"
   end
 
+  add_index "availabilities", ["available_type", "available_id"], name: "index_availabilities_on_available_type_and_available_id", using: :btree
+  add_index "availabilities", ["per_week"], name: "availabilities_gist_data", using: :gist
   add_index "availabilities", ["project_size_id"], name: "index_availabilities_on_project_size_id", using: :btree
-
-  create_table "availabilities_devs", id: false, force: :cascade do |t|
-    t.integer "dev_id",          null: false
-    t.integer "availability_id", null: false
-  end
-
-  add_index "availabilities_devs", ["availability_id", "dev_id"], name: "index_availabilities_devs_on_availability_id_and_dev_id", using: :btree
-  add_index "availabilities_devs", ["dev_id", "availability_id"], name: "index_availabilities_devs_on_dev_id_and_availability_id", using: :btree
-
-  create_table "availabilities_openings", id: false, force: :cascade do |t|
-    t.integer "opening_id",      null: false
-    t.integer "availability_id", null: false
-  end
-
-  add_index "availabilities_openings", ["availability_id", "opening_id"], name: "index_availabilities_openings_on_availability_id_and_opening_id", using: :btree
-  add_index "availabilities_openings", ["opening_id", "availability_id"], name: "index_availabilities_openings_on_opening_id_and_availability_id", using: :btree
 
   create_table "conditions", force: :cascade do |t|
     t.text     "name"
@@ -123,11 +110,12 @@ ActiveRecord::Schema.define(version: 20160109215812) do
     t.text     "name"
     t.text     "description"
     t.integer  "role_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.integer  "main_skill_id"
-    t.boolean  "unavailable",   default: false, null: false
+    t.boolean  "unavailable",           default: false, null: false
+    t.boolean  "currently_unavailable", default: false, null: false
   end
 
   add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree
