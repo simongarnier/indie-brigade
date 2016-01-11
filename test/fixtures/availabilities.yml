@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  per_week: 
-  number_of_month: 
-
-two:
-  per_week: 
-  number_of_month: 

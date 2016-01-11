@@ -45,3 +45,8 @@ gem 'capistrano-secrets-yml'
 # jobs
 gem 'delayed_job_active_record'
 gem 'daemons'
+
+# testing
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
