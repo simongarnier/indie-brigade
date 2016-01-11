@@ -28,7 +28,8 @@ class Dev < ActiveRecord::Base
 
   def minor_skills_by_role
     minor_skills.sort_by{|skill| skill.role.code}
-
+  end
+  
   def compatible_devs
     Availability.for_available_type("Opening").compatible_availability(self).available
   end
