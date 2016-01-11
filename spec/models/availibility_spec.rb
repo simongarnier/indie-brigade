@@ -20,11 +20,14 @@ RSpec.describe Availability do
   end
 
   it 'should check per_week overlap when need_involvement is true' do
-    input = Availability.create!(project_size: @three_month, per_week: 2..6)
+    input = Availability.create!(project_size: @three_month, per_week: 4..6)
     results = [
       Availability.create!(project_size: @three_month, per_week: 4..9),
-      Availability.create!(project_size: @three_month, per_week: 6..9)
+      Availability.create!(project_size: @three_month, per_week: 6..9),
+      Availability.create!(project_size: @three_month, per_week: 1..4)
     ]
+    Availability.create!(project_size: @three_month, per_week: 1..3)
+    Availability.create!(project_size: @three_month, per_week: 7..9)
     Availability.create!(project_size: @three_month, per_week: 8..9)
 
     expect(Availability.compatible_availability(input)).to match_array(results)
