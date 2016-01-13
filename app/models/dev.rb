@@ -18,6 +18,14 @@ class Dev < ActiveRecord::Base
 
   attr_reader :skills
 
+  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/images/default.png"
+  # Validate content type
+  validates_attachment_content_type :avatar, content_type: /\Aimage/
+  # Validate filename
+  validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
+
+  validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/png"] }, size: { in: 0..1.megabytes }
+
   def skills
     minor_skills + major_skills
   end
@@ -29,7 +37,7 @@ class Dev < ActiveRecord::Base
   def minor_skills_by_role
     minor_skills.sort_by{|skill| skill.role.code}
   end
-  
+
   def compatible_devs
     Availability.for_available_type("Opening").compatible_availability(self).available
   end
