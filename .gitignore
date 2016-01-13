@@ -16,3 +16,6 @@ config/secrets.yml
 .DS_Store
 
 vendor/bundle
+
+# user generated assets should be ignored
+public/system

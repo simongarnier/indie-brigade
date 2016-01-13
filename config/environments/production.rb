@@ -82,3 +82,5 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options[:host] = 'indiebrigade.com'
+
+Paperclip.options[:command_path] = "/usr/bin/"

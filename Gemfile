@@ -50,3 +50,6 @@ gem 'daemons'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
+
+# image manipualtion
+gem "paperclip", "~> 4.3"
