@@ -1,0 +1,4 @@
+<%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
+  <%= form.file_field :avatar %>
+  <%= submit_tag("submit") %>
+<% end %>
