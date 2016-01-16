@@ -95,13 +95,15 @@ a {
 		display: block;
 		position: absolute;
     pointer-events: none;
+    color: #aaa;
+    font-weight: 400;
 	}
 	input{
 		outline: none;
 		border: none;
 		border-bottom: 2px solid #eee;
 		background: #fff;
-		padding: 5px;
+		padding: 5px 0px;
 		font-size: 12px;
 
 		&:focus{
