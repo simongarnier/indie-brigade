@@ -1,12 +1,11 @@
 ActiveAdmin.register Dev, namespace: :super_admin do
   menu parent: "Users"
 
-  permit_params :name, :description, :role_id, :availability_id, :main_skill_id
+  permit_params :name, :description, :role_id, :main_skill_id
 
   controller do
     def scoped_collection
       super.includes :role
-      super.includes :availability
       super.includes :user
       super.includes :conditions
     end
@@ -19,9 +18,6 @@ ActiveAdmin.register Dev, namespace: :super_admin do
       row :description
       row :role do |dev|
         dev.role.try(:code)
-      end
-      row :availability do |dev|
-        dev.availability.try(:name)
       end
       row :main_skill do |dev|
         dev.main_skill.try(:short_name)
@@ -36,7 +32,6 @@ ActiveAdmin.register Dev, namespace: :super_admin do
       f.input :name, as: :string
       f.input :description, as: :text
       f.input :role, as: :select, collection: Role.all.collect {|role| [role.code, role.id] }, include_blank: true
-      f.input :availability, as: :select, collection: Availability.all.collect {|availability| [availability.name, availability.id]}, include_blank: true
       f.input :main_skill, as: :select, collection: Skill.all.collect {|skill| [skill.short_name, skill.id] }, include_blank: true
     end
     f.actions
@@ -56,15 +51,6 @@ ActiveAdmin.register Dev, namespace: :super_admin do
     column :user, sortable: 'user.email' do |dev|
       link_to dev.user.email, super_admin_user_path(dev.user) if dev.user
     end
-    column :availability, sortable: 'availability.name' do |dev|
-      link_to dev.availability.name, super_admin_availability_path(dev.availability) if dev.availability
-    end
-    column "Conditions", sortable: false do |dev|
-      dev.conditions.map do |condition|
-        link_to condition.name, super_admin_condition_path(condition)
-      end
-    end
-
     actions
   end
 end

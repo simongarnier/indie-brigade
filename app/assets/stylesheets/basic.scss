@@ -5,9 +5,10 @@ $theme_blue: #0055e0;
 $theme_green: #00c500;
 $theme_grey: #82868f;
 $theme_grey_content: #7b7b7b;
-$theme_yellow: #ffcc00;
+$theme_yellow: #ffae00;
 $theme_background: #f7fdfe;
 // Resolutions
+$sm-mobile-screen: 640px;
 $mobile-screen: 766px;
 $tablet-screen: 992px;
 $desktop-screen: 1200px;
@@ -55,6 +56,7 @@ a {
     font-weight: bold;
     font-size: 0.75rem;
     color: #fff;
+    border: 0;
     padding: 12px 10px;
     @include border-radius(5px);
     transition: background-color 0.2s ease;
@@ -63,6 +65,32 @@ a {
       color: #fff;
       text-decoration: none;
     }
+    &.btn-plus, &.btn-close {
+        cursor: pointer;
+        padding: 2px 5px 1px;
+        margin-top: 20px;
+    }
+    &.btn-close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      margin-top: 0;
+    }
+}
+.custom-selectbox{
+    position: relative;
+    font-size: 0.875rem;
+    &:after{
+      content: " ";
+      height: 0;
+      width: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $theme_grey;
+      position: absolute;
+      right: 20px;
+      top: 40px;
+  }
 }
 .role- {
   &Art {
@@ -111,4 +139,20 @@ a {
 		}
 
 	}
+}
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label { font-weight: normal; }
+input[type="checkbox"] + label span{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background: url('/images/checkbox.png') top left;
+    cursor:pointer;
+}
+input[type="checkbox"]:checked + label span{
+    background: url('/images/checkbox.png') top right;
 }
