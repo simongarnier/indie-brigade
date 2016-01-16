@@ -14,23 +14,24 @@ div.main-nav{
 			width: 20%;
 			display: inline-block;
 			vertical-align: middle;
+			@media (max-width: $tablet-screen){
+				width: 35%;
+			}
 			img{
 				width: 100%;
 			}
 		}
 		div.nav-mobile{
 			display: none;
-			/*
+			width: 63%;
+			text-align: right;
 			@media (max-width: $tablet-screen){
 				display: inline-block;
-				width: 79.5%;
-				text-align: right;
-
 			}
-			*/
+			
 			a.nav-burger{
 				display: inline-block;
-				font-size: 15px;
+				font-size: 1.5rem;
 				cursor: pointer;
 			
 				i{
@@ -44,35 +45,33 @@ div.main-nav{
 		div.nav-menu{
 			width: 79.5%;
 			text-align: right;
-			display: inline-block;
+			display: inline-block !important;
 			vertical-align: middle;
 			line-height: 30px;
-			/*
+			
 			@media (max-width: $tablet-screen){
-				display: none;
-				display: block;
-				width: 70%;
-				min-width: 320px;
-				max-width: 500px;
+				width: 320px;
 				background-color: #eee;
 				position: absolute;
 				top: 0px;
-				left: 0px;
+				right: -345px;
 				text-align: left;
-
+				z-index: 1000;
+				height: 100%;
+				padding: 0px 20px;
+				box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.25);
 			}
-			*/
+			
 
 			>*{
 				display: inline-block;
 				vertical-align: middle;
-				float: right;
-				/*
+				
 				@media (max-width: $tablet-screen){
 					display: block;
 					float: none;
 				}
-				*/
+				
 			}
 
 
@@ -80,21 +79,66 @@ div.main-nav{
 			ul{
 				list-style-type: none;
 				margin: 0px;
+				@media (max-width: $tablet-screen){
+					margin-bottom: 10px;
+					position: relative;
+				}
 				li{
 					display: inline-block;
 					margin: 0px 25px 0px 0px;
 					vertical-align: middle;
 
-					/*
+					
 					@media (max-width: $tablet-screen){
 						display: block;
+						padding: 5px 10px;
+						margin: 0px;
+						border-bottom: dashed 1px #bbb;
 					}
-					*/
+					
 					a{
 						color: #868686;
 						text-transform: uppercase;
 						font-weight: 400;
 						font-size: 1.2rem;
+
+						@media (max-width: $tablet-screen){
+							font-size: 0.8rem;
+							display: block;
+						}
+
+						i{
+							display: none;
+							width: 20px;
+							font-size: 0.9rem;
+							@media (max-width: $tablet-screen){
+								display: inline-block;
+							}
+						}
+
+
+					}
+				}
+				a.nav-close{
+					display: none;
+					width: 30px;
+					height: 30px;
+					background: #ddd;
+					position: absolute;
+					top: 5px;
+					right: 0px;
+					text-align: center;
+					line-height: 30px;
+					vertical-align: middle;
+					cursor: pointer;
+
+					@include border-radius(4px);
+					@media (max-width: $tablet-screen){
+						display: block;
+					}
+
+					i{
+						color: #aaa;
 					}
 				}
 			}
@@ -106,14 +150,6 @@ div.main-nav{
 				>*{
 					display: inline-block;
 					vertical-align: middle;
-					line-height: 35px;
-					float: right;
-					/*
-					@media (max-width: $tablet-screen){
-						display: block;
-						float: none;
-					}
-					*/
 				}
 				>a{
 					margin-right: 10px;
@@ -123,29 +159,35 @@ div.main-nav{
 						color: #868686;
 					}
 
-					&.nav-mail{
-						span{
-							display: block;
-							background: red;
-							padding: 2px;
-							position: absolute;
-							top: 0px;
-							right: -5px;
+					&#lnk_favorite{
+						@media (max-width: $tablet-screen){
+							background-color: $theme_yellow;
+							margin-right: 10px;
+							padding: 0px 10px;
+							@include border-radius(4px);
 							color: #fff;
-							font-size: 10px;
-							min-width: 15px;
-							height: 15px;
 							text-align: center;
-							line-height: 13px;
+							text-decoration: none;
 
-							@include border-radius(50%);
-						}				
+							i{
+								font-size: 0.9rem;
+								color: #fff;
+							}
+
+							&:after{
+								color: #fff;
+								font-size: 0.8rem;
+								content:"Watchlist";
+								margin-left: 5px;
+							}
+						}
 					}
 				}
 
 				img{
 					height: 30px;
 					@include border-radius(50%);
+					
 				}
 				/*
 				&:before{
@@ -217,6 +259,13 @@ footer{
 					line-height: 15px;
 					font-size: 12px;
 					font-weight: 500;
+					@media (max-width: $tablet-screen){
+						display: block;
+						padding: 0px;
+						margin-bottom: 10px;
+						border-right: none;
+					}
+
 					&:last-child{
 						padding-right: 0px;
 						border-right: none;

@@ -13,11 +13,5 @@
       }
     })
    })
-
-
-   function test(){
-
-   }
-
   };
 })( jQuery );

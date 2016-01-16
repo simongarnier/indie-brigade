@@ -94,18 +94,18 @@ a {
 	label{
 		display: block;
 		position: absolute;
-
+    pointer-events: none;
 	}
 	input{
 		outline: none;
 		border: none;
-		border-bottom: 3px solid #eee;
+		border-bottom: 2px solid #eee;
 		background: #fff;
 		padding: 5px;
 		font-size: 12px;
 
 		&:focus{
-			border-bottom: 3px solid $theme_yellow;
+			border-bottom: 2px solid $theme_yellow;
 		}
 
 	}

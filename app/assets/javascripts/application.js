@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require boot
 //= require Input
 //= require utils
