@@ -29,7 +29,7 @@
     <div class="profile-content row">
       <div class="col col-sm-3 about">
         <div class="profile-picture">
-          <img class="img-circle" src="https://scontent-sea1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/12003866_10154327949712501_8412384210960395353_n.jpg?oh=9f6a9cbc048873231e341613ee2765eb&oe=56BF93BC">
+          <img class="img-circle" src="<%=@dev.avatar.url(:medium)%>">
         </div>
         <div class="mobile">
           <h2>Cedric Day-Myer</h2>
@@ -51,7 +51,7 @@
         </ul>
         <h4>Availabilities</h4>
         <p>
-          <%= @dev.availability.name %>
+          some availabilities
         </p>
       </div>
       <div class="col col-sm-6 profile-skills">
