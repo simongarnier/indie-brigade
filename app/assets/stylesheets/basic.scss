@@ -90,13 +90,10 @@ a {
 
 .input-label{
 	position:relative;
-	&:before{
-		content: "";
+  margin-top: 15px;
+	label{
 		display: block;
 		position: absolute;
-		width: 10px;
-		height: 10px;
-		background: green;
 
 	}
 	input{
@@ -108,7 +105,7 @@ a {
 		font-size: 12px;
 
 		&:focus{
-			border-bottom: 3px solid #eee;
+			border-bottom: 3px solid $theme_yellow;
 		}
 
 	}

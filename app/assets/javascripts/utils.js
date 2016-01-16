@@ -3,6 +3,7 @@
 $("body")
 	.on("click","[data-action='tabSlide']", function(event){ tabSlide($(this)); })
 
+$(".input-label").Input();
 
 function tabSlide(obj){
 	var target = obj;
