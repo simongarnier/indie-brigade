@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'clearance/sessions', only: [:create]
 
-  resources :users, controller: 'users', only: [:create] do
+  resources :users, controller: 'users', only: [:create, :show] do
     resource :password,
       controller: 'clearance/passwords',
       only: [:create, :edit, :update]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/search', to: 'settings#search', as: 'search'
   put '/devs/:dev_id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
-  resources :devs  
+  resources :devs
 
   # root 'welcome#show'
 
