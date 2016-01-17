@@ -4,21 +4,21 @@
 		<div class="row">
 			<div class="col col-sm-3">
 				<ul>
-					<li class="active">Edit Profile</li>	
-					<li>Account settings</li>	
+					<li class="active">Edit Profile</li>
+					<li>Account settings</li>
 				</ul>
 			</div>
 			<div class="col col-sm-9 edit-profile-settings">
 				<div class="edit-profile-content">
+				<%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
+				  <%= form.file_field :avatar %>
+				  <%= submit_tag("submit") %>
+				<% end %>
 				<form>
 					<div class="form-name">
 						<input type="text" placeholder="First Name">
 						<input type="text" placeholder="Last Name">
 					</div>
-					<%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
-					  <%= form.file_field :avatar %>
-					  <%= submit_tag("submit") %>
-					<% end %>
 					<label for="about" class="label-form">About</label>
 					<textarea name="about" cols="40" rows="5" class="options-form"></textarea>
 					<br>
@@ -86,12 +86,12 @@
 										<option value="v-long">Very long project (12+ months)</option>
 										<option value="weekend">Weekend Jam</option>
 									</select>
-									<p>I am ready to work for <input name="from-hours" type="number" /> hour(s) to <input name="to-hours" type="number" /> hour(s) every 
+									<p>I am ready to work for <input name="from-hours" type="number" /> hour(s) to <input name="to-hours" type="number" /> hour(s) every
 									<select>
 										<option value="week">week</option>
 										<option value="two-week">two weeks</option>
 										<option value="month">month</option>
-									</select>.</p> 
+									</select>.</p>
 									<a href="#" class="btn-cta btn-close"><i class="fa fa-times"></i></a>
 								</div>
 								<a class="btn-cta btn-plus"><i class="fa fa-plus"></i></a>
@@ -104,52 +104,52 @@
 							   <div class="tab">
 							       <input type="radio" id="tab-1" name="tab-group-1" checked>
 							       <label for="tab-1" class="tab-art">Art</label>
-							       
+
 							       <div class="content content-art">
 							           <ul>
 								            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
 											<li>3D Artist</li>
 											<li>Animation 2D</li>
 										</ul>
-							       </div> 
+							       </div>
 							   </div>
-							    
+
 							   <div class="tab">
 							       <input type="radio" id="tab-2" name="tab-group-1">
 							       <label for="tab-2" class="tab-design">Design</label>
-							       
+
 							       <div class="content content-design">
 							           <ul>
 								            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
 											<li>3D Artist</li>
 											<li>Animation 2D</li>
 										</ul>
-							       </div> 
+							       </div>
 							   </div>
-							    
+
 							    <div class="tab">
 							       <input type="radio" id="tab-3" name="tab-group-1">
 							       <label for="tab-3" class="tab-code">Code</label>
-							     
+
 							       <div class="content content-code">
 							           <ul>
 								            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
 											<li>3D Artist</li>
 											<li>Animation 2D</li>
 										</ul>
-							       </div> 
+							       </div>
 							   </div>
 							    <div class="tab">
 							       <input type="radio" id="tab-4" name="tab-group-1">
 							       <label for="tab-4" class="tab-other">Other</label>
-							     
+
 							       <div class="content content-other">
 							           <ul>
 								            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
 											<li>3D Artist</li>
 											<li>Animation 2D</li>
 										</ul>
-							       </div> 
+							       </div>
 							   </div>
 						   </div>
 						</div>
