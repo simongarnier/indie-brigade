@@ -1,9 +1,21 @@
 .group-color {
     height: 20px;
     width: 100%;
-    background-color: $theme_blue;
 }
-
+.group-{
+  &Art {
+    background-color: $theme_yellow;
+  }
+  &Code {
+    background-color: $theme_blue;
+  }
+  &Design {
+    background-color: $theme_red;
+  }
+  &Other {
+    background-color: $theme_grey;
+  }
+}
 .profile-header {
     height: 240px;
     background-size: cover;
@@ -37,8 +49,11 @@
         display: inline-block;
         i {
           color: $theme_grey_content;
+          font-size: 1rem;
+          transition: font 0.2s ease;
           &:hover {
             color: #4b4b4b;
+            font-size: 1.125rem;
           }
         }
       }
@@ -108,7 +123,6 @@
     .main-skill {
         color: #fff;
         display: inline-block;
-        background-color: $theme_blue;
         padding: 0 5px;
         margin-top:20px;
         p {

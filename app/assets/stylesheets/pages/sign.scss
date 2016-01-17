@@ -1,4 +1,4 @@
-.signup-form {
+.signup-form, .signin-form {
 	padding-bottom: 50px;
 	h1 {
 		font-weight: 200;
@@ -14,7 +14,7 @@
 			margin: 20px 0 45px;
 		}
 	}
-	.g-recaptcha {	
+	.g-recaptcha {
 		margin:0 auto;
 		max-width:300px;
 
@@ -31,5 +31,10 @@
 				background-color: $theme_grey;
 			}
 		}
+	}
+
+.other-links {
+		text-align: center;
+		margin-top: 40px;
 	}
 }
