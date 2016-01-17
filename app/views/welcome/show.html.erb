@@ -1,26 +1,28 @@
-<div class="container">
-	<%= render 'partials/logo_heading' %>
-	<div class="welcome-tagline">
-		<p><span>Find</span> devs.</p>
-		<p><span>Connect</span> to them.</p>
-		<p><span>Create</span> games.</p>
+<%= render 'partials/menu' %>
+<div class="carousel">
+	<img src="/images/home.jpg" alt="Home">	
+	<div>
+		<h2><i class="fa fa-star"></i>Welcome<i class="fa fa-star"></i></h2>
+		<p>Morbi mollis consequat ullamcorper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis egestas, felis porta hendrerit fermentum, mi ante vehicula tortor, in sodales eros tellus non nibh.</p>
 	</div>
+</div>
+<div class="container">
 	<div class="welcome-article row">
-		<div class="article col-md-4">
+		<div class="article col col-md-4">
 			<img src="/images/splash_about.png" alt="About us">
 			<div class="article-content">
 				<h3>About us</h3>
 				<p>Indie Brigade stands for “<b>INDIE BRI</b>dge for <b>GA</b>me <b>DE</b>vs”. We want to allows game devs from all over to reach out to one another and start making games of all types and sizes. Devs can contact other members and create project pages to look for one or more dev. Keep track of devs you have messaged and projects that interest you.</p>
 			</div>
 		</div>
-		<div class="article col-md-4">
+		<div class="article col col-md-4">
 			<img src="/images/splash_signup.png" alt="Sign up">
 			<div class="article-content">
 				<h3>Sign Up</h3>
 				<p>Signing up is quick and easy Only your email, name and role are needed. Your full profile can be completed upon a further visit. Only logged in devs are able to search for projects or see members’ profile pages.</p>
 			</div>
 		</div>
-		<div class="article col-md-4">
+		<div class="article col col-md-4">
 			<img src="/images/splash_members.png" alt="Members">
 			<div class="article-content">
 				<h3>Members</h3>
@@ -28,8 +30,10 @@
 			</div>
 		</div>
 	</div>
+	<div class="welcome-article row">
+		<div class="col col-md-6 col-md-offset-3">
+			  <h3 class="tagline"><%= link_to 'Sign up', sign_up_path %> to reserve your account today!</h3>
+			  <%= render partial: 'users/new' , locals: {user: User.new} %>
+		</div>
+	</div>
 </div>
-<% if !current_user && Clearance.configuration.allow_sign_up? then %>
-  <h3 class="tagline"><%= link_to 'Sign up', sign_up_path %> to reserve your account today!</h3>
-	<%= render partial: 'users/new' , locals: {user: User.new} %>
-<% end %>
