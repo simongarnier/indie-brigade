@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117184639) do
+ActiveRecord::Schema.define(version: 20160117193247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,18 @@ ActiveRecord::Schema.define(version: 20160117184639) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "handle_facebook"
+    t.string   "google_handle"
+    t.string   "tumblr_handle"
+    t.string   "youtube_handle"
+    t.string   "behance_handle"
+    t.string   "instagram_handle"
+    t.string   "twitter_handle"
+    t.string   "deviantart_handle"
+    t.string   "skype_handle"
+    t.string   "vimeo_handle"
+    t.string   "pinterest_handle"
+    t.string   "linkedin_link"
   end
 
   add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree
