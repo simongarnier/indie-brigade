@@ -13,3 +13,4 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require utils
+//= require profile

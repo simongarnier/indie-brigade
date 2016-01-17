@@ -91,6 +91,10 @@
           font-size: 2rem;
           color: $theme_grey_content;
           transition: color 0.2s ease;
+          width: 100%;
+          &.fa-star {
+            color: $theme_yellow;
+          }
         }
         &:hover {
           i {
