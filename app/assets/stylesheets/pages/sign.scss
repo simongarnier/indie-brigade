@@ -1,0 +1,29 @@
+.signup-form {
+	background-color: #fff;
+	border: 1px solid #f0f0f0;
+	border-width: 0 1px 1px 1px;
+	margin-bottom: 20px;
+	h1 {
+		font-weight: 200;
+		font-size: 1.5rem;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	#sign {
+		max-width: 300px;
+		margin:0 auto;
+		div.div-btn {
+			text-align: center;
+			margin: 70px 0 30px;
+			.btn-cta {
+				border-radius: 30px;
+				padding: 15px 40px;
+				font-size:0.875rem;
+				background-color: $theme_yellow;
+				&:hover {
+					background-color: $theme_grey;
+				}
+			}
+		}
+	}
+}
