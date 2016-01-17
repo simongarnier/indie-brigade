@@ -1,4 +1,4 @@
-.signup-form {
+.signup-form, .signin-form {
 	padding-bottom: 50px;
 	h1 {
 		font-weight: 200;
@@ -31,5 +31,9 @@
 				background-color: $theme_grey;
 			}
 		}
+	}
+	.other-links {
+		text-align: center;
+		margin-top: 40px;
 	}
 }
