@@ -43,6 +43,11 @@ body {
 a {
     text-decoration: none;
 }
+button, input, a {
+  &:focus {
+    outline: 0;
+  }
+}
 .hidden{
   display: none;
 }
@@ -53,7 +58,7 @@ a {
     display: inline-block;
     background-color: $theme_grey_content;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 0.75rem;
     color: #fff;
     border: 0;

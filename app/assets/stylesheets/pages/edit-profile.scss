@@ -35,6 +35,17 @@
 		    @media screen and (max-width: $mobile-screen) {
 		    	padding: 0 60px; 
 		    }
+		    .submit-btn {
+		    	text-align: center;
+		    	i {
+		    		margin-right: 5px;
+		    	}
+		    	.confirm-save {
+		    		font-size: 0.875rem;
+				    margin-top: 10px;
+				    font-style: italic;
+		    	}
+    		}
 			label {
 				vertical-align: top;
 				&.label-form {
@@ -238,7 +249,6 @@
 					}
 				}
 			}
-			
 		}
 	}
 }
