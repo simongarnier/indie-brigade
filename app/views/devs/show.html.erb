@@ -1,11 +1,11 @@
 <div class="profile">
-<div class="group-color"></div>
+<div class="group-color group-<%= @dev.role.code %>"></div>
   <div class="profile-header">
   </div>
   <div class="container profile-header-info">
     <div class="col col-sm-3 desktop"></div>
     <div class="col col-sm-6 desktop">
-      <h2>Cedric Day-Myer</h2>
+      <h2><%= @dev.name %></h2>
     </div>
     <div class="col col-sm-3 desktop"></div>
     <div class="social desktop">
@@ -32,7 +32,7 @@
           <img class="img-circle" src="<%=@dev.avatar.url(:medium)%>">
         </div>
         <div class="mobile">
-          <h2>Cedric Day-Myer</h2>
+          <h2><%= @dev.name %></h2>
           <div class="social"></div>
         </div>
         <div class="message-btn">
@@ -55,7 +55,7 @@
         </p>
       </div>
       <div class="col col-sm-6 profile-skills">
-        <div class="main-skill"><p>2D artist</p></div>
+        <div class="main-skill group-<%= @dev.role.code %>"><p>2D artist</p></div>
         <table class="skill-table">
           <tr>
             <td>

@@ -1,0 +1,39 @@
+.signup-form, .signin-form {
+	padding-bottom: 50px;
+	h1 {
+		font-weight: 200;
+		font-size: 1.5rem;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	#sign {
+		max-width: 360px;
+		margin:0 auto;
+		padding: 0 30px;
+		label[for="age-i"] {
+			margin: 20px 0 45px;
+		}
+	}
+	.g-recaptcha {	
+		margin:0 auto;
+		max-width:300px;
+
+	}
+	div.div-btn {
+		text-align: center;
+		margin: 70px 0 30px;
+		.btn-cta {
+			border-radius: 30px;
+			padding: 15px 40px;
+			font-size:0.875rem;
+			background-color: $theme_yellow;
+			&:hover {
+				background-color: $theme_grey;
+			}
+		}
+	}
+	.other-links {
+		text-align: center;
+		margin-top: 40px;
+	}
+}
