@@ -21,4 +21,7 @@ class UsersController < Clearance::UsersController
       user.password = password
     end
   end
+
+  def show
+  end
 end
