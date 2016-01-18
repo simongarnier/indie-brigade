@@ -49,6 +49,11 @@ body {
 }
 a {
     text-decoration: none;
+    color: #d89300;
+    &:hover {
+      text-decoration: underline;
+      color: #d89300;
+    }
 }
 .hidden{
   display: none;

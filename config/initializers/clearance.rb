@@ -4,4 +4,4 @@ Clearance.configure do |config|
   config.routes = false;
 end
 
-Clearance::UsersController.layout 'with_landing'
+Clearance::UsersController.layout 'application'
