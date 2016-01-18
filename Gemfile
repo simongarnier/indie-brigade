@@ -24,6 +24,7 @@ gem 'multi-select-rails'
 
 # user auth
 gem 'clearance', '~> 1.10.1'
+gem "recaptcha", require: "recaptcha/rails"
 
 # admin
 gem 'activeadmin', '~> 1.0.0.pre1'
