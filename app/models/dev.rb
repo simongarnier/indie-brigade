@@ -18,13 +18,17 @@ class Dev < ActiveRecord::Base
 
   attr_reader :skills
 
-  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/images/default.png"
+  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/images/default_profile.png"
+  has_attached_file :banner, styles: { display: "960x240#"}, default_url: "/images/default_banner.png"
   # Validate content type
   validates_attachment_content_type :avatar, content_type: /\Aimage/
+  validates_attachment_content_type :banner, content_type: /\Aimage/
   # Validate filename
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
+  validates_attachment_file_name :banner, matches: [/png\Z/, /jpe?g\Z/]
 
   validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/png"] }, size: { in: 0..1.megabytes }
+  validates_attachment :banner, content_type: { content_type: ["image/jpeg", "image/png"] }, size: { in: 0..5.megabytes }
 
   def skills
     minor_skills + major_skills

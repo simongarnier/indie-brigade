@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117193247) do
+ActiveRecord::Schema.define(version: 20160119014927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,10 @@ ActiveRecord::Schema.define(version: 20160117193247) do
     t.string   "vimeo_handle"
     t.string   "pinterest_handle"
     t.string   "linkedin_link"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree
