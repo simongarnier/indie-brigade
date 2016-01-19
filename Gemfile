@@ -54,3 +54,6 @@ end
 
 # image manipualtion
 gem "paperclip", "~> 4.3"
+
+# languages
+gem 'language_list'
