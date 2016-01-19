@@ -8,20 +8,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def ensure_user_is_logged_in
-    redirect_to sign_in_path unless current_user
+    redirect_to sign_in_path and return unless current_user
   end
 
   def ensure_user_is_admin
-    redirect_to sign_in_path unless current_user.try(:is_admin?)
+    redirect_to sign_in_path and return unless current_user.try(:is_admin?)
   end
 
   def ensure_user_is_super_admin
-    redirect_to sign_in_path unless current_user.try(:is_admin?) && current_user.try(:is_super_admin?)
+    redirect_to sign_in_path and return unless current_user.try(:is_admin?) && current_user.try(:is_super_admin?)
   end
 
   def ensure_dev_owned_by_current_user
     if params[:dev_id].to_s != current_user_dev.id.to_s
-      redirect_to sign_in_path
+      redirect_to sign_in_path and return
     end
   end
 
