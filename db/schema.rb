@@ -119,7 +119,12 @@ ActiveRecord::Schema.define(version: 20160119040743) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "handle_facebook"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+    t.text     "languages",           default: [],                 array: true
+    t.string   "facebook_handle"
     t.string   "google_handle"
     t.string   "tumblr_handle"
     t.string   "youtube_handle"
@@ -131,11 +136,6 @@ ActiveRecord::Schema.define(version: 20160119040743) do
     t.string   "vimeo_handle"
     t.string   "pinterest_handle"
     t.string   "linkedin_link"
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
-    t.text     "languages",           default: [],                 array: true
   end
 
   add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree

@@ -1,6 +1,6 @@
 class AddSocialAccountsToDevs < ActiveRecord::Migration
   def change
-    add_column :devs, :handle_facebook, :string
+    add_column :devs, :facebook_handle, :string
     add_column :devs, :google_handle, :string
     add_column :devs, :tumblr_handle, :string
     add_column :devs, :youtube_handle, :string
