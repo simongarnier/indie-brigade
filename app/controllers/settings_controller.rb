@@ -1,5 +1,3 @@
-include ApplicationHelper
-
 class SettingsController < ApplicationController
   before_action :ensure_dev_owned_by_current_user, only: [:edit_skills, :update_skills]
 

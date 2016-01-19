@@ -1,4 +1,6 @@
 class DevsController < ApplicationController
+  before_action :ensure_dev_owned_by_current_user, only: [:edit, :update]
+
   def edit
     @dev = Dev.find(params[:id])
   end

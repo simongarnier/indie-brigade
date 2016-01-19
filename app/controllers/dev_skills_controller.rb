@@ -1,5 +1,3 @@
-include ApplicationHelper
-
 class DevSkillsController < ApplicationController
   before_action :ensure_current_user_dev
   respond_to :js

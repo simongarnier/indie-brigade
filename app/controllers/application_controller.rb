@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
+  include ApplicationHelper
   #before_action  :require_login, only: [:create, :new, :edit, :update, :destroy]
 
   # Prevent CSRF attacks by raising an exception.
