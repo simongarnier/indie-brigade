@@ -5,6 +5,8 @@ gem 'rails', '4.2.1'
 
 # db
 gem 'pg'
+gem 'backup'
+gem 'whenever', require: false
 
 # css
 gem 'bootstrap-sass'
