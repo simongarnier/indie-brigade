@@ -1,11 +1,11 @@
 <div class="profile">
 <div class="group-color group-<%= @dev.role.code %>"></div>
-  <div class="profile-header">
+  <div class="profile-header" style="background-image: url(<%= @dev.banner.url(:display) %>);">
   </div>
   <div class="container profile-header-info">
     <div class="col col-sm-3 desktop"></div>
     <div class="col col-sm-6 desktop">
-      <h2><%= @dev.name %></h2>
+      <h2><%= "#{@dev.user.firstname} #{@dev.user.lastname}" %></h2>
     </div>
     <div class="col col-sm-3 desktop"></div>
     <div class="social desktop">
@@ -29,10 +29,10 @@
     <div class="profile-content row">
       <div class="col col-sm-3 about">
         <div class="profile-picture">
-          <img class="img-circle" src="<%=@dev.avatar.url(:medium)%>">
+          <img class="img-circle" src="<%= @dev.avatar.url(:medium) %>">
         </div>
         <div class="mobile">
-          <h2><%= @dev.name %></h2>
+          <h2><%= "#{@dev.user.firstname} #{@dev.user.lastname}" %></h2>
           <div class="social"></div>
         </div>
         <div class="message-btn">

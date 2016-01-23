@@ -1,4 +1,5 @@
 .edit-profile {
+	textarea { resize: vertical; }
 	div.edit-profile-container{
 		.col:first-child {
 			padding: 0;
@@ -13,7 +14,7 @@
 				&.active{
 					background-color: $theme_yellow;
 					color: #fff;
-				} 
+				}
 				@media screen and (max-width: $mobile-screen){
 					display: inline-block;
 					width:49%;
@@ -27,9 +28,9 @@
 		border-left: 1px solid #f0f0f0;
 		font-size: 0.875rem;
 		.edit-profile-content {
-			padding: 0 30px;			
+			padding: 0 30px;
 		    @media screen and (max-width: $mobile-screen) {
-		    	padding: 0 60px; 
+		    	padding: 0 60px;
 		    }
 			label {
 				vertical-align: top;
@@ -122,7 +123,7 @@
 				}
 			}
 				.tabs {
-				  position: relative;   
+				  position: relative;
 				  min-height: 200px; /* This part sucks */
 				  clear: both;
 				  margin: 25px 0;
@@ -134,14 +135,14 @@
 				    width: initial!important;
 				    display: block!important;
 				    label {
-					  background: #fafafa; 
-					  padding: 10px; 
-					  margin-left: -1px; 
+					  background: #fafafa;
+					  padding: 10px;
+					  margin-left: -1px;
 					  position: relative;
-					  left: 1px; 
+					  left: 1px;
 					}
 					[type=radio] {
-					  display: none;   
+					  display: none;
 					}
 				}
 				.content {
@@ -234,7 +235,7 @@
 					}
 				}
 			}
-			
+
 		}
 	}
 }

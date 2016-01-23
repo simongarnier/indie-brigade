@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  resources :devs do
+    get 'availabilities_with_additionnals', on: :member
+    get 'remove_availability', on: :member
+  end
+
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
   get '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up' => 'clearance/users#new', as: 'sign_up'
@@ -23,7 +28,6 @@ Rails.application.routes.draw do
   get '/search', to: 'settings#search', as: 'search'
   put '/devs/:dev_id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
-  resources :devs
 
   # root 'welcome#show'
 

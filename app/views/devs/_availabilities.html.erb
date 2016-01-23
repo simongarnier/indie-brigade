@@ -1,0 +1,24 @@
+<input type="checkbox" value="involvment" id="involvment-i">
+<label for="involvment-i"><span></span>Currently unavailable</label>
+<%= fields_for dev do |f|%>
+  <%= f.fields_for :availabilities, availabilities do |f|%>
+    <div class="border-custom custom-selectbox availability-elem">
+      <%= f.collection_select(
+          :project_size_id,
+          ProjectSize.all,
+          :id,
+          :text,
+          {},
+          {
+            id: "project-length",
+            class: "options-form"
+          }
+        )
+      %>
+      <p>I am ready to work for <%= f.number_field :per_week_lower, in: 1..160, step: 1  %> hour(s) to  <%= f.number_field :per_week_upper, in: 1..160, step: 1  %>  hour(s) every
+      <%= f.collection_select(:for_number_of_weeks, [[1, "week"], [2, "two weeks"], [4, "month"]], :first, :last)%>.</p>
+      <a class="btn-cta btn-close" ><i class="fa fa-times"></i></a>
+    </div>
+  <% end %>
+<% end %>
+<a class="btn-cta btn-plus" ><i class="fa fa-plus"></i></a>

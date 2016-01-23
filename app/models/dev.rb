@@ -15,6 +15,10 @@ class Dev < ActiveRecord::Base
   has_many :minor_skills, through: :dev_minor_skills, source: :skill
 
   has_many :availabilities, as: :available
+  accepts_nested_attributes_for :availabilities, allow_destroy: true
+
+  has_many :dev_softwares, dependent: :delete_all
+  has_many :softwares, through: :dev_softwares
 
   attr_reader :skills
 

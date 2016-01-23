@@ -1,203 +1,145 @@
 <%= render 'partials/menu' %>
 <div class="container">
-<div class="row edit-profile">
-  <div class="col col-sm-10 col-sm-offset-1 edit-profile-container box-content">
-    <div class="row">
-      <div class="col col-sm-3">
-        <ul>
-          <li class="active">Edit Profile</li>
-          <li>Account settings</li>
-        </ul>
-      </div>
-      <div class="col col-sm-9 edit-profile-settings">
-        <div class="edit-profile-content">
-        <%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
-          <%= form.file_field :avatar %>
-          <%= submit_tag("submit") %>
-        <% end %>
-        <form>
-          <div class="form-name">
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-          </div>
-          <label for="about" class="label-form">About</label>
-          <textarea name="about" cols="40" rows="5" class="options-form"></textarea>
-          <br>
-          <label for="conditions" class="label-form">Conditions</label>
-            <div class="options-form">
-              <div>
-                <input type="checkbox" value="online" id="online-i" />
-                <label for="online-i"><span></span>Online</label>
+  <div class="row edit-profile">
+    <div class="col col-sm-10 col-sm-offset-1 edit-profile-container box-content">
+      <div class="row">
+        <div class="col col-sm-3">
+          <ul>
+            <li class="active">Edit Dev information</li>
+            <li>Account settings</li>
+          </ul>
+        </div>
+        <div class="col col-sm-9 edit-profile-settings">
+          <div class="edit-profile-content">
+            <%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
+              <%= form.hidden_field :id, value: @dev.id %>
+              <%= label_tag :avatar, "Profile", class: "label-form" %>
+              <%= form.file_field :avatar %>
+
+              <%= label_tag :banner, "Banner", class: "label-form" %>
+              <%= form.file_field :banner %>
+
+              <%= label_tag :description, "About", class: "label-form" %>
+              <%= form.text_area :description, size: "40x5", class: "options-form" %>
+              <br>
+
+              <label for="conditions" class="label-form">Conditions</label>
+
+              <div class="options-form">
+                <% Condition.all.each do |condition| %>
+                  <div>
+                    <%= check_box_tag :condition_ids, condition.id, @dev.conditions.include?(condition), name: "dev[condition_ids][]", id: "condition-#{condition.id}" %>
+                    <%= label_tag :condition_ids, for: "condition-#{condition.id}" do %>
+                      <span></span><%= condition.name%>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
-              <div>
-                <input type="checkbox" value="paid" id="paid-i">
-                <label for="paid-i"><span></span>Paid</label>
+
+              <div class="custom-selectbox" id="language-selectbox">
+                <%= label_tag :languages, "Languages",class: "label-form" %>
+                <%= form.collection_select(
+                  :languages,
+                  LanguageList::COMMON_LANGUAGES,
+                  :iso_639_1,
+                  :name,
+                  {},
+                  {
+                    multiple: true,
+                    class: "options-form chosen-select"
+                  }
+                )%>
               </div>
-              <div>
-                <input type="checkbox" value="person" id="person-i">
-                <label for="person-i"><span></span>In Person</label>
-              </div>
-              <div>
-                <input type="checkbox" value="unpaid" id="unpaid-i">
-                <label for="unpaid-i"><span></span>Unpaid</label>
-              </div>
-              <div>
-                <input type="checkbox" value="internship" id="internship-i">
-                <label for="internship-i"><span></span>Internship</label>
-              </div>
-            </div>
-            <div class="custom-selectbox" id="language-selectbox">
-              <label for="language" class="label-form">Language</label>
-              <select name="language" id="language" class="border-custom options-form">
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option disabled>---</option>
-                <option value="ar">Arabic</option>
-                <option value="ca">Cantonese</option>
-                <option value="kh">Cambodian</option>
-                <option value="ht">Creole</option>
-                <option value="de">German</option>
-                <option value="it">Italian</option>
-                <option value="ja">Japanese</option>
-                <option value="ko">Korean</option>
-                <option value="ma">Mandarin</option>
-                <option value="pa">Penjabi</option>
-                <option value="pl">Polish</option>
-                <option value="pt">Portuguese</option>
-                <option value="ru">Russian</option>
-                <option value="es">Spanish</option>
-                <option value="tl">Tagalog</option>
-                <option value="ta">Tamil</option>
-                <option value="ur">Urdu</option>
-                <option value="vi">Vietnamese</option>
-              </select>
-              <a class="btn-cta btn-plus"><i class="fa fa-plus"></i></a>
-            </div>
+
             <div class="involvment">
               <label for="conditions" class="label-form">Involvment</label>
-              <div class="options-form">
-                <input type="checkbox" value="involvment" id="involvment-i">
-                <label for="involvment-i"><span></span>Currently unavailable</label>
-                <div class="border-custom custom-selectbox">
-                  <select name="project-length" id="project-length" class="options-form">
-                    <option value="month">Month-long Jam</option>
-                    <option value="short">Short Project (0-3 months)</option>
-                    <option value="medium">Medium project (3-6 months)</option>
-                    <option value="long">Long project (6-12 months)</option>
-                    <option value="v-long">Very long project (12+ months)</option>
-                    <option value="weekend">Weekend Jam</option>
-                  </select>
-                  <p>I am ready to work for <input name="from-hours" type="number" /> hour(s) to <input name="to-hours" type="number" /> hour(s) every
-                  <select>
-                    <option value="week">week</option>
-                    <option value="two-week">two weeks</option>
-                    <option value="month">month</option>
-                  </select>.</p>
-                  <a href="#" class="btn-cta btn-close"><i class="fa fa-times"></i></a>
+              <div class="options-form availabilities-container">
+                <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+              </div>
+            </div>
+
+              <div class="custom-selectbox" >
+                <%= label_tag :main_skill_id, "Primary Skills", class: "label-form" %>
+                <%= form.grouped_collection_select(
+                  :main_skill_id,
+                  Role.all,
+                  :skills,
+                  :code,
+                  :id,
+                  :long_name,
+                  {},
+                  {class: "chosen-select options-form"}
+                )%>
+              </div>
+
+              <div class="custom-selectbox" >
+                <%= label_tag :main_skill_id, "Major Skills", class: "label-form" %>
+                <%= form.grouped_collection_select(
+                  :major_skill_ids,
+                  Role.all,
+                  :skills,
+                  :code,
+                  :id,
+                  :long_name,
+                  {},
+                  {
+                    multiple: true,
+                    class: "chosen-select options-form"
+                  }
+                )%>
+              </div>
+
+              <div class="custom-selectbox" >
+                <%= label_tag :main_skill_id, "Minor Skills", class: "label-form" %>
+                <%= form.grouped_collection_select(
+                  :minor_skill_ids,
+                  Role.all,
+                  :skills,
+                  :code,
+                  :id,
+                  :long_name,
+                  {},
+                  {
+                    multiple: true,
+                    class: "chosen-select options-form"
+                  }
+                )%>
+              </div>
+
+              <div class="custom-selectbox" id="language-selectbox">
+                <%= label_tag :softwares, "Softwares", class: "label-form" %>
+                <%= form.collection_select(
+                  :software_ids,
+                  Software.all,
+                  :id,
+                  :name,
+                  {},
+                  {
+                    multiple: true,
+                    class: "options-form chosen-select"
+                  }
+                )%>
+              </div>
+
+              <div class="form-socials">
+                <label for="socials" class="label-form">Elsewhere on the web</label>
+                <div class="options-form">
+                  <% @dev.attributes.each do |n, v|%>
+                    <% if n.include? "handle" %>
+                      <%= label_tag n.to_sym, n.gsub(/_handle/, "").capitalize %>
+                      <%= form.text_field n.to_sym %>
+                    <% end %>
+                  <% end %>
+                  <%= label_tag :linkedin_link %>
+                  <%= form.text_field :linkedin_link %>
                 </div>
-                <a class="btn-cta btn-plus"><i class="fa fa-plus"></i></a>
               </div>
-            </div>
 
-            <div class="tabs">
-              <label for="p-skills" class="label-form">Primary skills <span class="p-skills">1/1</span></label>
-              <div class="options-form p-skill-tabs">
-                 <div class="tab">
-                     <input type="radio" id="tab-1" name="tab-group-1" checked>
-                     <label for="tab-1" class="tab-art">Art</label>
-
-                     <div class="content content-art">
-                         <ul>
-                            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
-                      <li>3D Artist</li>
-                      <li>Animation 2D</li>
-                    </ul>
-                     </div>
-                 </div>
-
-                 <div class="tab">
-                     <input type="radio" id="tab-2" name="tab-group-1">
-                     <label for="tab-2" class="tab-design">Design</label>
-
-                     <div class="content content-design">
-                         <ul>
-                            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
-                      <li>3D Artist</li>
-                      <li>Animation 2D</li>
-                    </ul>
-                     </div>
-                 </div>
-
-                  <div class="tab">
-                     <input type="radio" id="tab-3" name="tab-group-1">
-                     <label for="tab-3" class="tab-code">Code</label>
-
-                     <div class="content content-code">
-                         <ul>
-                            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
-                      <li>3D Artist</li>
-                      <li>Animation 2D</li>
-                    </ul>
-                     </div>
-                 </div>
-                  <div class="tab">
-                     <input type="radio" id="tab-4" name="tab-group-1">
-                     <label for="tab-4" class="tab-other">Other</label>
-
-                     <div class="content content-other">
-                         <ul>
-                            <li class="selected">2D Artist<span><i class="fa fa-check"></i></span></li>
-                      <li>3D Artist</li>
-                      <li>Animation 2D</li>
-                    </ul>
-                     </div>
-                 </div>
-               </div>
-            </div>
-            <div class="form-socials">
-              <label for="socials" class="label-form">Elsewhere on the web</label>
-              <div class="options-form">
-                <label for="facebook">Facebook</label>
-                <input type="text" name="facebook" />
-
-                <label for="google">Google+</label>
-                <input type="text" name="google" />
-
-                <label for="linkedin">LinkedIn</label>
-                <input type="text" name="linkedin" />
-
-                <label for="tumblr">Tumblr</label>
-                <input type="text" name="tumblr" />
-
-                <label for="youtube">Youtube</label>
-                <input type="text" name="youtube" />
-
-                <label for="behance">Behance</label>
-                <input type="text" name="behance" />
-
-                <label for="instagram">Instagram</label>
-                <input type="text" name="instagram" />
-
-                <label for="twitter">Twitter</label>
-                <input type="text" name="twitter" />
-
-                <label for="deviantart">Deviantart</label>
-                <input type="text" name="deviantart" />
-
-                <label for="skype">Skype</label>
-                <input type="text" name="skype" />
-
-                <label for="vimeo">Vimeo</label>
-                <input type="text" name="vimeo" />
-
-                <label for="pinterest">Pinterest</label>
-                <input type="text" name="pinterest" />
-              </div>
-            </div>
-          </form>
+              <%= submit_tag("Search") %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
