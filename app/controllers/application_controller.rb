@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_dev_owned_by_current_user
-    if params[:id].to_s != current_user_dev.id.to_s
+    if params[:id].to_s != current_user_dev.try(:id).to_s
       redirect_to sign_in_path and return
     end
   end
