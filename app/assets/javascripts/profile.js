@@ -2,7 +2,12 @@ $(document).ready(function(){
   var baseAmount = $(".availabilities-container").children(".availability-elem").length
   var dev_id = $("input#dev_id").val()
 
-  $(".chosen-select").chosen()
+  $(".lang-select").chosen()
+  $(".softwares-select").chosen()
+  $(".primary-skills-select").chosen()
+  $(".major-skills-select").chosen({max_selected_options: 3})
+  $(".minor-skills-select").chosen({max_selected_options: 5})
+
   $(".favorite-link").on("click", function(e){
     var star = $(e.target);
     if(star.hasClass("fa-star-o")){
