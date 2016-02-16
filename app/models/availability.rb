@@ -18,8 +18,8 @@ class Availability < ActiveRecord::Base
         AND per_week && int4range(?, ?)",
         availability.id,
         availability.project_size_id,
-        availability.per_week.first,
-        availability.per_week.last+1
+        availability.per_week.first/availability.for_number_of_weeks,
+        availability.per_week.last+1/availability.for_number_of_weeks
       )
     end
   }
@@ -54,12 +54,11 @@ class Availability < ActiveRecord::Base
     per_week_upper
   end
 
-  def for_number_of_weeks= i
-    i = i.to_i
-    self.per_week = per_week_lower/i..per_week_upper/i
+  def as_sentence
+    "Ready to work for #{per_week_lower} to #{per_week_upper} every #{Availability.for_number_of_weeks_as_tuples.select{|t| t.first == for_number_of_weeks}.first.last}"
   end
 
-  def for_number_of_weeks
-    1 # always return because we are mutating the range when assigned, not actually saving the value
+  def self.for_number_of_weeks_as_tuples
+    [[1, "week"], [2, "two weeks"], [4, "month"]]
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120070644) do
+ActiveRecord::Schema.define(version: 20160216022859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,13 @@ ActiveRecord::Schema.define(version: 20160120070644) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime  "created_at",      null: false
-    t.datetime  "updated_at",      null: false
+    t.datetime  "created_at",                      null: false
+    t.datetime  "updated_at",                      null: false
     t.int4range "per_week"
-    t.integer   "project_size_id", null: false
+    t.integer   "project_size_id",                 null: false
     t.integer   "available_id"
     t.string    "available_type"
+    t.integer   "for_number_of_weeks", default: 1, null: false
   end
 
   add_index "availabilities", ["available_type", "available_id"], name: "index_availabilities_on_available_type_and_available_id", using: :btree

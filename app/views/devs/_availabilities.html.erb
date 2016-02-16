@@ -16,7 +16,7 @@
         )
       %>
       <p>I am ready to work for <%= f.number_field :per_week_lower, in: 1..160, step: 1  %> hour(s) to  <%= f.number_field :per_week_upper, in: 1..160, step: 1  %>  hour(s) every
-      <%= f.collection_select(:for_number_of_weeks, [[1, "week"], [2, "two weeks"], [4, "month"]], :first, :last)%>.</p>
+      <%= f.collection_select(:for_number_of_weeks, Availability.for_number_of_weeks_as_tuples, :first, :last)%>.</p>
       <a class="btn-cta btn-close" ><i class="fa fa-times"></i></a>
     </div>
   <% end %>
