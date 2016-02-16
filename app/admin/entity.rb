@@ -28,7 +28,7 @@ ActiveAdmin.register_page "Entities", namespace: :super_admin do
         panel link_to('Availabilities', super_admin_availabilities_path) do
           ul do
             Availability.all.map do |availability|
-              li link_to(availability.name, super_admin_availability_path(availability))
+              li link_to(availability.as_sentence, super_admin_availability_path(availability))
             end
           end
         end
