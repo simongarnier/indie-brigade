@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
   include ApplicationHelper
-  #before_action  :require_login, only: [:create, :new, :edit, :update, :destroy]
-
+  before_action do
+    @current_user = current_user_dev
+  end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
