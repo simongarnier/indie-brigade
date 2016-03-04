@@ -13,5 +13,6 @@
 //= require jquery
 //= require chosen.jquery
 //= require bootstrap-sprockets
-//= require utils
 //= require profile
+//= require boot
+//= require Input
