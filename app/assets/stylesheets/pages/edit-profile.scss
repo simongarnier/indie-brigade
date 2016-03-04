@@ -135,6 +135,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                margin-bottom: 20px;
                 @media screen and (max-width: $sm-mobile-screen) {
                     display: block;
                     text-align: center;
@@ -185,6 +186,16 @@
                         @media screen and (max-width: $sm-mobile-screen) {
                             right: 0;
                         }
+                    }
+                    .banner-input,
+                    .avatar-input {
+                        p.file-name {
+                            position: absolute;
+                            bottom: -40px;
+                            right: 0;
+                            white-space: nowrap;
+                        }
+                        margin-bottom: 20px;
                     }
                 }
                 label.label-form {

@@ -55,4 +55,11 @@ $(document).ready(function(){
   $(".btn-plus").click(additionnalAvailabilitiesHandler)
 
   $(".btn-close").click(closeAvailabilityHandler);
+
+  $('.banner-input input[type=file]').change(function(e){
+    $(this).parent().find(".file-name").text(e.target.files[0].name);
+  });
+  $('.avatar-input input[type=file]').change(function(e){
+    $(this).parent().find(".file-name").text(e.target.files[0].name);
+  });
 });

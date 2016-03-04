@@ -20,7 +20,6 @@ $desktop-screen: 1200px;
     border-radius: $radius;
 }
 
-
 // Classes ///////////////////////////
 * {
     margin: 0px;
@@ -33,34 +32,38 @@ body {
     font-size: 16px;
 }
 
-.content-tab{
-	display: none;
-
-	&.active{
-		display: block;
-	}
+.content-tab {
+    display: none;
+    &.active {
+        display: block;
+    }
 }
+
 .box-content {
     background-color: #fff;
     border: 1px solid #f0f0f0;
-    margin-bottom: 20px;  
-    box-shadow: 0 3px 3px rgba(0,0,0,0.19);
+    margin-bottom: 20px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.19);
     border-radius: 2px;
 }
+
 a {
     text-decoration: none;
     color: #d89300;
     &:hover {
-      text-decoration: underline;
-      color: #d89300;
+        text-decoration: underline;
+        color: #d89300;
     }
 }
-.hidden{
-  display: none;
+
+.hidden {
+    display: none;
 }
+
 .mobile {
-  display: none;
+    display: none;
 }
+
 .btn-cta {
     display: inline-block;
     background-color: $theme_grey_content;
@@ -73,99 +76,109 @@ a {
     @include border-radius(5px);
     transition: background-color 0.2s ease;
     &:hover {
-      background-color: $theme_yellow;
-      color: #fff;
-      text-decoration: none;
+        background-color: $theme_yellow;
+        color: #fff;
+        text-decoration: none;
     }
-    &.btn-plus, &.btn-close {
+    &:focus {
+        color: white;
+        text-decoration: none;
+    }
+    &.btn-plus,
+    &.btn-close {
         cursor: pointer;
         padding: 2px 5px 1px;
         margin-top: 20px;
     }
     &.btn-close {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      margin-top: 0;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin-top: 0;
     }
 }
-.custom-selectbox{
+
+.custom-selectbox {
     position: relative;
     font-size: 0.875rem;
-    &:after{
-      content: " ";
-      height: 0;
-      width: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid $theme_grey;
-      position: absolute;
-      right: 20px;
-      top: 40px;
-  }
+    &:after {
+        content: " ";
+        height: 0;
+        width: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $theme_grey;
+        position: absolute;
+        right: 20px;
+        top: 40px;
+    }
 }
+
 .role- {
-  &Art {
-    color: $theme_blue;
-  }
-  &Design {
-    color: $theme_green;
-  }
-  &Code {
-    color: $theme_red;
-  }
-  &Other {
-    color: $theme_grey;
-  }
+    &Art {
+        color: $theme_blue;
+    }
+    &Design {
+        color: $theme_green;
+    }
+    &Code {
+        color: $theme_red;
+    }
+    &Other {
+        color: $theme_grey;
+    }
 }
 
 @media screen and (max-width:$mobile-screen) {
-  .mobile {
-    display: inline-block;
-  }
-  .desktop {
-    display: none;
-  }
+    .mobile {
+        display: inline-block;
+    }
+    .desktop {
+        display: none;
+    }
 }
 
-.input-label{
-	position:relative;
-	&:before{
-		content: "";
-		display: block;
-		position: absolute;
-		width: 10px;
-		height: 10px;
-		background: green;
-
-	}
-	input{
-		outline: none;
-		border: none;
-		border-bottom: 3px solid #eee;
-		background: #fff;
-		padding: 5px;
-		font-size: 12px;
-
-		&:focus{
-			border-bottom: 3px solid #eee;
-		}
-
-	}
+.input-label {
+    position: relative;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: green;
+    }
+    input {
+        outline: none;
+        border: none;
+        border-bottom: 3px solid #eee;
+        background: #fff;
+        padding: 5px;
+        font-size: 12px;
+        &:focus {
+            border-bottom: 3px solid #eee;
+        }
+    }
 }
+
 input[type="checkbox"] {
-    display:none;
+    display: none;
 }
-input[type="checkbox"] + label { font-weight: normal; }
-input[type="checkbox"] + label span{
-    display:inline-block;
-    width:16px;
-    height:16px;
-    margin:-1px 4px 0 0;
-    vertical-align:middle;
+
+input[type="checkbox"] + label {
+    font-weight: normal;
+}
+
+input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
     background: url('/images/checkbox.png') top left;
-    cursor:pointer;
+    cursor: pointer;
 }
-input[type="checkbox"]:checked + label span{
+
+input[type="checkbox"]:checked + label span {
     background: url('/images/checkbox.png') top right;
 }

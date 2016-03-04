@@ -17,7 +17,10 @@
                 <div class="options-form-flex">
                   <img class="img-circle profile-img" src="<%= @dev.avatar.url(:medium) %>">
                   <div class="upload-fake">
-                  <%= form.file_field :avatar %>
+                    <div class="avatar-input">
+                      <%= form.file_field :avatar %>
+                      <p class="file-name"></p>
+                    </div>
                   <div class="fakefile">
                     <input />
                     <span class="btn-cta">Upload</span>
@@ -30,7 +33,10 @@
                 <div class="options-form-flex">
                   <img class="banner-img" src="<%= @dev.banner.url(:medium) %>">
                   <div class="upload-fake">
-                  <%= form.file_field :banner %>
+                    <div class="banner-input">
+                      <%= form.file_field :banner %>
+                      <p class="file-name"></p>
+                    </div>
                   <div class="fakefile">
                     <input />
                     <span class="btn-cta">Upload</span>
