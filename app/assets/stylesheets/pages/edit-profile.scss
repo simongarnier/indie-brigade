@@ -166,7 +166,7 @@
                     height: 40px;
                     width: 65px;
                     @media screen and (max-width: $sm-mobile-screen) {
-                        margin: 10px auto;
+                        margin: 10px auto 50px;
                     }
                     .fakefile {
                         position: absolute;
@@ -194,6 +194,10 @@
                             bottom: -40px;
                             right: 0;
                             white-space: nowrap;
+                            @media screen and (max-width: $sm-mobile-screen) {
+                                right: 50%;
+                                transform: translateX(50%);
+                            }
                         }
                         margin-bottom: 20px;
                     }
@@ -203,6 +207,7 @@
                     @media screen and (max-width: $sm-mobile-screen) {
                         width: 100%;
                         text-align: center;
+                        font-weight: bold;
                     }
                 }
             }
@@ -215,6 +220,7 @@
                     font-weight: normal;
                     @media screen and (max-width: $sm-mobile-screen) {
                         width: 100%;
+                        font-weight: bold;
                     }
                 }
                 span.p-skills {
@@ -409,6 +415,9 @@
                         background-color: #fff;
                         border-width: 0 0 1px;
                         margin-bottom: 20px;
+                        @media screen and (max-width: $sm-mobile-screen) {
+                            width: 100%;
+                        }
                         &:focus {
                             outline: 0;
                         }
