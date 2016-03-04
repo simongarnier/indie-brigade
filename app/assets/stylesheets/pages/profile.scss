@@ -4,13 +4,13 @@
 }
 .group-{
   &Art {
-    background-color: $theme_yellow;
-  }
-  &Code {
     background-color: $theme_blue;
   }
-  &Design {
+  &Code {
     background-color: $theme_red;
+  }
+  &Design {
+    background-color: $theme_green;
   }
   &Other {
     background-color: $theme_grey;
