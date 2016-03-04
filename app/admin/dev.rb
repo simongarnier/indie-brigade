@@ -29,10 +29,21 @@ ActiveAdmin.register Dev, namespace: :super_admin do
 
   form do |f|
     f.inputs 'dev' do
-      f.input :name, as: :string
       f.input :description, as: :text
       f.input :role, as: :select, collection: Role.all.collect {|role| [role.code, role.id] }, include_blank: true
       f.input :main_skill, as: :select, collection: Skill.all.collect {|skill| [skill.short_name, skill.id] }, include_blank: true
+      f.input :facebook_handle, as: :string
+      f.input :google_handle, as: :string
+      f.input :tumblr_handle, as: :string
+      f.input :youtube_handle, as: :string
+      f.input :behance_handle, as: :string
+      f.input :instagram_handle, as: :string
+      f.input :twitter_handle, as: :string
+      f.input :deviantart_handle, as: :string
+      f.input :skype_handle, as: :string
+      f.input :vimeo_handle, as: :string
+      f.input :pinterest_handle, as: :string
+      f.input :linkedin_link, as: :string
     end
     f.actions
   end
