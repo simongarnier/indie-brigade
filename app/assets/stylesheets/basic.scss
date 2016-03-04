@@ -163,15 +163,17 @@ a {
 
 .iNd-input {
     position: relative;
-    margin-top: 15px;
+    margin-top: 25px;
     label {
         display: block;
         position: absolute;
         pointer-events: none;
         color: #aaa;
         font-weight: 400;
+        font-size: 0.9rem;
     }
     input {
+        width: 100%;
         outline: none;
         border: none;
         border-bottom: 2px solid #eee;

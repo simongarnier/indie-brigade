@@ -42,4 +42,4 @@ Rails.application.configure do
   config.identity_cache_store = :mem_cache_store, Dalli::Client.new('localhost:11211')
 end
 
-Paperclip.options[:command_path] = "/usr/bin/"
+Paperclip.options[:command_path] = "/usr/local/bin/"

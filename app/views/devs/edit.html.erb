@@ -1,3 +1,4 @@
+<%= render 'partials/menu' %>
 <div class="container-fluid">
   <div class="row edit-profile">
     <div class="col col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 edit-profile-container box-content">
@@ -149,12 +150,16 @@
                 <div class="options-form">
                   <% @dev.attributes.each do |n, v|%>
                     <% if n.include? "handle" %>
+                    <div class="iNd-input">
                       <%= label_tag n.to_sym, n.gsub(/_handle/, "").capitalize %>
-                      <%= form.text_field n.to_sym, :placeholder => "username"%>
+                      <%= form.text_field n.to_sym%>
+                    </div>
                     <% end %>
                   <% end %>
+                  <div class="iNd-input">
                   <%= label_tag :linkedin_link %>
-                  <%= form.text_field :linkedin_link, :placeholder => "full profile link"%>
+                  <%= form.text_field :linkedin_link%>
+                  </div>
                 </div>
               </div>
 

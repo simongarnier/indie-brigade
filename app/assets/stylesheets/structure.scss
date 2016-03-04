@@ -14,11 +14,12 @@ div.main-nav{
 			width: 20%;
 			display: inline-block;
 			vertical-align: middle;
+			height: 100%;
 			@media (max-width: $tablet-screen){
 				width: 35%;
 			}
 			img{
-				width: 100%;
+				height: 100%;
 			}
 		}
 		div.nav-mobile{
@@ -100,7 +101,7 @@ div.main-nav{
 						color: #868686;
 						text-transform: uppercase;
 						font-weight: 400;
-						font-size: 1.2rem;
+						font-size: 1rem;
 
 						@media (max-width: $tablet-screen){
 							font-size: 0.8rem;
