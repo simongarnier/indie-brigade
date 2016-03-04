@@ -161,6 +161,48 @@ a {
     }
 }
 
+.iNd-input {
+    position: relative;
+    margin-top: 15px;
+    label {
+        display: block;
+        position: absolute;
+        pointer-events: none;
+        color: #aaa;
+        font-weight: 400;
+    }
+    input {
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #eee;
+        background: #fff;
+        padding: 5px 0px;
+        font-size: 12px;
+        &:focus {
+            border-bottom: 2px solid $theme_yellow;
+        }
+    }
+}
+
+.iNd-tabs-global {
+    .iNd-tabs {
+        height: 50px;
+        background: tomato;
+        width: 100%;
+        .iNd-tab {
+            height: 100%;
+            display: inline-block;
+            min-width: 200px;
+            background: green;
+        }
+    }
+    .iNd-tab-panels {
+        .iNd-tab-panel {
+            display: none;
+        }
+    }
+}
+
 input[type="checkbox"] {
     display: none;
 }

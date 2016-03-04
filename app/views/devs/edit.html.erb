@@ -31,7 +31,7 @@
               <div class="banner-upload">
                 <%= label_tag :banner, "Banner", class: "label-form" %>
                 <div class="options-form-flex">
-                  <img class="banner-img" src="<%= @dev.banner.url(:medium) %>">
+                  <img class="banner-img" src="<%= @dev.banner.url(:display) %>">
                   <div class="upload-fake">
                     <div class="banner-input">
                       <%= form.file_field :banner %>
