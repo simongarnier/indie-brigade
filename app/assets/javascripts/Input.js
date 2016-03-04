@@ -13,5 +13,16 @@
       }
     })
    })
+
+
+
   };
+
+  $.fn.Tabs = function(options){
+    this.each(function(i,value){
+      var tabGlobal = $(this);
+      $(
+
+    });
+  }
 })( jQuery );

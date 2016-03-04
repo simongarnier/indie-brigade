@@ -3,7 +3,8 @@ $(function(){
 		.on('click','.nav-burger, .nav-close', function(){ toggleMenu($(this)); })
 		.on("click","[data-action='tabSlide']", function(event){ tabSlide($(this)); })
 
-	$(".input-label").Input();
+	$(".iNd-input").Input();
+	$(".iNd-tabs-global").Tabs();
 
 	function tabSlide(obj){
 		var target = obj;
