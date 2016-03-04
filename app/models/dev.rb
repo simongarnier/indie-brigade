@@ -49,4 +49,37 @@ class Dev < ActiveRecord::Base
   def compatible_devs
     Availability.for_available_type("Opening").compatible_availability(self).available
   end
+
+  def self.css_class_for_field(field)
+    {
+      facebook_handle: "fa fa-facebook-square",
+      google_handle: "fa fa-google-plus",
+      linkedin_link: "fa fa-linkedin",
+      tumblr_handle: "fa fa-tumblr",
+      youtube_handle: "fa fa-youtube-play",
+      behance_handle: "fa fa-behance",
+      instagram_handle: "fa fa-instagram",
+      twitter_handle: "fa fa-twitter",
+      deviantart_handle: "fa fa-deviantart",
+      skype_handle: "fa fa-skype",
+      vimeo_handle: "fa fa-vimeo",
+      pinterest_handle: "fa fa-pinterest"
+    }[field]
+  end
+
+  def self.social_link_for_field(field, value)
+    {
+      facebook_handle: "https://www.facebook.com/#{value}",
+      google_handle: "https://plus.google.com/u/0/#{value}",
+      linkedin_link: "#{value}",
+      tumblr_handle: "http://#{value}.tumblr.com/",
+      youtube_handle: "https://www.youtube.com/user/#{value}",
+      behance_handle: "https://www.behance.net/#{value}",
+      instagram_handle: "https://www.instagram.com/#{value}",
+      twitter_handle: "https://twitter.com/#{value}",
+      deviantart_handle: "http://#{value}.deviantart.com/",
+      vimeo_handle: "https://vimeo.com/#{value}",
+      pinterest_handle: "https://www.pinterest.com/#{value}/"
+    }[field]
+  end
 end

@@ -10,18 +10,13 @@
     <div class="col col-sm-3 desktop"></div>
     <div class="social desktop">
     <ul>
-      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-      <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fa fa-deviantart"></i></a></li>
-      <li><a href="#"><i class="fa fa-skype"></i></a></li>
-      <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-      <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+      <% @dev.attributes.each do |n, v|%>
+        <% if n.include?("handle") || n.include?("link") then%>
+          <% if !v.empty? then%>
+            <li><a href="<%=Dev.social_link_for_field(n.to_sym, v)%>"><i class="fa <%=Dev.css_class_for_field(n.to_sym)%>"></i></a></li>
+          <% end %>
+        <% end %>
+      <% end %>
     </ul>
     </div>
   </div>
