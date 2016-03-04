@@ -60,7 +60,7 @@
         .chosen-choices {
             background-image: none;
             li {
-                width: 45%;
+                width: 100%;
                 @media screen and (max-width: $sm-mobile-screen) {
                     //min-height: 53px;
                 }
@@ -237,7 +237,7 @@
                     margin: 10px 0 0 0;
                 }
                 div {
-                    width: 49%;
+                    width: 100%;
                     display: inline-block;
                 }
                 @media screen and (max-width: $sm-mobile-screen) {
@@ -407,11 +407,11 @@
                 margin-top: 50px;
                 .options-form {
                     label {
-                        width: 25%;
+                        width: 100%;
                         font-weight: normal;
                     }
                     input[type="text"] {
-                        width: 74%;
+                        width: 100%;
                         background-color: #fff;
                         border-width: 0 0 1px;
                         margin-bottom: 20px;

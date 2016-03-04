@@ -13,6 +13,21 @@
 		label[for="age-i"] {
 			margin: 20px 0 45px;
 		}
+
+		p{
+			font-size: 0.8rem;
+		}
+
+		button{
+			border-radius: 30px;
+		    padding: 15px 40px;
+		    font-size: 0.875rem;
+		    background-color: #ffae00;
+		    border: none;
+		    color: #fff;
+		    text-transform: uppercase;
+		    width: 100%;
+		}
 	}
 	.g-recaptcha {
 		margin:0 auto;
@@ -21,7 +36,7 @@
 	}
 	div.div-btn {
 		text-align: center;
-		margin: 70px 0 30px;
+		margin: 30px 0px;
 		.btn-cta {
 			border-radius: 30px;
 			padding: 15px 40px;

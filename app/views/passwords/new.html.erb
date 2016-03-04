@@ -1,12 +1,21 @@
-<%= render 'partials/logo_heading' %>
-<section id="sign">
-  <h2>Reset your password</h2>
-  <p>To be emailed a link to reset your password, please enter your email address.</p>
-  <%= form_for :password, url: passwords_path do |form| %>
-    <div class="input-field">
-      <%= form.text_field :email, type: 'email', class: "validate"%>
-      <%= form.label :email %>
-    </div>
-    <button class="signup" type="submit" >Reset password</button>
-  <% end %>
-</section>
+<%= render 'partials/menu' %>
+<div class="container">
+	<div class="row">
+		<div class="col col-sm-12 signin-form box-content">
+			<h1>Reset your password</h1>
+			<section id="sign">
+				<p>To be emailed a link to reset your password, please enter your email address.</p>
+				<%= form_for :password, url: passwords_path do |form| %>
+				<div class="iNd-input">
+					<%= form.label :email %>
+					<%= form.text_field :email, type: 'email', class: "validate"%>
+				</div>
+				<div class="div-btn">
+				<button class="signup" type="submit" >Reset password</button>
+				</div>
+				<% end %>
+			</section>
+		</div>
+	</div>
+</div>
+
