@@ -1,20 +1,45 @@
 <%= render 'partials/menu' %>
-<div class="row edit-profile">
-	<div class="col col-sm-10 col-sm-offset-1 edit-profile-container">
-		<div class="row">
-			<div class="col col-sm-3">
-				<ul>
-					<li>Edit Profile</li>	
-					<li class="active">Account settings</li>	
-				</ul>
-			</div>
-			<div class="col col-sm-9 edit-profile-settings">
-				<div class="edit-profile-content">
-					<form>
-						
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container-fluid">
+  <div class="edit-profile edit-account">
+    <div class="col col-xs-12 edit-profile-container box-content">
+      <div class="row">
+        <div class="col col-sm-3 profile-settings">
+          <ul>
+            <%= link_to edit_dev_path(@user.dev) do %>
+              <li>Edit Profile</li>
+            <% end %>
+            <li class="active">Account settings</li>
+          </ul>
+        </div>
+        <div class="col col-sm-9 edit-profile-settings">
+          <div class="edit-profile-content">
+            <form>
+        	  <div class="iNd-input">
+        	    <label for="email">Email</label>
+                <input type='email' name="email">
+			  </div>
+        	  <div class="iNd-input">
+        	    <label for="new-password">New Password</label>
+                <input type='password' name="new-password">
+              </div>
+        	  <div class="iNd-input">
+        	    <label for="confirm-password">Confirm Password</label>
+                <input type='password' name="confirm-password">
+              </div>
+
+              <a class="btn-cta btn-icon"><span><i class="fa fa-trash"></i></span>Delete Account</a>
+
+        	  <div class="iNd-input">
+          	    <label for="current-password">Current Password</label>
+                <input type='password' name="current-password">
+              </div>
+							<a onclick="document.getElementById('edit_user_<%=@user.id%>').submit(); return false" class="btn-cta btn-icon" href="#">
+                <span><i class="fa fa-floppy-o"></i></span> Submit
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

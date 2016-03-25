@@ -21,4 +21,10 @@ class SettingsController < ApplicationController
 
   def search
   end
+
+  def message
+  end
+
+  def watchlist
+  end
 end
