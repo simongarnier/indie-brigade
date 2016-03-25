@@ -1,20 +1,41 @@
 <%= render 'partials/menu' %>
-<div class="row edit-profile">
-	<div class="col col-sm-10 col-sm-offset-1 edit-profile-container">
-		<div class="row">
-			<div class="col col-sm-3 profile-settings">
-				<ul>
-					<a href="#"><li>Edit Profile</li></a>	
-					<li class="active">Account settings</li>	
-				</ul>
-			</div>
-			<div class="col col-sm-9 edit-profile-settings">
-				<div class="edit-profile-content">
-					<form>
-						
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container-fluid">
+  <div class="row edit-profile edit-account">
+    <div class="col col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 edit-profile-container box-content">
+      <div class="row">
+        <div class="col col-sm-3 profile-settings">
+          <ul>
+            <a href="/devs/31/edit"><li>Edit Profile</li></a>	
+            <li class="active">Account settings</li>	
+          </ul>
+        </div>
+        <div class="col col-sm-9 edit-profile-settings">
+          <div class="edit-profile-content">
+            <form>
+        	  <div class="iNd-input">
+        	    <label for="email">Email</label>
+                <input type='email' name="email">
+			  </div>
+        	  <div class="iNd-input">
+        	    <label for="new-password">New Password</label>
+                <input type='password' name="new-password">
+              </div>
+        	  <div class="iNd-input">
+        	    <label for="confirm-password">Confirm Password</label>
+                <input type='password' name="confirm-password">
+              </div>
+
+              <a class="btn-cta btn-icon"><span><i class="fa fa-trash"></i></span>Delete Account</a>
+
+        	  <div class="iNd-input">
+          	    <label for="current-password">Current Password</label>
+                <input type='password' name="current-password">
+              </div>
+              <%= submit_tag("Submit", class: "btn-cta") %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
