@@ -18,3 +18,18 @@
   <%= form.label :cpassword do %>Confirm password<%end%>
   <%= form.password_field :cpassword, class: "validate"%>
 </div>
+<div class="iNd-input">
+  <div class="custom-list-selectbox" >
+    <%= label_tag :main_skill_id, "Primary Skills", class: "label-form" %>
+    <%= form.grouped_collection_select(
+      :main_skill_id,
+      Role.all,
+      :skills,
+      :code,
+      :id,
+      :long_name,
+      {},
+      {class: "options-form primary-skills-select"}
+    )%>
+  </div>
+</div>
