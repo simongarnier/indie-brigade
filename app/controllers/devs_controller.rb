@@ -7,6 +7,7 @@ class DevsController < ApplicationController
 
   def update
     input = dev_params
+    p input
     @dev = Dev.find(params[:id])
     ids = @dev.availability_ids
     if input[:availabilities_attributes].nil? then
@@ -62,6 +63,7 @@ class DevsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dev_params
       params.require(:dev).permit(
+        :id,
         :description,
         :avatar,
         :banner,
@@ -83,6 +85,7 @@ class DevsController < ApplicationController
         {major_skill_ids: []},
         {minor_skill_ids: []},
         {software_ids: []},
-        availabilities_attributes: [:per_week_lower, :per_week_upper, :project_size_id, :for_number_of_weeks, :id])
+        availabilities_attributes: [:per_week_lower, :per_week_upper, :project_size_id, :for_number_of_weeks, :id],
+        user_attributes: [:firstname, :lastname, :id])
     end
 end

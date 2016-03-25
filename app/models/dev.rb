@@ -3,6 +3,7 @@ class Dev < ActiveRecord::Base
 
   belongs_to :role
   belongs_to :user
+  accepts_nested_attributes_for :user
   belongs_to :main_skill, class_name: 'Skill', foreign_key: 'main_skill_id'
 
   has_many :dev_conditions, dependent: :delete_all

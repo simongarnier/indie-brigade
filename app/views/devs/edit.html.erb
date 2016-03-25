@@ -43,6 +43,14 @@
                 </div>
               </div>
 
+              <%= form.fields_for :user do |user| %>
+                <%= user.label :firstname %>
+                <%= user.text_field :firstname %>
+
+                <%= user.label :lastname %>
+                <%= user.text_field :lastname %>
+              <% end %>
+
               <%= label_tag :description, "About", class: "label-form" %>
               <%= form.text_area :description, size: "40x5", class: "options-form" %>
               <br>
