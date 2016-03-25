@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   get '/devs/:dev_id/skills', to: 'settings#edit_skills', as: 'setting_edit_skills'
   get '/search', to: 'settings#search', as: 'search'
+  get '/message', to: 'settings#message', as: 'message'
+  get '/watchlist', to: 'settings#watchlist', as: 'watchlist'
   put '/devs/:dev_id/skills', to: 'settings#update_skills', as: 'setting_update_skills'
 
 

@@ -10,7 +10,7 @@ div.main-nav{
 
 	div.container{
 		height: 100%;
-		div.nav-logo{
+		a.nav-logo{
 			width: 20%;
 			display: inline-block;
 			vertical-align: middle;
@@ -49,6 +49,7 @@ div.main-nav{
 			display: inline-block !important;
 			vertical-align: middle;
 			line-height: 30px;
+			position: relative;
 			
 			@media (max-width: $tablet-screen){
 				width: 320px;
@@ -81,7 +82,6 @@ div.main-nav{
 				list-style-type: none;
 				margin: 0px;
 				@media (max-width: $tablet-screen){
-					margin-bottom: 10px;
 					position: relative;
 				}
 				li{
@@ -143,9 +143,69 @@ div.main-nav{
 					}
 				}
 			}
+			div.nav-setting{
+				display: none;
+				position: absolute;
+				width: 150px;
+				background: #eee;
+				padding: 0 10px;
+				right: 0;
+				top: 100%;
+				margin-top: 10px;
+				z-index: 100;
+				text-align: left;
+				border-radius: 3px;
+				.nav-arrow{
+					position: relative;
+					i{
+						font-size: 30px;
+						color: #eee;
+						position: absolute;
+						top: -20px;
+						right: -2px;
+					}
+				}
+				a{
+					text-transform: uppercase;
+					display: block;
+					padding: 5px;
+					border-bottom: 1px solid #ddd;
+					text-decoration: none;
+					font-size: 12px;
+
+					i{
+						margin-right: 10px;
+					}
+
+					&:last-child{
+						border-bottom: none;
+					}
+
+					@media (max-width: $tablet-screen){
+					    color: #868686;
+					    text-transform: uppercase;
+					    font-weight: 400;
+					    font-size: 0.8rem;
+					    padding: 5px 10px;
+						border-bottom: dashed 1px #bbb;
+
+						&:hover{
+							text-decoration: underline;
+						}
+					}
+				}
+
+				@media (max-width: $tablet-screen){
+					position: relative;
+					display: block !important;
+					top: 0px;
+					margin: 0;
+					padding: 0;
+					width: 100%;
+				}
+			}
 			
 			div.nav-profile{
-				margin-right: 20px;
 				position: relative;
 
 				>*{
@@ -153,7 +213,7 @@ div.main-nav{
 					vertical-align: middle;
 				}
 				>a{
-					margin-right: 10px;
+					margin-left: 10px;
 					position: relative;
 					i{
 						font-size: 20px;

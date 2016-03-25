@@ -1,6 +1,7 @@
 $(function(){
 	$('body')
 		.on('click','.nav-burger, .nav-close', function(){ toggleMenu($(this)); })
+		.on('mouseenter', '.nav-photo', function(){ toggleSubMenu()})
 		.on("click","[data-action='tabSlide']", function(event){ tabSlide($(this)); })
 
 	$(".iNd-input").Input();
@@ -20,7 +21,6 @@ $(function(){
 	function toggleMenu(obj){
 
 		if(obj.hasClass("nav-burger")){
-			console.log(2);
 			$(".nav-menu")
 			.css("display", "block")
 			.animate({
@@ -42,5 +42,15 @@ $(function(){
 				}
 			);
 		}
+	}
+
+	function toggleSubMenu(){
+		$(".nav-setting")
+			.css({display : "block"})
+			.mouseleave(function(){
+				$(this).css({
+					display : "none"
+				})
+			})
 	}
 })

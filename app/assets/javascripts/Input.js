@@ -17,7 +17,8 @@
     input.on("change", function(){ $(this).trigger("focus") })
 
     if(input.val() != 'undefined' && input.val() != ""){
-      input.trigger("focus");
+      input.trigger("focus").trigger("blur");
+      window.scrollTo(0,0);
     }
    })
   };

@@ -1,8 +1,8 @@
 <div class="main-nav">
 	<div class="container">
-		<div class="nav-logo">
+		<a href="/" class="nav-logo">
 			<img src="/images/logo.svg" alt="Indie Brigadetu fini" />
-		</div>
+		</a>
 		<% if @current_dev != nil %>
 		<div class="nav-mobile">
 			<a class='nav-burger'><i class="fa fa-bars"></i></a>
@@ -11,19 +11,30 @@
 		<div class="nav-menu">
 			<ul>
 				<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-				<li><a href="#"><i class="fa fa-envelope"></i>Messages</a></li>
-				<li><a href="#"><i class="fa fa-search"></i>Search</a></li>
+				<li><a href="/message"><i class="fa fa-envelope"></i>Messages</a></li>
+				<li><a href="/search"><i class="fa fa-search"></i>Search</a></li>
 				<a class="nav-close"><i class="fa fa-close"></i></a>
 			</ul>
+			<div class="nav-setting">
+				<!--
+				<div class="nav-arrow">
+					<i class="fa fa-caret-up"></i>
+				</div>
+
+				-->
+				<a href="/devs/<%= @current_dev.id %>/edit"><i class="fa fa-gear"></i>Edit</a>
+				<a href="/users/<%= @current_dev.id %>/edit"><i class="fa fa-user"></i>Test</a>
+				<a href="/sign_out"><i class="fa fa-sign-out"></i>sign out</a>
+			</div>
 			<div class="nav-profile">
-				<a href="#" id="lnk_favorite"><i class="fa fa-star"></i></a>
-				<% if @current_dev then%>
-					<%= link_to dev_path(@current_dev) do %>
-						<img src="<%= @current_dev.avatar.url(:medium) %>" />
-					<% end %>
-				<% end %>
+				<a href="/watchlist" id="lnk_favorite"><i class="fa fa-star"></i></a>
+				<a href="/devs/<%= @current_dev.id %>/" class="nav-photo">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />
+				</a>
 			</div>
 		</div>
+		<% else %>
+
 		<% end %>
 	</div>
 </div>
