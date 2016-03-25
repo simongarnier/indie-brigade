@@ -5,7 +5,9 @@
       <div class="row">
         <div class="col col-sm-3 profile-settings">
           <ul>
-            <a href="/devs/31/edit"><li>Edit Profile</li></a>	
+            <%= link_to edit_dev_path, @dev do %>
+              <li>Edit Profile</li>
+            <% end %>
             <li class="active">Account settings</li>	
           </ul>
         </div>
