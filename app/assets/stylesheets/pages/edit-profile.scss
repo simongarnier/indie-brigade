@@ -83,6 +83,11 @@
 }
 
 .edit-profile {
+    .profile-settings {
+        a {
+            color: $theme_grey;
+        }
+    }
     textarea {
         resize: vertical;
     }
