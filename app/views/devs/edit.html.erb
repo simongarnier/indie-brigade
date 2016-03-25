@@ -10,6 +10,24 @@
           <div class="edit-profile-content">
             <%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
               <%= form.hidden_field :id, value: @dev.id %>
+              <%= form.fields_for :user do |user| %>
+
+                <div class="row form-elem-edit">
+                   <div class="col-md-6">
+                    <div class="iNd-input">
+                      <%= user.label :firstname, "First name"%>
+                      <%= user.text_field :firstname %>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="iNd-input">
+                      <%= user.label :lastname, "Last name"%>
+                      <%= user.text_field :lastname %>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
               <div class="avatar-upload">
                 <%= label_tag :avatar, "Profile", class: "label-form" %>
                 <div class="options-form-flex">
@@ -43,13 +61,7 @@
                 </div>
               </div>
 
-              <%= form.fields_for :user do |user| %>
-                <%= user.label :firstname %>
-                <%= user.text_field :firstname %>
-
-                <%= user.label :lastname %>
-                <%= user.text_field :lastname %>
-              <% end %>
+              
 
               <%= label_tag :description, "About", class: "label-form" %>
               <%= form.text_area :description, size: "40x5", class: "options-form" %>
