@@ -7,7 +7,6 @@ class DevsController < ApplicationController
 
   def update
     input = dev_params
-    p input
     @dev = Dev.find(params[:id])
     ids = @dev.availability_ids
     if input[:availabilities_attributes].nil? then
@@ -17,6 +16,10 @@ class DevsController < ApplicationController
       @dev.availabilities.reject{|a| keep.include?(a.id) }.each(&:destroy)
     end
     @dev.update(input)
+    if !input[:condition_ids] then
+      @dev.conditions = []
+      @dev.save
+    end
     redirect_to edit_dev_path
   end
 
