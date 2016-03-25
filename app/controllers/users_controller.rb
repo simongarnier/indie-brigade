@@ -7,15 +7,13 @@ class UsersController < Clearance::UsersController
   def create
     @user = user_from_params
 
-    if @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save
+    if  @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save && skill
       sign_in @user
       dev = Dev.new
       dev.user = @user
       skill = Skill.find(@main_skill_id)
-      if skill
-          dev.main_skill = skill
-          dev.role = skill.role
-      end
+      dev.main_skill = skill
+      dev.role = skill.role
       dev.save
       redirect_back_or url_after_create
     else
