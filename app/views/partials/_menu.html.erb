@@ -17,7 +17,11 @@
 			</ul>
 			<div class="nav-profile">
 				<a href="#" id="lnk_favorite"><i class="fa fa-star"></i></a>
-				<a href="/devs/<%= @current_dev.id %>/"><img src="<%= @current_dev.avatar.url(:medium) %>" /></a>
+				<% if @current_dev then%>
+					<%= link_to dev_path(@current_dev) do %>
+						<img src="<%= @current_dev.avatar.url(:medium) %>" />
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 		<% end %>
