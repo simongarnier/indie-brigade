@@ -82,6 +82,15 @@
     }
 }
 
+.edit-account {
+    form {
+        text-align: center;
+        .btn-cta {
+            margin-top: 20px;
+        }
+    }
+}
+
 .edit-profile {
     .profile-settings {
         a {
@@ -109,7 +118,8 @@
                 }
                 @media screen and (max-width: $mobile-screen) {
                     display: inline-block;
-                    width: 49%;
+                    width: calc(50% - 2px);
+                    font-size: 0.875rem;
                 }
             }
         }
@@ -122,7 +132,7 @@
         .edit-profile-content {
             padding: 0 30px;
             @media screen and (max-width: $mobile-screen) {
-                padding: 0 60px;
+                padding: 0 20px;
             }
             .form-elem-edit{
                 margin-bottom: 20px;

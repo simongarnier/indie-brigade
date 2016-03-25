@@ -1,10 +1,15 @@
 <%= render 'partials/menu' %>
 <div class="container-fluid">
-  <div class="row edit-profile">
-    <div class="col col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 edit-profile-container box-content">
+  <div class="edit-profile">
+    <div class="col col-xs-12 edit-profile-container box-content">
       <div class="row">
-        <div class="col col-sm-3">
-          <%= render partial: 'partials/tabs', locals: {active: :dev}%>
+        <div class="col col-sm-3 profile-settings">
+          <ul>
+            <li class="active">Edit Profile</li>
+            <%= link_to edit_user_path(current_user) do %>
+              <li>Account settings</li>
+            <% end %>
+          </ul>
         </div>
         <div class="col col-sm-9 edit-profile-settings">
           <div class="edit-profile-content">
@@ -61,7 +66,7 @@
                 </div>
               </div>
 
-              
+
 
               <%= label_tag :description, "About", class: "label-form" %>
               <%= form.text_area :description, size: "40x5", class: "options-form" %>
