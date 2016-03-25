@@ -1,8 +1,8 @@
 <div class="main-nav">
 	<div class="container">
-		<div class="nav-logo">
+		<a href="/" class="nav-logo">
 			<img src="/images/logo.svg" alt="Indie Brigadetu fini" />
-		</div>
+		</a>
 		<% if @current_dev != nil %>
 		<div class="nav-mobile">
 			<a class='nav-burger'><i class="fa fa-bars"></i></a>
@@ -20,6 +20,8 @@
 				<a href="/devs/<%= @current_dev.id %>/"><img src="<%= @current_dev.avatar.url(:medium) %>" /></a>
 			</div>
 		</div>
+		<% else %>
+			
 		<% end %>
 	</div>
 </div>
