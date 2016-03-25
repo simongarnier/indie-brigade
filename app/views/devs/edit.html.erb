@@ -6,9 +6,9 @@
         <div class="col col-sm-3 profile-settings">
           <ul>
             <li class="active">Edit Profile</li>
-            <%= link_to edit_user_path, @user do %>
+            <%= link_to edit_user_path(current_user) do %>
               <li>Account settings</li>
-              <% end %>
+            <% end %>
           </ul>
         </div>
         <div class="col col-sm-9 edit-profile-settings">
