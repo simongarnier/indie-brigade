@@ -8,7 +8,7 @@
         </div>
         <div class="col col-sm-9 edit-profile-settings">
           <div class="edit-profile-content">
-            <%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put do |form| %>
+            <%= form_for @dev, url: dev_path, html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
               <%= form.hidden_field :id, value: @dev.id %>
               <div class="avatar-upload">
                 <%= label_tag :avatar, "Profile", class: "label-form" %>
@@ -170,8 +170,9 @@
                   </div>
                 </div>
               </div>
-
-              <%= submit_tag("Submit", class: "btn-cta") %>
+              <a onclick="document.getElementById('edit_dev_<%=@dev.id%>').submit(); return false" class="btn-cta btn-icon" href="#">
+                <span><i class="fa fa-floppy-o"></i></span> Submit
+              </a>
             <% end %>
           </div>
         </div>
