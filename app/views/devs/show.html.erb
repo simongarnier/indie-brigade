@@ -46,9 +46,18 @@
           <% end %>
         </ul>
         <h4>Availabilities</h4>
-        <p>
-          some availabilities
-        </p>
+        <ul>
+          <% @dev.availabilities.each do |availability|%>
+            <li>
+              <ul>
+                <li><%= availability.project_size.text %></li>
+                <% if availability.project_size.need_involvement %>
+                  <li><%= availability.as_sentence %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
       </div>
       <div class="col col-sm-6 profile-skills">
         <div class="main-skill group-<%= @dev.role.code %>"><p>2D artist</p></div>
@@ -87,7 +96,7 @@
           <h3>Softwares</h3>
           <ul>
             <%@dev.minor_skills_by_role.each do |software|%>
-            <li><%= software.long_name %></li>
+              <li><%= software.long_name %></li>
             <%end%>
           </ul>
         </div>
