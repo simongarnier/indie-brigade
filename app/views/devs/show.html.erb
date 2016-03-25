@@ -46,13 +46,13 @@
           <% end %>
         </ul>
         <h4>Availabilities</h4>
-        <ul>
+        <ul class="profile-availability">
           <% @dev.availabilities.each do |availability|%>
             <li>
               <ul>
-                <li><%= availability.project_size.text %></li>
+                <li><span><i class="fa fa-calendar"></i></span><%= availability.project_size.text %></li>
                 <% if availability.project_size.need_involvement %>
-                  <li><%= availability.as_sentence %></li>
+                  <li><span><i class="fa fa-clock-o"></i></span><%= availability.as_sentence %></li>
                 <% end %>
               </ul>
             </li>
