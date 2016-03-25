@@ -1,106 +1,108 @@
 .carousel {
-	margin: 20px 0 80px;
-	text-align: center;
-	position: relative;
-	img {
-		width:100%;
-	}
-	div {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 40px;
-		color: #fff;
-		h2 {
-			font-size: 2.75rem;
-		}
-		p {
-			font-size: 1.25rem;
-			line-height: 1.4rem;
-			font-weight: 200;
-			max-width: 800px;
-			margin: 0 auto;
-		}
-		i {
-			font-size: 0.625rem;
-			vertical-align: middle;
-			&:first-child {
-				margin-right: 20px;
-			} 
-			&:last-child {
-				margin-left: 20px;
-			}
-		}
-	}
+    margin: 20px 0 80px;
+    text-align: center;
+    position: relative;
+    img {
+        width: 100%;
+        min-height: 275px;
+    }
+    div {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 40px;
+        color: #fff;
+        h2 {
+            font-size: 2.75rem;
+        }
+        p {
+            font-size: 1.25rem;
+            line-height: 1.4rem;
+            font-weight: 200;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        i {
+            font-size: 0.625rem;
+            vertical-align: middle;
+            &:first-child {
+                margin-right: 20px;
+            }
+            &:last-child {
+                margin-left: 20px;
+            }
+        }
+    }
+    @media (max-width: $mobile-screen) {
+        div {
+            h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+    }
 }
-.welcome-article{
-	margin-bottom: 30px;
-	h3.tagline {
-		text-align: center;
-		@media (max-width: $tablet-screen){
-			padding: 0 30px;
-		}
-	}
-	.signup-form {
-		display: none;
-	}
-	div.article{
-		text-align: center;
-		margin-bottom: 30px;
 
-		img{
-			margin-bottom: 10px;
-
-			@media (max-width: $tablet-screen){
-				margin: 0px;
-				display: inline-block;
-				vertical-align: middle;
-			}
-
-			@media (max-width: $mobile-screen){
-				max-width: 150px;
-				min-width: 100px;
-				margin-bottom: 10px;
-			}
-
-
-		}
-
-		div.article-content{
-			@media (max-width: $tablet-screen){
-				width: 80%;
-				margin-left: 20px;
-				display: inline-block;
-				vertical-align: middle;
-			}
-
-			@media (max-width: $mobile-screen){
-				
-				width: 100%;
-				margin: 0px;
-				padding: 0px 30px;
-			}
-			h3{
-				font-size: 1.125rem;
-				color: $theme_grey_content;
-				margin: 10px 0px;
-				font-weight: 500;
-
-				@media (max-width: $tablet-screen){
-					text-align: left;
-				}
-
-				@media (max-width: $mobile-screen){
-					text-align: center;
-				}
-
-			}
-
-			p{
-				text-align: justify;
-				font-size: 0.875rem;
-				color: $theme_grey_content;
-			}
-		}
-	}
+.welcome-article {
+    margin-bottom: 30px;
+    h3.tagline {
+        text-align: center;
+        @media (max-width: $tablet-screen) {
+            padding: 0 30px;
+        }
+    }
+    .signup-form {
+        display: none;
+    }
+    div.article {
+        text-align: center;
+        margin-bottom: 30px;
+        img {
+            margin-bottom: 10px;
+            @media (max-width: $tablet-screen) {
+                margin: 0px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            @media (max-width: $mobile-screen) {
+                max-width: 150px;
+                min-width: 100px;
+                margin-bottom: 10px;
+            }
+        }
+        div.article-content {
+            @media (max-width: $tablet-screen) {
+                width: 80%;
+                margin-left: 20px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            @media (max-width: $mobile-screen) {
+                width: 100%;
+                margin: 0px;
+                padding: 0px 30px;
+            }
+            h3 {
+                font-size: 1.125rem;
+                color: $theme_grey_content;
+                margin: 10px 0px;
+                font-weight: 500;
+                @media (max-width: $tablet-screen) {
+                    text-align: left;
+                }
+                @media (max-width: $mobile-screen) {
+                    text-align: center;
+                }
+            }
+            p {
+                text-align: justify;
+                font-size: 0.875rem;
+                color: $theme_grey_content;
+            }
+        }
+    }
 }
