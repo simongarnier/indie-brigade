@@ -122,7 +122,7 @@
               </div>
 
               <div class="custom-list-selectbox" >
-                <%= label_tag :main_skill_id, "Major Skills", class: "label-form" %>
+                <%= label_tag :major_skill_ids, "Major Skills", class: "label-form" %>
                 <%= form.grouped_collection_select(
                   :major_skill_ids,
                   Role.all,
@@ -139,7 +139,7 @@
               </div>
 
               <div class="custom-list-selectbox" >
-                <%= label_tag :main_skill_id, "Minor Skills", class: "label-form" %>
+                <%= label_tag :minor_skill_ids, "Minor Skills", class: "label-form" %>
                 <%= form.grouped_collection_select(
                   :minor_skill_ids,
                   Role.all,
