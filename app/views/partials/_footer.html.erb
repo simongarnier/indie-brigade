@@ -2,16 +2,13 @@
   <div class="container">
     <aside class="social">
       
-        <a href="#"><i class="fa fa-envelope"></i></a>
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fa fa-envelope"></i></a>
+        <a href="http://www.facebook.com/Indie-Brigade-1455904781376687" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="http://twitter.com/indiebrigade" target="_blank"><i class="fa fa-twitter"></i></a>
     </aside>
     <aside class="legal">
       <ul>
-        <li><%= link_to 'Edit role', welcome_edit_path if current_user && current_user.try(:dev).try(:role) %></li>
-        <li><%= link_to 'Sign out', sign_out_path if current_user %></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="/public/docs/PrivacyPolicy.pdf" target="_blank">Privacy Policy</a></li>
         <% year = Date.current.year %>
         <li>&copy; Indie Brigade <%= if year == 2015 then "2015" else "2015-#{year}" end %></li>
       </ul>
