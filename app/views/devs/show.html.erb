@@ -104,7 +104,7 @@
         <% end %>
       </div>
       <div class="col col-sm-3 portfolio">
-        <% if @dev.portfolio_link then%>
+        <% if @dev.portfolio_link? then%>
           <a class="btn-cta" href="<%= @dev.portfolio_link %>" target="_blank"><i class="fa fa-link"></i> Portfolio</a>
         <% end %>
         <% if !@dev.minor_skills_by_role.empty? %>
