@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20160326001234) do
     t.string   "vimeo_handle"
     t.string   "pinterest_handle"
     t.string   "linkedin_link"
-    t.string   "portofolio_link"
+    t.string   "portfolio_link"
   end
 
   add_index "devs", ["main_skill_id"], name: "index_devs_on_main_skill_id", using: :btree

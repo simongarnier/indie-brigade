@@ -173,6 +173,10 @@
               <div class="form-socials">
                 <label for="socials" class="label-form">Elsewhere on the web</label>
                 <div class="options-form">
+                  <div class="iNd-input">
+                  <%= label_tag :portfolio_link %>
+                  <%= form.text_field :portfolio_link%>
+                  </div>
                   <% @dev.attributes.each do |n, v|%>
                     <% if n.include? "handle" %>
                     <div class="iNd-input">

@@ -71,6 +71,7 @@ class DevsController < ApplicationController
         :avatar,
         :banner,
         :main_skill_id,
+        :portfolio_link,
         :facebook_handle,
         :google_handle,
         :tumblr_handle,

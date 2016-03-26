@@ -12,9 +12,9 @@
     <div class="social desktop">
     <ul>
       <% @dev.attributes.each do |n, v|%>
-        <% if n.include?("handle") || n.include?("link") then%>
+        <% if n.include?("handle") || n.include?("link") && !n.include?("portfolio") then%>
           <% if !v.empty? then%>
-            <li><a href="<%=Dev.social_link_for_field(n.to_sym, v)%>"><i class="fa <%=Dev.css_class_for_field(n.to_sym)%>"></i></a></li>
+            <li><a href="<%=Dev.social_link_for_field(n.to_sym, v)%>" target="_blank"><i class="fa <%=Dev.css_class_for_field(n.to_sym)%>"></i></a></li>
           <% end %>
         <% end %>
       <% end %>
@@ -66,7 +66,7 @@
         <% end %>
       </div>
       <div class="col col-sm-6 profile-skills">
-        
+
         <div class="main-skill group-<%= @dev.role.code %>"><p><%= @dev.main_skill.long_name %></p></div>
 
          <% if !@dev.major_skills_by_role.empty? && !@dev.minor_skills_by_role.empty? %>
@@ -104,8 +104,9 @@
         <% end %>
       </div>
       <div class="col col-sm-3 portfolio">
-        <a class="btn-cta" href="#"><i class="fa fa-link"></i> Portfolio</a>
-
+        <% if @dev.portfolio_link then%>
+          <a class="btn-cta" href="<%= @dev.portfolio_link %>" target="_blank"><i class="fa fa-link"></i> Portfolio</a>
+        <% end %>
         <% if !@dev.minor_skills_by_role.empty? %>
         <div class="profile-softwares">
           <h3>Softwares</h3>
