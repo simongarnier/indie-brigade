@@ -1,6 +1,92 @@
 <%= render 'partials/menu' %>
-<div class="message-global">
-	<div class="container">
-		<p>Test</p>
+<div class="container">
+	<div class="message-global">
+		<div class="col-md-4 message-listing">
+			<div class="row">
+				<div class="message-listing-header">
+					<span>Inbox <i class="fa fa-chevron-down"></i></span>
+					<a href="/" class="btn-cta btn-compose">compose</a>
+				</div>
+				<div class="message-listing-item active">
+					<div class="message-img">
+						<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+					</div>
+					<div class="message-preview">
+						<span>Sonda Yip</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed mi vehicula, scelerisque sapien sed ... </p>
+					</div>
+				</div>
+				<div class="message-listing-item">
+					<div class="message-img">
+						<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+					</div>
+					<div class="message-preview">
+						<span>Sonda Yip</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed mi vehicula, scelerisque sapien sed ... </p>
+					</div>
+				</div>
+				<div class="message-listing-item">
+					<div class="message-img">
+						<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+					</div>
+					<div class="message-preview">
+						<span>Sonda Yip</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed mi vehicula, scelerisque sapien sed ... </p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 message-single">
+			<div class="message-status"><i class="fa fa-gear"></i></div>
+			<div class="message-content-item">
+				<div class="message-content-img">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+				</div>
+				<div class="message-content">
+					<span>Sonda Yip</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet elementum urna. Integer at tempus leo. Quisque fringilla elit ante, a ullamcorper arcu dignissim sed. Ut gravida lectus sit amet massa venenatis, ut scelerisque libero placerat. Aliquam nisi metus, vestibulum ut purus nec, imperdiet convallis nibh. Mauris suscipit urna in placerat consequat. Maecenas ut est eget nisl maximus malesuada semper vehicula dui. Sed id varius metus. Praesent porta ultricies blandit. Phasellus vel arcu vel lacus aliquet condimentum. Nam pulvinar tempor nunc sed mollis. Aliquam in mauris vehicula, consectetur dolor ut, bibendum tellus.</p>
+
+					<p>In imperdiet lorem ac metus hendrerit facilisis. Mauris pharetra mi turpis, a congue urna egestas quis. Duis eget leo ut urna molestie dapibus. Etiam a euismod justo... </p>
+				</div>
+			</div>
+			<div class="message-content-item">
+				<div class="message-content-img">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+				</div>
+				<div class="message-content">
+					<span>Sonda Yip</span>
+					<p>Simon Garnier fait partie du Isis </p>
+				</div>
+			</div>
+			<div class="message-content-item">
+				<div class="message-content-img">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+				</div>
+				<div class="message-content">
+					<span>Sonda Yip</span>
+					<p>Ah Oui!!!</p>
+				</div>
+			</div>
+			<div class="message-content-item">
+				<div class="message-content-img">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+				</div>
+				<div class="message-content">
+					<span>Sonda Yip</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet elementum urna. Integer at tempus leo. Quisque fringilla elit ante, a ullamcorper arcu dignissim sed. Ut gravida lectus sit amet massa venenatis, ut scelerisque libero placerat.</p>
+
+					<p>In imperdiet lorem ac metus hendrerit facilisis. Mauris pharetra mi turpis, a congue urna egestas quis. Duis eget leo ut urna molestie dapibus. Etiam a euismod justo... </p>
+				</div>
+			</div>
+			<div class="message-content-item">
+				<div class="message-content-img">
+					<img src="<%= @current_dev.avatar.url(:medium) %>" />	
+				</div>
+				<div class="message-content">
+					<textarea placeholder="Reply"></textarea>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
