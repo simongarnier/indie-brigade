@@ -9,17 +9,16 @@
       <h2><%= "#{@dev.user.firstname} #{@dev.user.lastname}" %></h2>
     </div>
     <div class="col col-sm-3 desktop"></div>
-    <div class="social desktop">
-    <ul>
-      <% @dev.attributes.each do |n, v|%>
-        <% if n.include?("handle") || n.include?("link") && !n.include?("portfolio") then%>
-          <% if !v.empty? then%>
-            <li><a href="<%=Dev.social_link_for_field(n.to_sym, v)%>" target="_blank"><i class="fa <%=Dev.css_class_for_field(n.to_sym)%>"></i></a></li>
+    <% externals = @dev.external_sites_attributes %>
+    <% if !externals.empty? then %>
+      <div class="social desktop">
+        <ul>
+          <% externals.each do |n, v|%>
+              <li><a href="<%=Dev.social_link_for_field(n.to_sym, v)%>" target="_blank"><i class="fa <%=Dev.css_class_for_field(n.to_sym)%>"></i></a></li>
           <% end %>
-        <% end %>
-      <% end %>
-    </ul>
-    </div>
+        </ul>
+      </div>
+    <% end %>
   </div>
   <div class="container">
     <div class="profile-content row">

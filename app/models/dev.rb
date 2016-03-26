@@ -51,6 +51,14 @@ class Dev < ActiveRecord::Base
     Availability.for_available_type("Opening").compatible_availability(self).available
   end
 
+  def external_sites_attributes
+    attributes.select do |k, v|
+      k.include?("handle") || k.include?("link") && !k.include?("portfolio")
+    end.select do |k,v|
+      !v.empty?
+    end
+  end
+
   def self.css_class_for_field(field)
     {
       facebook_handle: "fa fa-facebook-square",
