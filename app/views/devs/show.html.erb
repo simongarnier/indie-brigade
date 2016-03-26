@@ -35,23 +35,41 @@
           <a href="#" class="btn-cta message-link"><i class="fa fa-envelope"></i>Message</a>
           <a href="#" class="favorite-link"><i class="fa fa-star-o"></i></a>
         </div>
-        <h4>About</h4>
-        <p>
-          <%= @dev.description %>
-        </p>
-        <h4>Conditions</h4>
-        <ul>
-          <% @dev.conditions.each do |condition| %>
-            <li><%= condition.name %></li>
-          <% end %>
-        </ul>
-        <h4>Availabilities</h4>
-        <p>
-          some availabilities
-        </p>
+        <% if @dev.description? %>
+          <h4>About</h4>
+          <p>
+            <%= @dev.description %>
+          </p>
+        <% end %>
+        <% if !@dev.conditions.empty? %>
+          <h4>Conditions</h4>
+          <ul>
+            <% @dev.conditions.each do |condition| %>
+              <li><%= condition.name %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% if !@dev.availabilities.empty? %>
+          <h4>Availabilities</h4>
+          <ul class="profile-availability">
+            <% @dev.availabilities.each do |availability|%>
+              <li>
+                <ul>
+                  <li><span><i class="fa fa-calendar"></i></span><%= availability.project_size.text %></li>
+                  <% if availability.project_size.need_involvement %>
+                    <li><span><i class="fa fa-clock-o"></i></span><%= availability.as_sentence %></li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
       <div class="col col-sm-6 profile-skills">
-        <div class="main-skill group-<%= @dev.role.code %>"><p>2D artist</p></div>
+        
+        <div class="main-skill group-<%= @dev.role.code %>"><p><%= @dev.main_skill.long_name %></p></div>
+
+         <% if !@dev.major_skills_by_role.empty? && !@dev.minor_skills_by_role.empty? %>
         <table class="skill-table">
           <tr>
             <td>
@@ -80,17 +98,24 @@
           <p><i class="fa fa-circle"></i> Secondary Skills</p>
           <p><i class="fa fa-circle-o"></i> Tertiary Skills</p>
         </div>
+          <% end %>
+        <% if @dev.major_skills_by_role.empty? && @dev.minor_skills_by_role.empty? %>
+        <p class="no-skill">This user has not selected any other skill yet.</p>
+        <% end %>
       </div>
       <div class="col col-sm-3 portfolio">
         <a class="btn-cta" href="#"><i class="fa fa-link"></i> Portfolio</a>
+
+        <% if !@dev.minor_skills_by_role.empty? %>
         <div class="profile-softwares">
           <h3>Softwares</h3>
           <ul>
             <%@dev.minor_skills_by_role.each do |software|%>
-            <li><%= software.long_name %></li>
+              <li><%= software.long_name %></li>
             <%end%>
           </ul>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
