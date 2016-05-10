@@ -19,3 +19,7 @@ vendor/bundle
 
 # user generated assets should be ignored
 public/system
+
+.idea/*
+
+
