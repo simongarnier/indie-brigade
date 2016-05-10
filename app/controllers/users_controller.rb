@@ -7,11 +7,11 @@ class UsersController < Clearance::UsersController
   def create
     @user = user_from_params
 
+    skill = Skill.find(@main_skill_id)
     if  @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save && skill
       sign_in @user
       dev = Dev.new
       dev.user = @user
-      skill = Skill.find(@main_skill_id)
       dev.main_skill = skill
       dev.role = skill.role
       dev.save
