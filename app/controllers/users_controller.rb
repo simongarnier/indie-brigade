@@ -5,6 +5,9 @@ class UsersController < Clearance::UsersController
 
     if @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save 
       sign_in @user
+      dev = Dev.new(@dev)
+      dev.user = @user
+      dev.save!
       redirect_back_or url_after_create
     else
       render template: "users/new"
@@ -18,6 +21,7 @@ class UsersController < Clearance::UsersController
     password = user_params.delete(:password)
     @cpassword = user_params.delete(:cpassword)
     @confirm = user_params.delete(:confirm)
+    @dev = user_params.delete(:dev)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.firstname = firstname

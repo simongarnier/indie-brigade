@@ -20,16 +20,19 @@
 </div>
 <div class="iNd-input">
   <div class="custom-list-selectbox" >
-    <%= label_tag :main_skill_id, "Primary Skills", class: "label-form" %>
-    <%= form.grouped_collection_select(
-      :main_skill_id,
-      Role.all,
-      :skills,
-      :code,
-      :id,
-      :long_name,
-      {},
-      {class: "options-form primary-skills-select"}
-    )%>
+    <%= form.fields_for :dev do |dev_form| %>
+      <%= dev_form.label :main_skill_id, "Primary Skills", class: "label-form" %>
+      <%= dev_form.grouped_collection_select(
+        :main_skill_id,
+        Role.all,
+        :skills,
+        :code,
+        :id,
+        :long_name,
+        {},
+        {class: "options-form primary-skills-select"}
+      )%>
+    <% end %>
+
   </div>
 </div>
