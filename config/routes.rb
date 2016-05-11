@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   get '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up'  => 'clearance/users#new', as: 'sign_up'
 
-  get '/account/user/edit'  => 'users#edit'
-  put '/account/user'       => 'users#update'
+  get '/account/user/edit'  => 'users#edit', as: 'user_edit'
+  put '/account/user'       => 'users#update', as: 'user_update'
 
-  get '/account/dev/edit'                             => 'devs#edit'
+  get '/account/dev/edit'                             => 'devs#edit', as: 'dev_edit'
   get '/account/dev/availabilities_with_additionnals' => 'devs#availabilities_with_additionnals'
   get '/account/dev/remove_availability'              => 'devs#remove_availability'
-  put '/account/dev'                                  => 'devs#update'
+  put '/account/dev'                                  => 'devs#update', as: 'dev_update'
 
   ActiveAdmin.routes(self)
 

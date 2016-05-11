@@ -20,7 +20,7 @@ class DevsController < ApplicationController
       @dev.conditions = []
       @dev.save
     end
-    redirect_to '/account/dev/edit'
+    redirect_to dev_edit_path
   end
 
   # GET /devs

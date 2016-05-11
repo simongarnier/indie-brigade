@@ -23,7 +23,7 @@ class UsersController < Clearance::UsersController
       end
     end
 
-    redirect_to '/account/user/edit'
+    redirect_to user_edit_path
   end
 
   def create

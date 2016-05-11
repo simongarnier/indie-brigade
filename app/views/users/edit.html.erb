@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col col-sm-3 profile-settings">
           <ul>
-            <%= link_to '/account/dev/edit' do %>
+            <%= link_to dev_edit_path do %>
               <li>Edit Profile</li>
             <% end %>
             <li class="active">Account settings</li>
@@ -13,7 +13,7 @@
         </div>
         <div class="col col-sm-9 edit-profile-settings">
           <div class="edit-profile-content">
-            <%= form_for @user, url: '/account/user', html: { multipart: true }, method: :put do |form|  %>
+            <%= form_for @user, url: user_update_path, html: { multipart: true }, method: :put do |form|  %>
               <div class="iNd-input">
                 <%= form.label :email%>
                 <%= form.text_field :email %>

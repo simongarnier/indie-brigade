@@ -6,14 +6,14 @@
         <div class="col col-sm-3 profile-settings">
           <ul>
             <li class="active">Edit Profile</li>
-            <%= link_to '/account/user/edit' do %>
+            <%= link_to user_edit_path do %>
               <li>Account settings</li>
             <% end %>
           </ul>
         </div>
         <div class="col col-sm-9 edit-profile-settings">
           <div class="edit-profile-content">
-            <%= form_for @dev, url: '/account/dev', html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
+            <%= form_for @dev, url: dev_update_path, html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
               <%= form.hidden_field :id, value: @dev.id %>
               <%= form.fields_for :user do |user| %>
 
