@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col col-sm-3 profile-settings">
           <ul>
-            <%= link_to edit_dev_path(@user.dev) do %>
+            <%= link_to '/account/dev/edit' do %>
               <li>Edit Profile</li>
             <% end %>
             <li class="active">Account settings</li>
@@ -13,30 +13,31 @@
         </div>
         <div class="col col-sm-9 edit-profile-settings">
           <div class="edit-profile-content">
-            <form>
-        	  <div class="iNd-input">
-        	    <label for="email">Email</label>
-                <input type='email' name="email">
-			  </div>
-        	  <div class="iNd-input">
-        	    <label for="new-password">New Password</label>
-                <input type='password' name="new-password">
+            <%= form_for @user, url: '/account/user', html: { multipart: true }, method: :put do |form|  %>
+              <div class="iNd-input">
+                <%= form.label :email%>
+                <%= form.text_field :email %>
               </div>
-        	  <div class="iNd-input">
-        	    <label for="confirm-password">Confirm Password</label>
-                <input type='password' name="confirm-password">
+              <div class="iNd-input">
+                <%= form.label :password do %>New password<% end %>
+                <%= form.password_field :password%>
+              </div>
+              <div class="iNd-input">
+                <%= form.label :cpassword do %>Confirm new password<%end%>
+                <%= form.password_field :cpassword %>
               </div>
 
               <a class="btn-cta btn-icon"><span><i class="fa fa-trash"></i></span>Delete Account</a>
 
-        	  <div class="iNd-input">
-          	    <label for="current-password">Current Password</label>
-                <input type='password' name="current-password">
+              <div class="iNd-input">
+                <%= form.label :old_password do %>Current password<%end%>
+                <%= form.password_field :old_password %>
               </div>
-							<a onclick="document.getElementById('edit_user_<%=@user.id%>').submit(); return false" class="btn-cta btn-icon" href="#">
+
+              <a onclick="document.getElementById('edit_user_<%=@user.id%>').submit(); return false" class="btn-cta btn-icon" href="#">
                 <span><i class="fa fa-floppy-o"></i></span> Submit
               </a>
-            </form>
+            <% end %>
           </div>
         </div>
       </div>

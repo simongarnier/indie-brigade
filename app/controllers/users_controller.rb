@@ -1,7 +1,29 @@
 class UsersController < Clearance::UsersController
+  before_action :ensure_user_is_logged_in, only: [:edit, :update]
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
+  end
+
+  def update
+    old_password = user_params.delete(:old_password)
+    email = user_params.delete(:email)
+    password = user_params.delete(:password)
+    cpassword = user_params.delete(:cpassword)
+    user = User.authenticate(current_user.email, old_password)
+
+    if user
+      if !email.blank? && !User.find_by_normalized_email(email)
+        user.email = email
+        user.save
+      end
+      if !password.blank? && password == cpassword
+        user.password = password
+        user.save
+      end
+    end
+
+    redirect_to '/account/user/edit'
   end
 
   def create
