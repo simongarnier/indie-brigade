@@ -2,20 +2,23 @@ Rails.application.routes.draw do
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'clearance/sessions', only: [:create]
 
-  resources :users, controller: 'users', only: [:create, :edit, :update] do
+  resources :users, controller: 'users', only: [:create] do
     resource :password,
       controller: 'clearance/passwords',
       only: [:create, :edit, :update]
   end
 
-  resources :devs do
-    get 'availabilities_with_additionnals', on: :member
-    get 'remove_availability', on: :member
-  end
-
-  get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
+  get '/sign_in'  => 'clearance/sessions#new', as: 'sign_in'
   get '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
-  get '/sign_up' => 'clearance/users#new', as: 'sign_up'
+  get '/sign_up'  => 'clearance/users#new', as: 'sign_up'
+
+  get '/account/user/edit'  => 'users#edit', as: 'user_edit'
+  put '/account/user'       => 'users#update', as: 'user_update'
+
+  get '/account/dev/edit'                             => 'devs#edit', as: 'dev_edit'
+  get '/account/dev/availabilities_with_additionnals' => 'devs#availabilities_with_additionnals'
+  get '/account/dev/remove_availability'              => 'devs#remove_availability'
+  put '/account/dev'                                  => 'devs#update', as: 'dev_update'
 
   ActiveAdmin.routes(self)
 

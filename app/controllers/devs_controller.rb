@@ -1,13 +1,13 @@
 class DevsController < ApplicationController
-  before_action :ensure_dev_owned_by_current_user, only: [:edit, :update, :availabilities_with_additionnals, :remove_availability]
+  before_action :ensure_user_is_logged_in, except: [:index, :show]
 
   def edit
-    @dev = Dev.find(params[:id])
+    @dev = current_user_dev
   end
 
   def update
     input = dev_params
-    @dev = Dev.find(params[:id])
+    @dev = current_user_dev
     ids = @dev.availability_ids
     if input[:availabilities_attributes].nil? then
       @dev.availabilities = []
@@ -20,7 +20,7 @@ class DevsController < ApplicationController
       @dev.conditions = []
       @dev.save
     end
-    redirect_to edit_dev_path
+    redirect_to dev_edit_path
   end
 
   # GET /devs
@@ -34,7 +34,7 @@ class DevsController < ApplicationController
   end
 
   def availabilities_with_additionnals
-    @dev = Dev.find(params[:id])
+    @dev = current_user_dev
     amount = params[:amount]
     amount ||= 1
 
@@ -48,7 +48,7 @@ class DevsController < ApplicationController
   end
 
   def remove_availability
-    @dev = Dev.find(params[:id])
+    @dev = current_user_dev
     availability_id = params[:availability_id]
     if availability_id
 

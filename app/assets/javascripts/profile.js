@@ -21,9 +21,8 @@ $(document).ready(function(){
 
   var additionnalAvailabilitiesHandler = function(){
     amount = $(".availabilities-container").children(".availability-elem").length - baseAmount + 1
-    console.log(amount)
     $.ajax({
-      url: "/devs/"+dev_id+"/availabilities_with_additionnals?amount="+amount,
+      url: "/account/dev/availabilities_with_additionnals?amount="+amount,
       dataType: "json",
       cache: false,
       success: function(data){
@@ -38,9 +37,8 @@ $(document).ready(function(){
     el = $(this).parent();
     hiddentInput = $(this).parent().next("input");
     if(hiddentInput.length > 0){
-      console.log(hiddentInput)
       $.ajax({
-        url: "/devs/"+dev_id+"/remove_availability?availability_id="+hiddentInput.val(),
+        url: "/account/dev/remove_availability?availability_id="+hiddentInput.val(),
         dataType: "json",
         cache: false,
         success: function(data){
