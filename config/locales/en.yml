@@ -33,6 +33,15 @@ en:
               blank: "You must enter your last name to register."
             password:
               blank: "Your must choose a password to register."
+              too_short: "Your password must contain at least 8 characters."
+              invalid: "Your password must contain a letter and a number."
+              too_short_and_invalid: "Your password must contain a letter, a number and at least 8 characters."
+              cpassword: 'Your password must match.'
             email:
               blank: "You must enter an email to register."
               invalid: "You must enter a valid email address to register."
+            dev:
+              skill: "Your main skill should be chosen for your account to be created. Don’t worry, you can change it later."
+  users:
+    create:
+      recaptcha: 'Please confirm you are indeed not a robot.'

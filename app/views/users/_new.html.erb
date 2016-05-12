@@ -4,7 +4,7 @@
 		<div class="col col-sm-12 signup-form box-content">
 			<h1>Sign up</h1>
 			<section id="sign">
-			  <%= form_for user do |form| %>
+			  <%= form_for user, url: users_path, method: :post do |form| %>
 			    <%= render partial: '/users/form', object: form %>
 					<%= recaptcha_tags %>
 			    <div class="div-btn">
