@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            over_eighteen:
+              accepted: "You must be 18 or older to register and use this website."
+            firstname:
+              blank: "You must enter your first name to register."
+            lastname:
+              blank: "You must enter your last name to register."
+            password:
+              blank: "Your must choose a password to register."
+            email:
+              blank: "You must enter an email to register."
+              invalid: "You must enter a valid email address to register."

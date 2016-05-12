@@ -30,7 +30,11 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
 
     skill = Skill.find(@main_skill_id)
-    if  @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save && skill
+    @user.errors.add(:cpassword, 'Your password must match.') unless @user.password == @cpassword
+    @user.errors.add(:recaptcha, 'Please confirm you are indeed not a robot.') unless verify_recaptcha(model: @user)
+    @user.errors.add(:skill, 'Your main skill should be chosen for your account to be created. Don’t worry, you can change it later.') unless skill
+    @user.save
+    if  @user.valid?
       sign_in @user
       dev = Dev.new
       dev.user = @user
@@ -49,15 +53,16 @@ class UsersController < Clearance::UsersController
     email = user_params.delete(:email)
     password = user_params.delete(:password)
     @cpassword = user_params.delete(:cpassword)
-    @confirm = user_params.delete(:confirm)
     dev = user_params.delete(:dev)
     @main_skill_id = dev[:main_skill_id]
+    over_eighteen = user_params.delete(:over_eighteen)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.firstname = firstname
       user.lastname = lastname
       user.email = email
       user.password = password
+      user.over_eighteen = over_eighteen
     end
   end
 

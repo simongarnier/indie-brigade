@@ -33,6 +33,7 @@
         {class: "options-form primary-skills-select"}
       )%>
     <% end %>
-
   </div>
 </div>
+<%= form.check_box :over_eighteen, id: 'age-i'%>
+<%= form.label :over_eighteen, for: 'age-i' do %><span></span>I confirm that I am over the age of 18.<%end%>
