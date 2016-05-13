@@ -34,7 +34,12 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
-    if verify_recaptcha(model: @user) && @user.save
+    # need to do this because it's the only way to inject recaptcha error in the model
+    # running #valid? override errors previously injected
+    user_validation_result = @user.valid?
+    if verify_recaptcha(model: @user) && user_validation_result
+      # don't rerun validation
+      @user.save
       sign_in @user
       redirect_back_or url_after_create
     else

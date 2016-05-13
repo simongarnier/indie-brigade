@@ -42,6 +42,8 @@ en:
               invalid: "You must enter a valid email address to register."
             dev:
               skill: "Your main skill should be chosen for your account to be created. Don’t worry, you can change it later."
-  users:
-    create:
-      recaptcha: 'Please confirm you are indeed not a robot.'
+
+  recaptcha:
+    errors:
+      verification_failed: "Please confirm you are indeed not a robot."
+      recaptcha_unreachable: "You're probably a human, but ReCAPTCHA experienced an error. Please try again."
