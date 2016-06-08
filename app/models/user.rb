@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :over_eighteen, acceptance: true
   validates :firstname, presence: true
   validates :lastname, presence: true
+  validates :dev, presence: true
   validate :password_must_follow_the_format, :password_must_match_cpassword
 
   has_many :user_projects
