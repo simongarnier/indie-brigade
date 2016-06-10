@@ -8,7 +8,7 @@ class DevsController < ApplicationController
   def update
     input = dev_params
     @dev = current_user_dev
-    ids = @dev.availability_ids
+    @dev.user.nested = true
     if input[:availabilities_attributes].nil? then
       @dev.availabilities = []
     else

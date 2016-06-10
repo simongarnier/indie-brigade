@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  validates :over_eighteen, acceptance: true
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :dev, presence: true
-  validate :password_must_follow_the_format, :password_must_match_cpassword
+  validates :over_eighteen, acceptance: true, unless: :nested?
+  validate :password_must_follow_the_format, :password_must_match_cpassword, unless: :nested?
 
   has_many :user_projects
   has_many :projects, through: :user_projects
@@ -35,8 +35,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def cpassword=c
+  def cpassword=(c)
     @cpassowrd = c
+  end
+
+  def nested=(n)
+    @nested = n
+  end
+
+  def nested?
+    @nested
   end
 
   private
