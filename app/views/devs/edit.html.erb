@@ -12,6 +12,11 @@
           </ul>
         </div>
         <div class="col col-sm-9 edit-profile-settings">
+          <p>
+            <% @dev.errors.each do |_, message|%>
+              <p><%= message %></p>
+            <% end %>
+          </p>
           <div class="edit-profile-content">
             <%= form_for @dev, url: dev_update_path, html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
               <%= form.hidden_field :id, value: @dev.id %>

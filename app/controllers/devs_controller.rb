@@ -15,12 +15,16 @@ class DevsController < ApplicationController
       keep = input[:availabilities_attributes].values.map{|r| r[:id].to_i}.compact
       @dev.availabilities.reject{|a| keep.include?(a.id) }.each(&:destroy)
     end
-    @dev.update(input)
-    if !input[:condition_ids] then
+    @dev.assign_attributes(input)
+    unless input[:condition_ids]
       @dev.conditions = []
-      @dev.save
     end
-    redirect_to dev_edit_path
+
+    if @dev.save
+      redirect_to dev_edit_path
+    else
+      render template: 'devs/edit'
+    end
   end
 
   # GET /devs
