@@ -1,3 +1,6 @@
+<% errors.each do |_, message|%>
+  <p><%= message %></p>
+<% end %>
 <div class="iNd-input">
   <%= form.label :firstname %>
   <%= form.text_field :firstname, type: 'text', class: "validate"%>

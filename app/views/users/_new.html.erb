@@ -4,11 +4,8 @@
 		<div class="col col-sm-12 signup-form box-content">
 			<h1>Sign up</h1>
 			<section id="sign">
-        <% @user.errors.each do |_, message|%>
-          <p><%= message %></p>
-        <% end %>
 			  <%= form_for user, url: users_path, method: :post do |form| %>
-			    <%= render partial: '/users/form', object: form %>
+			    <%= render partial: '/users/form', object: form, locals: {errors: @user.errors} %>
 					<%= recaptcha_tags %>
 			    <div class="div-btn">
 			    	<button class="signup btn-cta" type="submit">Sign Up</button>
