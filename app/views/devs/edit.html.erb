@@ -112,12 +112,12 @@
                 )%>
               </div>
 
-            <div class="involvment">
-              <label for="conditions" class="label-form">Involvment</label>
-              <div class="options-form availabilities-container">
-                <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+              <div class="involvment">
+                <label for="conditions" class="label-form">Involvment</label>
+                <div class="options-form availabilities-container">
+                  <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+                </div>
               </div>
-            </div>
 
               <div class="custom-list-selectbox" >
                 <%= label_tag :main_skill_id, "Primary Skills", class: "label-form" %>
