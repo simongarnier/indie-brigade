@@ -42,6 +42,9 @@ en:
               invalid: "You must enter a valid email address to register."
             dev:
               skill: "Your main skill should be chosen for your account to be created. Don’t worry, you can change it later."
+        availability:
+          attributes:
+            per_week: "Range is not good dude"
 
   recaptcha:
     errors:
