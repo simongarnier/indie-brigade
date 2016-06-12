@@ -8,17 +8,15 @@
 	}
 	#sign {
 		max-width: 360px;
-		margin:0 auto;
+		margin: 0 auto;
 		padding: 0 30px;
 		label[for="age-i"] {
-			margin: 20px 0 45px;
+			margin: 20px 0 0;
 		}
-
-		p{
+		p {
 			font-size: 0.8rem;
 		}
-
-		button{
+		button {
 			border-radius: 30px;
 		    padding: 15px 40px;
 		    font-size: 0.875rem;
@@ -28,10 +26,14 @@
 		    text-transform: uppercase;
 		    width: 100%;
 		}
+		.error {
+			color: red;
+			margin-top: 10px;
+		}
 	}
 	.g-recaptcha {
-		margin:0 auto;
-		max-width:300px;
+		margin: 45px auto 0;
+		max-width: 300px;
 
 	}
 	div.div-btn {
@@ -40,14 +42,13 @@
 		.btn-cta {
 			border-radius: 30px;
 			padding: 15px 40px;
-			font-size:0.875rem;
+			font-size: 0.875rem;
 			background-color: $theme_yellow;
 			&:hover {
 				background-color: $theme_grey;
 			}
 		}
 	}
-
 	.other-links {
 		text-align: center;
 		margin-top: 40px;

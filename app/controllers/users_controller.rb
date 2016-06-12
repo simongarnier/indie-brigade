@@ -37,7 +37,7 @@ class UsersController < Clearance::UsersController
     # need to do this because it's the only way to inject recaptcha error in the model
     # running #valid? override errors previously injected
     user_validation_result = @user.valid?
-    if verify_recaptcha(model: @user) && user_validation_result
+    if verify_recaptcha(model: @user, attribute: :recaptcha) && user_validation_result
       @user.save
       sign_in @user
       redirect_back_or url_after_create

@@ -7,6 +7,9 @@
 			  <%= form_for user, url: users_path, method: :post do |form| %>
 			    <%= render partial: '/users/form', object: form, locals: {errors: @user.errors} %>
 					<%= recaptcha_tags %>
+					<% @user.errors[:recaptcha].each do |message| %>
+						<p class="error"><%= message %></p>
+					<% end %>
 			    <div class="div-btn">
 			    	<button class="signup btn-cta" type="submit">Sign Up</button>
 			    </div>
