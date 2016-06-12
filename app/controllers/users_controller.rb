@@ -66,8 +66,7 @@ class UsersController < Clearance::UsersController
 
       skill = Skill.find_by_id(main_skill_id)
       if skill
-        Dev.new(main_skill: skill, role: skill.role, user: user)
-        Dev.save
+        user.dev = Dev.new(main_skill: skill, role: skill.role, user: user)
       end
     end
   end
