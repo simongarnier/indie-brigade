@@ -12,11 +12,6 @@
           </ul>
         </div>
         <div class="col col-sm-9 edit-profile-settings">
-          <p>
-            <% @dev.errors.each do |_, message|%>
-              <p><%= message %></p>
-            <% end %>
-          </p>
           <div class="edit-profile-content">
             <%= form_for @dev, url: dev_update_path, html: { multipart: true }, method: :put, id: "edit_dev" do |form| %>
               <%= form.hidden_field :id, value: @dev.id %>
@@ -27,12 +22,18 @@
                     <div class="iNd-input">
                       <%= user.label :firstname, "First name"%>
                       <%= user.text_field :firstname %>
+                      <% @dev.user.errors[:firstname].each do |message| %>
+                        <p class="error"><%= message %></p>
+                      <% end %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="iNd-input">
                       <%= user.label :lastname, "Last name"%>
                       <%= user.text_field :lastname %>
+                      <% @dev.user.errors[:lastname].each do |message| %>
+                        <p class="error"><%= message %></p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -53,6 +54,9 @@
                   </div>
                   </div>
                 </div>
+                <% @dev.user.errors[:avatar].each do |message| %>
+                  <p class="error"><%= message %></p>
+                <% end %>
               </div>
               <div class="banner-upload">
                 <%= label_tag :banner, "Banner", class: "label-form" %>
@@ -69,6 +73,9 @@
                   </div>
                   </div>
                 </div>
+                <% @dev.user.errors[:banner].each do |message| %>
+                  <p class="error"><%= message %></p>
+                <% end %>
               </div>
 
 
