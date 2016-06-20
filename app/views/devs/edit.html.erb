@@ -114,8 +114,11 @@
 
               <div class="involvment">
                 <label for="conditions" class="label-form">Involvment</label>
-                <div class="options-form availabilities-container">
-                  <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+                <div class="options-form">
+                  <div class="availabilities-container">
+                    <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+                  </div>
+                  <a class="btn-cta btn-plus" ><i class="fa fa-plus"></i></a>
                 </div>
               </div>
 

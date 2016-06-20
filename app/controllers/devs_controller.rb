@@ -37,17 +37,13 @@ class DevsController < ApplicationController
     @dev = Dev.find(params[:id])
   end
 
-  def availabilities_with_additionnals
-    @dev = current_user_dev
-    amount = params[:amount]
-    amount ||= 1
-
-    render json: {
+  def additional_availability
+    render json:{
       payload: render_to_string(
-        'devs/_availabilities',
+        'devs/_availability',
         layout: false,
-        locals: { dev: @dev, availabilities: @dev.availabilities + amount.to_i.times.map{ Availability.new(per_week: 2..4) } }
-        )
+        locals: {availability: Availability.new(per_week: 2..4)}
+      )
     }
   end
 

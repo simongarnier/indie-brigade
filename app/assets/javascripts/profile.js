@@ -19,14 +19,13 @@ $(document).ready(function(){
     }
   });
 
-  var additionnalAvailabilitiesHandler = function(){
-    amount = $(".availabilities-container").children(".availability-elem").length - baseAmount + 1
+  var additionnalAvailabiltyHandler = function(){
     $.ajax({
-      url: "/account/dev/availabilities_with_additionnals?amount="+amount,
+      url: "/account/dev/additional_availability",
       dataType: "json",
       cache: false,
       success: function(data){
-        $(".availabilities-container").html(data.payload)
+        $(".availabilities-container").append(data.payload)
         $(".btn-plus").click(additionnalAvailabilitiesHandler)
         $(".btn-close").click(closeAvailabilityHandler);
       }
@@ -50,7 +49,7 @@ $(document).ready(function(){
     el.remove()
   }
 
-  $(".btn-plus").click(additionnalAvailabilitiesHandler)
+  $(".btn-plus").click(additionnalAvailabiltyHandler)
 
   $(".btn-close").click(closeAvailabilityHandler);
 
