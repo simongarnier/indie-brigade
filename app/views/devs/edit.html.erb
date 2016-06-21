@@ -115,14 +115,14 @@
               <div class="involvment">
                 <label for="conditions" class="label-form">Involvment</label>
                 <div class="options-form">
-                  <%= form.check_box :unavailable %>
+                  <%= form.check_box :unavailable, class: "unavailable-checkbox" %>
                   <%= form.label :unavailable do %>
                     <span></span>Currently unavailable
                   <% end %>
-                  <div class="availabilities-container">
+                  <div class="availabilities-container hidden-when-unavailable">
                     <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
                   </div>
-                  <a class="btn-cta btn-plus" ><i class="fa fa-plus"></i></a>
+                  <a class="btn-cta btn-plus hidden-when-unavailable" ><i class="fa fa-plus"></i></a>
                 </div>
               </div>
 

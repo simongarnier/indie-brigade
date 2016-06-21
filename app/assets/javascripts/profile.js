@@ -1,7 +1,4 @@
 $(document).ready(function(){
-  var baseAmount = $(".availabilities-container").children(".availability-elem").length
-  var dev_id = $("input#dev_id").val()
-
   $(".lang-select").chosen()
   $(".softwares-select").chosen()
   $(".primary-skills-select").chosen()
@@ -42,16 +39,29 @@ $(document).ready(function(){
         cache: false,
         success: function(data){
           hiddentInput.remove()
-          baseAmount = baseAmount - 1
         }
       })
     }
     el.remove()
   }
 
-  $(".btn-plus").click(additionnalAvailabiltyHandler)
+  var toggleUnavailableHandler = function(){
+    if(this.checked){
+      $(".hidden-when-unavailable").hide()
+    }else{
+      $(".hidden-when-unavailable").show()
+    }
+  }
 
+  if($(".unavailable-checkbox")[0].checked){
+    $(".hidden-when-unavailable").hide()
+  }
+
+  $(".btn-plus").click(additionnalAvailabiltyHandler)
   $(".btn-close").click(closeAvailabilityHandler);
+
+  $(".unavailable-checkbox").change(toggleUnavailableHandler)
+
 
   $('.banner-input input[type=file]').change(function(e){
     $(this).parent().find(".file-name").text(e.target.files[0].name);
