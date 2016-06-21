@@ -17,13 +17,13 @@ $(document).ready(function(){
   });
 
   var additionnalAvailabiltyHandler = function(){
+    amount = $(".availabilities-container").children(".availability-elem").length
     $.ajax({
-      url: "/account/dev/additional_availability",
+      url: "/account/dev/additional_availability?amount="+amount,
       dataType: "json",
       cache: false,
       success: function(data){
         $(".availabilities-container").append(data.payload)
-        $(".btn-plus").click(additionnalAvailabilitiesHandler)
         $(".btn-close").click(closeAvailabilityHandler);
       }
     })
@@ -33,13 +33,12 @@ $(document).ready(function(){
     el = $(this).parent();
     hiddentInput = $(this).parent().next("input");
     if(hiddentInput.length > 0){
+      availability_id = hiddentInput.val();
+      hiddentInput.remove()
       $.ajax({
-        url: "/account/dev/remove_availability?availability_id="+hiddentInput.val(),
+        url: "/account/dev/remove_availability?availability_id="+availability_id,
         dataType: "json",
         cache: false,
-        success: function(data){
-          hiddentInput.remove()
-        }
       })
     }
     el.remove()

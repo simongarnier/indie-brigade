@@ -38,15 +38,18 @@ class DevsController < ApplicationController
   end
 
   def additional_availability
+    @dev = current_user_dev
+    amount = params[:amount].to_i
+    amount ||= 0
     render json:{
       payload: render_to_string(
         'devs/_availability',
         layout: false,
-        locals: {availability: Availability.new(
+        locals: {dev: @dev, availabilities: [Availability.new(
           per_week: 2..4,
           for_number_of_weeks: 1,
           project_size: ProjectSize.first
-        )}
+        )], child_index: amount}
       )
     }
   end
