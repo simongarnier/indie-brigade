@@ -42,7 +42,11 @@ class DevsController < ApplicationController
       payload: render_to_string(
         'devs/_availability',
         layout: false,
-        locals: {availability: Availability.new(per_week: 2..4)}
+        locals: {availability: Availability.new(
+          per_week: 2..4,
+          for_number_of_weeks: 1,
+          project_size: ProjectSize.first
+        )}
       )
     }
   end
@@ -89,6 +93,7 @@ class DevsController < ApplicationController
         {major_skill_ids: []},
         {minor_skill_ids: []},
         {software_ids: []},
+        :unavailable,
         availabilities_attributes: [:per_week_lower, :per_week_upper, :project_size_id, :for_number_of_weeks, :id],
         user_attributes: [:firstname, :lastname, :id])
     end

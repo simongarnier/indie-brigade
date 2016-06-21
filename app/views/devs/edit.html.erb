@@ -115,6 +115,10 @@
               <div class="involvment">
                 <label for="conditions" class="label-form">Involvment</label>
                 <div class="options-form">
+                  <%= form.check_box :unavailable %>
+                  <%= form.label :unavailable do %>
+                    <span></span>Currently unavailable
+                  <% end %>
                   <div class="availabilities-container">
                     <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
                   </div>

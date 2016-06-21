@@ -1,5 +1,3 @@
-<input type="checkbox" value="involvment" id="involvment-i">
-<label for="involvment-i"><span></span>Currently unavailable</label>
 <%= fields_for dev do |f|%>
   <%= f.fields_for :availabilities, availabilities do |f|%>
     <div class="border-custom custom-selectbox availability-elem">
