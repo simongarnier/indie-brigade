@@ -1,7 +1,4 @@
 $(document).ready(function(){
-  var baseAmount = $(".availabilities-container").children(".availability-elem").length
-  var dev_id = $("input#dev_id").val()
-
   $(".lang-select").chosen()
   $(".softwares-select").chosen()
   $(".primary-skills-select").chosen()
@@ -19,15 +16,14 @@ $(document).ready(function(){
     }
   });
 
-  var additionnalAvailabilitiesHandler = function(){
-    amount = $(".availabilities-container").children(".availability-elem").length - baseAmount + 1
+  var additionnalAvailabiltyHandler = function(){
+    amount = $(".availabilities-container").children(".availability-elem").length
     $.ajax({
-      url: "/account/dev/availabilities_with_additionnals?amount="+amount,
+      url: "/account/dev/additional_availability?amount="+amount,
       dataType: "json",
       cache: false,
       success: function(data){
-        $(".availabilities-container").html(data.payload)
-        $(".btn-plus").click(additionnalAvailabilitiesHandler)
+        $(".availabilities-container").append(data.payload)
         $(".btn-close").click(closeAvailabilityHandler);
       }
     })
@@ -37,22 +33,34 @@ $(document).ready(function(){
     el = $(this).parent();
     hiddentInput = $(this).parent().next("input");
     if(hiddentInput.length > 0){
+      availability_id = hiddentInput.val();
+      hiddentInput.remove()
       $.ajax({
-        url: "/account/dev/remove_availability?availability_id="+hiddentInput.val(),
+        url: "/account/dev/remove_availability?availability_id="+availability_id,
         dataType: "json",
         cache: false,
-        success: function(data){
-          hiddentInput.remove()
-          baseAmount = baseAmount - 1
-        }
       })
     }
     el.remove()
   }
 
-  $(".btn-plus").click(additionnalAvailabilitiesHandler)
+  var toggleUnavailableHandler = function(){
+    if(this.checked){
+      $(".hidden-when-unavailable").hide()
+    }else{
+      $(".hidden-when-unavailable").show()
+    }
+  }
 
+  if($(".unavailable-checkbox")[0].checked){
+    $(".hidden-when-unavailable").hide()
+  }
+
+  $(".btn-plus").click(additionnalAvailabiltyHandler)
   $(".btn-close").click(closeAvailabilityHandler);
+
+  $(".unavailable-checkbox").change(toggleUnavailableHandler)
+
 
   $('.banner-input input[type=file]').change(function(e){
     $(this).parent().find(".file-name").text(e.target.files[0].name);

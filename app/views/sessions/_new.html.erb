@@ -1,18 +1,24 @@
 <%= render 'partials/menu' %>
 <div class="container">
-<div class="row">
-<div class="col col-sm-12 signin-form box-content">
-	<h1>Log in</h1>
-	<section id="sign">
-	  <%= form_for :session, url: session_path do |form| %>
-	    <%= render partial: '/sessions/form', object: form %>
-	    <div class="other-links"><p>Not a member? <%= link_to 'Create an account here', sign_up_path %></p>
-	    <p><%= link_to 'Forgot password?', new_password_path %></p></div>
-	    <div class="div-btn">
-	    	<button class="signin btn-cta" type="submit">Log In</button>
-	    </div>
-	  <% end %>
-	</section>
-</div>
-</div>
+	<div class="row">
+		<div class="col col-sm-12 signin-form box-content">
+			<h1>Log in</h1>
+
+			<section id="sign">
+			  <%= form_for :session, url: session_path do |form| %>
+			    <%= render partial: '/sessions/form', object: form %>
+					<p class="error">
+						<%= flash.notice %>
+					</p>
+			    <div class="other-links">
+						<p>Not a member? <%= link_to 'Create an account here', sign_up_path %></p>
+			    	<p><%= link_to 'Forgot password?', new_password_path %></p>
+					</div>
+			    <div class="div-btn">
+			    	<button class="signin btn-cta" type="submit">Log In</button>
+			    </div>
+			  <% end %>
+			</section>
+		</div>
+	</div>
 </div>

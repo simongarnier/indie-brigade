@@ -22,7 +22,7 @@
         </div>
         <div class="nav-profile">
           <a href="/watchlist" id="lnk_favorite"><i class="fa fa-star"></i></a>
-          <%= link_to dev_edit_path, class: 'nav-photo' do%>
+          <%= link_to dev_path(@current_dev ), class: 'nav-photo' do%>
             <img src="<%= @current_dev.avatar.url(:medium) %>" />
           <%end%>
         </div>

@@ -1,22 +1,37 @@
 <div class="iNd-input">
   <%= form.label :firstname %>
   <%= form.text_field :firstname, type: 'text', class: "validate"%>
+  <% errors[:firstname].each do |message| %>
+    <p class="error"><%= message %></p>
+  <% end %>
 </div>
 <div class="iNd-input">
   <%= form.label :lastname %>
   <%= form.text_field :lastname, type: 'text', class: "validate"%>
+  <% errors[:lastname].each do |message| %>
+    <p class="error"><%= message %></p>
+  <% end %>
 </div>
 <div class="iNd-input">
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email', class: "validate"%>
+  <% errors[:email].each do |message| %>
+    <p class="error"><%= message %></p>
+  <% end %>
 </div>
 <div class="iNd-input">
   <%= form.label :password %>
   <%= form.password_field :password, class: "validate"%>
+  <% errors[:password].each do |message| %>
+    <p class="error"><%= message %></p>
+  <% end %>
 </div>
 <div class="iNd-input">
   <%= form.label :cpassword do %>Confirm password<%end%>
   <%= form.password_field :cpassword, class: "validate"%>
+  <% errors[:cpassword].each do |message| %>
+    <p class="error"><%= message %></p>
+  <% end %>
 </div>
 <div class="iNd-input">
   <div class="custom-list-selectbox" >
@@ -33,6 +48,10 @@
         {class: "options-form primary-skills-select"}
       )%>
     <% end %>
-
   </div>
 </div>
+<%= form.check_box :over_eighteen, id: 'age-i'%>
+<%= form.label :over_eighteen, for: 'age-i' do %><span></span>I confirm that I am over the age of 18.<%end%>
+<% errors[:over_eighteen].each do |message| %>
+  <p class="error"><%= message %></p>
+<% end %>

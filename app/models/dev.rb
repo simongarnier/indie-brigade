@@ -1,3 +1,5 @@
+require 'uri'
+
 class Dev < ActiveRecord::Base
   include IdentityCache
 
@@ -25,13 +27,12 @@ class Dev < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/images/default_profile.png"
   has_attached_file :banner, styles: { display: "960x240#"}, default_url: "/images/default_banner.png"
-  # Validate content type
+
+  # Avatar and banner validation
   validates_attachment_content_type :avatar, content_type: /\Aimage/
   validates_attachment_content_type :banner, content_type: /\Aimage/
-  # Validate filename
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
   validates_attachment_file_name :banner, matches: [/png\Z/, /jpe?g\Z/]
-
   validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/png"] }, size: { in: 0..1.megabytes }
   validates_attachment :banner, content_type: { content_type: ["image/jpeg", "image/png"] }, size: { in: 0..5.megabytes }
 
@@ -52,9 +53,9 @@ class Dev < ActiveRecord::Base
   end
 
   def external_sites_attributes
-    attributes.select do |k, v|
+    attributes.select do |k, _|
       k.include?("handle") || k.include?("link") && !k.include?("portfolio")
-    end.select do |k,v|
+    end.select do |_, v|
       !v.empty?
     end
   end
@@ -77,18 +78,19 @@ class Dev < ActiveRecord::Base
   end
 
   def self.social_link_for_field(field, value)
+    encoded = URI.encode(value)
     {
-      facebook_handle: "https://www.facebook.com/#{value}",
-      google_handle: "https://plus.google.com/u/0/#{value}",
-      linkedin_link: "#{value}",
-      tumblr_handle: "http://#{value}.tumblr.com/",
-      youtube_handle: "https://www.youtube.com/user/#{value}",
-      behance_handle: "https://www.behance.net/#{value}",
-      instagram_handle: "https://www.instagram.com/#{value}",
-      twitter_handle: "https://twitter.com/#{value}",
-      deviantart_handle: "http://#{value}.deviantart.com/",
-      vimeo_handle: "https://vimeo.com/#{value}",
-      pinterest_handle: "https://www.pinterest.com/#{value}/"
+      facebook_handle: "https://www.facebook.com/#{encoded}",
+      google_handle: "https://plus.google.com/u/0/#{encoded}",
+      linkedin_link: "#{encoded}",
+      tumblr_handle: "http://#{encoded}.tumblr.com/",
+      youtube_handle: "https://www.youtube.com/user/#{encoded}",
+      behance_handle: "https://www.behance.net/#{encoded}",
+      instagram_handle: "https://www.instagram.com/#{encoded}",
+      twitter_handle: "https://twitter.com/#{encoded}",
+      deviantart_handle: "http://#{encoded}.deviantart.com/",
+      vimeo_handle: "https://vimeo.com/#{encoded}",
+      pinterest_handle: "https://www.pinterest.com/#{encoded}/"
     }[field]
   end
 end

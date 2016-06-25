@@ -10,33 +10,36 @@ class UsersController < Clearance::UsersController
     email = user_params.delete(:email)
     password = user_params.delete(:password)
     cpassword = user_params.delete(:cpassword)
-    user = User.authenticate(current_user.email, old_password)
+    @user = User.authenticate(current_user.email, old_password)
 
-    if user
+    if @user
       if !email.blank? && !User.find_by_normalized_email(email)
-        user.email = email
-        user.save
+        @user.email = email
       end
-      if !password.blank? && password == cpassword
-        user.password = password
-        user.save
+      if password.blank? && cpassword.blank?
+        @user.password = old_password
+        @user.cpassword = old_password
+      else
+        @user.password = password
+        @user.cpassword = cpassword
       end
     end
-
-    redirect_to user_edit_path
+    if @user && @user.save
+      redirect_to user_edit_path
+    else
+      @user ||= current_user
+      render template: "users/edit"
+    end
   end
 
   def create
     @user = user_from_params
-
-    skill = Skill.find(@main_skill_id)
-    if  @user.password == @cpassword && @confirm && verify_recaptcha(model: @user) && @user.save && skill
+    # need to do this because it's the only way to inject recaptcha error in the model
+    # running #valid? override errors previously injected
+    user_validation_result = @user.valid?
+    if verify_recaptcha(model: @user, attribute: :recaptcha) && user_validation_result
+      @user.save
       sign_in @user
-      dev = Dev.new
-      dev.user = @user
-      dev.main_skill = skill
-      dev.role = skill.role
-      dev.save
       redirect_back_or url_after_create
     else
       render template: "users/new"
@@ -48,16 +51,23 @@ class UsersController < Clearance::UsersController
     lastname =user_params.delete(:lastname)
     email = user_params.delete(:email)
     password = user_params.delete(:password)
-    @cpassword = user_params.delete(:cpassword)
-    @confirm = user_params.delete(:confirm)
+    cpassword = user_params.delete(:cpassword)
     dev = user_params.delete(:dev)
-    @main_skill_id = dev[:main_skill_id]
+    main_skill_id = dev[:main_skill_id]
+    over_eighteen = user_params.delete(:over_eighteen)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.firstname = firstname
       user.lastname = lastname
       user.email = email
       user.password = password
+      user.over_eighteen = over_eighteen
+      user.cpassword = cpassword
+
+      skill = Skill.find_by_id(main_skill_id)
+      if skill
+        user.dev = Dev.new(main_skill: skill, role: skill.role, user: user)
+      end
     end
   end
 

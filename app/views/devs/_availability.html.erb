@@ -1,5 +1,5 @@
 <%= fields_for dev do |f|%>
-  <%= f.fields_for :availabilities, availabilities do |ff|%>
+  <%= f.fields_for :availabilities, availabilities, child_index: child_index do |ff|%>
     <div class="border-custom custom-selectbox availability-elem">
       <%= ff.collection_select(
           :project_size_id,
