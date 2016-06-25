@@ -14,9 +14,7 @@ class User < ActiveRecord::Base
   has_one :dev, dependent: :delete
 
   def password_must_follow_the_format
-    if password_invalid? && password_too_short?
-      errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.too_short_and_invalid'))
-    elsif password_too_short?
+    if password_too_short?
       errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.too_short'))
     elsif password_invalid?
       errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.invalid'))
