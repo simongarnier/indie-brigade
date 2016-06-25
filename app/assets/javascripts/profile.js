@@ -51,11 +51,7 @@ $(document).ready(function(){
       $(".hidden-when-unavailable").show()
     }
   }
-
-  if($(".unavailable-checkbox")[0].checked){
-    $(".hidden-when-unavailable").hide()
-  }
-
+  
   $(".btn-plus").click(additionnalAvailabiltyHandler)
   $(".btn-close").click(closeAvailabilityHandler);
 
