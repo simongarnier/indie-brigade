@@ -56,7 +56,7 @@ class Dev < ActiveRecord::Base
     attributes.select do |k, _|
       k.include?("handle") || k.include?("link") && !k.include?("portfolio")
     end.select do |_, v|
-      !v.empty?
+      v && !v.empty?
     end
   end
 
