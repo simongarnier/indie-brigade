@@ -52,10 +52,6 @@ $(document).ready(function(){
     }
   }
 
-  if($(".unavailable-checkbox")[0].checked){
-    $(".hidden-when-unavailable").hide()
-  }
-
   $(".btn-plus").click(additionnalAvailabiltyHandler)
   $(".btn-close").click(closeAvailabilityHandler);
 
