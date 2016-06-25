@@ -63,10 +63,12 @@ class UsersController < Clearance::UsersController
       user.password = password
       user.over_eighteen = over_eighteen
       user.cpassword = cpassword
+      user.dev = Dev.new
 
       skill = Skill.find_by_id(main_skill_id)
       if skill
-        user.dev = Dev.new(main_skill: skill, role: skill.role, user: user)
+        user.dev.main_skill = skill
+        user.dev.role = skill.role
       end
     end
   end
