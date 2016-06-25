@@ -51,7 +51,7 @@ $(document).ready(function(){
       $(".hidden-when-unavailable").show()
     }
   }
-  
+
   $(".btn-plus").click(additionnalAvailabiltyHandler)
   $(".btn-close").click(closeAvailabilityHandler);
 
