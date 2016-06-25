@@ -8,19 +8,23 @@ class DevsController < ApplicationController
   def update
     input = dev_params
     @dev = current_user_dev
-    ids = @dev.availability_ids
+    @dev.user.nested = true
     if input[:availabilities_attributes].nil? then
       @dev.availabilities = []
     else
       keep = input[:availabilities_attributes].values.map{|r| r[:id].to_i}.compact
       @dev.availabilities.reject{|a| keep.include?(a.id) }.each(&:destroy)
     end
-    @dev.update(input)
-    if !input[:condition_ids] then
+    @dev.assign_attributes(input)
+    unless input[:condition_ids]
       @dev.conditions = []
-      @dev.save
     end
-    redirect_to dev_edit_path
+
+    if @dev.save
+      redirect_to dev_edit_path
+    else
+      render template: 'devs/edit'
+    end
   end
 
   # GET /devs
@@ -33,17 +37,20 @@ class DevsController < ApplicationController
     @dev = Dev.find(params[:id])
   end
 
-  def availabilities_with_additionnals
+  def additional_availability
     @dev = current_user_dev
-    amount = params[:amount]
-    amount ||= 1
-
-    render json: {
+    amount = params[:amount].to_i
+    amount ||= 0
+    render json:{
       payload: render_to_string(
-        'devs/_availabilities',
+        'devs/_availability',
         layout: false,
-        locals: { dev: @dev, availabilities: @dev.availabilities + amount.to_i.times.map{ Availability.new(per_week: 2..4) } }
-        )
+        locals: {dev: @dev, availabilities: [Availability.new(
+          per_week: 2..4,
+          for_number_of_weeks: 1,
+          project_size: ProjectSize.first
+        )], child_index: amount}
+      )
     }
   end
 
@@ -89,6 +96,7 @@ class DevsController < ApplicationController
         {major_skill_ids: []},
         {minor_skill_ids: []},
         {software_ids: []},
+        :unavailable,
         availabilities_attributes: [:per_week_lower, :per_week_upper, :project_size_id, :for_number_of_weeks, :id],
         user_attributes: [:firstname, :lastname, :id])
     end

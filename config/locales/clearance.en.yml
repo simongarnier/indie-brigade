@@ -8,7 +8,7 @@ en:
       opening: "Someone, hopefully you, requested we send you a link to change
         your password:"
   flashes:
-    failure_after_create: Bad email or password.
+    failure_after_create: Your email is not in our database or you submitted the wrong password. You must register to use this website.
     failure_after_update: Password can't be blank.
     failure_when_forbidden: Please double check the URL or try submitting
       the form again.

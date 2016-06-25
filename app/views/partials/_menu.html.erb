@@ -4,35 +4,29 @@
 			<img src="/images/logo.svg" alt="Indie Brigadetu fini" />
 		</a>
 		<% if @current_dev != nil %>
-		<div class="nav-mobile">
-			<a class='nav-burger'><i class="fa fa-bars"></i></a>
-		</div>
+      <div class="nav-mobile">
+        <a class='nav-burger'><i class="fa fa-bars"></i></a>
+      </div>
 
-		<div class="nav-menu">
-			<ul>
-				<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-				<li><a href="/message"><i class="fa fa-envelope"></i>Messages</a></li>
-				<li><a href="/search"><i class="fa fa-search"></i>Search</a></li>
-				<a class="nav-close"><i class="fa fa-close"></i></a>
-			</ul>
-			<div class="nav-setting">
-				<!--
-				<div class="nav-arrow">
-					<i class="fa fa-caret-up"></i>
-				</div>
-
-				-->
-        <%= link_to dev_edit_path do %><i class="fa fa-gear"> </i>Edit dev<%end%>
-        <%= link_to user_edit_path do %><i class="fa fa-gear"> </i>Edit user<%end%>
-				<a href="/sign_out"><i class="fa fa-sign-out"></i>sign out</a>
-			</div>
-			<div class="nav-profile">
-				<a href="/watchlist" id="lnk_favorite"><i class="fa fa-star"></i></a>
-				<a href="/devs/<%= @current_dev.id %>/" class="nav-photo">
-					<img src="<%= @current_dev.avatar.url(:medium) %>" />
-				</a>
-			</div>
-		</div>
+      <div class="nav-menu">
+        <ul>
+          <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+          <li><a href="/message"><i class="fa fa-envelope"></i>Messages</a></li>
+          <li><a href="/search"><i class="fa fa-search"></i>Search</a></li>
+          <a class="nav-close"><i class="fa fa-close"></i></a>
+        </ul>
+        <div class="nav-setting">
+          <%= link_to dev_edit_path do %><i class="fa fa-gear"> </i>Edit dev<%end%>
+          <%= link_to user_edit_path do %><i class="fa fa-gear"> </i>Edit user<%end%>
+          <%= link_to sign_out_path do %><i class="fa fa-sign-out"></i>sign out<% end %>
+        </div>
+        <div class="nav-profile">
+          <a href="/watchlist" id="lnk_favorite"><i class="fa fa-star"></i></a>
+          <%= link_to dev_path(@current_dev ), class: 'nav-photo' do%>
+            <img src="<%= @current_dev.avatar.url(:medium) %>" />
+          <%end%>
+        </div>
+      </div>
 		<% else %>
 
 		<% end %>

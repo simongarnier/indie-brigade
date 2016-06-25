@@ -2,6 +2,11 @@ class Availability < ActiveRecord::Base
   belongs_to :project_size
   belongs_to :available, polymorphic: true
 
+  validates :for_number_of_weeks, presence: true, inclusion: {in: [1, 2, 4]}
+  validates :per_week, presence: true
+  validates :project_size, presence: true
+  validate :upper_greater_than_lower
+
   scope :for_available_type, lambda { |class_name| where "available_type = ?", class_name }
   scope :compatible_availability, lambda { |availability|
     if !availability.project_size.need_involvement
@@ -25,13 +30,11 @@ class Availability < ActiveRecord::Base
   }
 
   def per_week_lower
-    return nil unless self.per_week
-    self.per_week.min
+    self.per_week.try(:min)
   end
 
   def per_week_upper
-    return nil unless self.per_week
-    self.per_week.max
+    self.per_week.try(:max)
   end
 
   def per_week_lower= i
@@ -52,6 +55,12 @@ class Availability < ActiveRecord::Base
       self.per_week = i..i
     end
     per_week_upper
+  end
+
+  def upper_greater_than_lower
+    if per_week && per_week_upper < per_week_lower
+      errors.add(:per_week, I18n.t('activerecord.errors.models.availability.attributes.per_week'))
+    end
   end
 
   def as_sentence

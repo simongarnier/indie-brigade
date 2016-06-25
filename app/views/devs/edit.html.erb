@@ -22,12 +22,18 @@
                     <div class="iNd-input">
                       <%= user.label :firstname, "First name"%>
                       <%= user.text_field :firstname %>
+                      <% @dev.user.errors[:firstname].each do |message| %>
+                        <p class="error"><%= message %></p>
+                      <% end %>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="iNd-input">
                       <%= user.label :lastname, "Last name"%>
                       <%= user.text_field :lastname %>
+                      <% @dev.user.errors[:lastname].each do |message| %>
+                        <p class="error"><%= message %></p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -48,6 +54,9 @@
                   </div>
                   </div>
                 </div>
+                <% @dev.user.errors[:avatar].each do |message| %>
+                  <p class="error"><%= message %></p>
+                <% end %>
               </div>
               <div class="banner-upload">
                 <%= label_tag :banner, "Banner", class: "label-form" %>
@@ -64,6 +73,9 @@
                   </div>
                   </div>
                 </div>
+                <% @dev.user.errors[:banner].each do |message| %>
+                  <p class="error"><%= message %></p>
+                <% end %>
               </div>
 
 
@@ -100,12 +112,19 @@
                 )%>
               </div>
 
-            <div class="involvment">
-              <label for="conditions" class="label-form">Involvment</label>
-              <div class="options-form availabilities-container">
-                <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+              <div class="involvment">
+                <label for="conditions" class="label-form">Involvment</label>
+                <div class="options-form">
+                  <%= form.check_box :unavailable, class: "unavailable-checkbox" %>
+                  <%= form.label :unavailable do %>
+                    <span></span>Currently unavailable
+                  <% end %>
+                  <div class="availabilities-container hidden-when-unavailable">
+                    <%= render partial: 'availabilities', locals: {availabilities: @dev.availabilities, dev: @dev} %>
+                  </div>
+                  <a class="btn-cta btn-plus hidden-when-unavailable" ><i class="fa fa-plus"></i></a>
+                </div>
               </div>
-            </div>
 
               <div class="custom-list-selectbox" >
                 <%= label_tag :main_skill_id, "Primary Skills", class: "label-form" %>

@@ -65,10 +65,13 @@
         <% end %>
       </div>
       <div class="col col-sm-6 profile-skills">
+        <% if @dev.role && @dev.main_skill %>
+          <div class="main-skill group-<%= @dev.role.code %>"><p><%= @dev.main_skill.long_name %></p></div>
+        <% else %>
+          <p class="no-skill">This user has not selected a main skills yet</p>
+        <% end %>
 
-        <div class="main-skill group-<%= @dev.role.code %>"><p><%= @dev.main_skill.long_name %></p></div>
-
-         <% if !@dev.major_skills_by_role.empty? && !@dev.minor_skills_by_role.empty? %>
+        <% if !@dev.major_skills_by_role.empty? && !@dev.minor_skills_by_role.empty? %>
         <table class="skill-table">
           <tr>
             <td>

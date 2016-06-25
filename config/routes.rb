@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  resources :devs, controller: 'devs', only: [:show]
+
   get '/sign_in'  => 'clearance/sessions#new', as: 'sign_in'
   get '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up'  => 'clearance/users#new', as: 'sign_up'
@@ -16,8 +18,8 @@ Rails.application.routes.draw do
   put '/account/user'       => 'users#update', as: 'user_update'
 
   get '/account/dev/edit'                             => 'devs#edit', as: 'dev_edit'
-  get '/account/dev/availabilities_with_additionnals' => 'devs#availabilities_with_additionnals'
   get '/account/dev/remove_availability'              => 'devs#remove_availability'
+  get '/account/dev/additional_availability'          => 'devs#additional_availability'
   put '/account/dev'                                  => 'devs#update', as: 'dev_update'
 
   ActiveAdmin.routes(self)
