@@ -113,8 +113,8 @@
         <div class="profile-softwares">
           <h3>Softwares</h3>
           <ul>
-            <%@dev.minor_skills_by_role.each do |software|%>
-              <li><%= software.long_name %></li>
+            <%@dev.softwares.each do |software|%>
+              <li><%= software.name %></li>
             <%end%>
           </ul>
         </div>
