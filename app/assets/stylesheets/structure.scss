@@ -29,12 +29,12 @@ div.main-nav{
 			@media (max-width: $tablet-screen){
 				display: inline-block;
 			}
-			
+
 			a.nav-burger{
 				display: inline-block;
 				font-size: 1.5rem;
 				cursor: pointer;
-			
+
 				i{
 					color: #868686;
 				}
@@ -42,7 +42,7 @@ div.main-nav{
 
 			}
 		}
-		
+
 		div.nav-menu{
 			width: 79.5%;
 			text-align: right;
@@ -50,7 +50,7 @@ div.main-nav{
 			vertical-align: middle;
 			line-height: 30px;
 			position: relative;
-			
+
 			@media (max-width: $tablet-screen){
 				width: 320px;
 				background-color: #eee;
@@ -63,21 +63,21 @@ div.main-nav{
 				padding: 0px 20px;
 				box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.25);
 			}
-			
+
 
 			>*{
 				display: inline-block;
 				vertical-align: middle;
-				
+
 				@media (max-width: $tablet-screen){
 					display: block;
 					float: none;
 				}
-				
+
 			}
 
 
-			
+
 			ul{
 				list-style-type: none;
 				margin: 0px;
@@ -89,14 +89,14 @@ div.main-nav{
 					margin: 0px 25px 0px 0px;
 					vertical-align: middle;
 
-					
+
 					@media (max-width: $tablet-screen){
 						display: block;
 						padding: 5px 10px;
 						margin: 0px;
 						border-bottom: dashed 1px #bbb;
 					}
-					
+
 					a{
 						color: #868686;
 						text-transform: uppercase;
@@ -146,7 +146,6 @@ div.main-nav{
 			div.nav-setting{
 				display: none;
 				position: absolute;
-				width: 150px;
 				background: #eee;
 				padding: 0 10px;
 				right: 0;
@@ -204,7 +203,7 @@ div.main-nav{
 					width: 100%;
 				}
 			}
-			
+
 			div.nav-profile{
 				position: relative;
 
@@ -248,7 +247,7 @@ div.main-nav{
 				img{
 					height: 30px;
 					@include border-radius(50%);
-					
+
 				}
 				/*
 				&:before{
