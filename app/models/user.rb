@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :dev, presence: true
-  validates :over_eighteen, acceptance: true, unless: :nested?
-  validate :password_must_follow_the_format, :password_must_match_cpassword, unless: :nested?
+  validates :over_eighteen, acceptance: true, if: :validate_password?
+  validate :password_must_follow_the_format, :password_must_match_cpassword, if: :validate_password?
 
   has_many :user_projects
   has_many :projects, through: :user_projects
@@ -20,8 +20,12 @@ class User < ActiveRecord::Base
   end
 
   def password_must_match_cpassword
-    if password != @cpassowrd
-      errors.add(:cpassword, I18n.t('activerecord.errors.models.user.attributes.password.cpassword'))
+    if password_invalid? && password_too_short?
+      errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.too_short_and_invalid'))
+    elsif password_too_short?
+      errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.too_short'))
+    elsif password_invalid?
+      errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.invalid'))
     end
   end
 
@@ -35,12 +39,12 @@ class User < ActiveRecord::Base
     @cpassowrd = c
   end
 
-  def nested=(n)
-    @nested = n
+  def validate_password=(n)
+    @validate_password = n
   end
 
-  def nested?
-    @nested
+  def validate_password?
+    @validate_password
   end
 
   private
