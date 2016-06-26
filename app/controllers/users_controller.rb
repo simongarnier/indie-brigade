@@ -24,6 +24,7 @@ class UsersController < Clearance::UsersController
         @user.cpassword = cpassword
       end
     end
+    @user.validate_password = true
     if @user && @user.save
       redirect_to user_edit_path
     else
@@ -34,6 +35,7 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
+    @user.validate_password = true
     # need to do this because it's the only way to inject recaptcha error in the model
     # running #valid? override errors previously injected
     user_validation_result = @user.valid?
